@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <div class="row justify-content-md-center align-items-center" id="searchbar">
+    <div class="col-2">      
+      <mat-label>Recherche de document</mat-label>
+    </div>
+    <div class="col-1" id="select"> 
+      <mat-select [(value)] = "select" class="input">
+        <mat-option value = "document">Titre</mat-option>
+        <mat-option value = "auteur">Auteur</mat-option>
+        <mat-option value = "editeur">Editeur</mat-option>        
+      </mat-select>     
+    </div>
+    <div class="col-2">      
+      <input matInput type="text" class="input" id="textfield" placeholder="Tapez ici" [formControl]="libelle"/>
+    </div>      
+    <div class="col-1">      
+      <a mat-flat-button routerLink="/{{select}}/libelle/{{libelle.value}}">Rechercher</a>
+    </div>
+    <div class="col-1">
+      <a mat-flat-button routerLink="">Login</a>
+    </div>
+    <div class="col-1" hidden>
+      <a mat-flat-button routerLink="">Logout</a>
+    </div>
+    <div class="col-1" hidden>
+      <a mat-flat-button routerLink="">Account</a>
+    </div>
+  </div>               
+</div>
+
