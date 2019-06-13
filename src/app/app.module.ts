@@ -13,14 +13,16 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidebarComponent } from './sidebar/sidebar.component';
-
+import { AcceuilComponent } from './acceuil/acceuil.component';
+import { MatMenuModule } from '@angular/material/menu'; 
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchBarComponent,
-    SidebarComponent
+    SidebarComponent,
+    AcceuilComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     BrowserAnimationsModule,
     MatInputModule,
     MatButtonModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,6 +9,7 @@ import { FormControl } from '@angular/forms';
 })
 export class SearchBarComponent implements OnInit {
   libelle = new FormControl('');
+  username = "placeholder"
 
   constructor() { }
 
