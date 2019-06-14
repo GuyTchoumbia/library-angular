@@ -14,15 +14,22 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { AcceuilComponent } from './acceuil/acceuil.component';
-import { MatMenuModule } from '@angular/material/menu'; 
-
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { LoginDialogComponent } from './login-dialog/login-dialog.component';  
+import { FormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+import { AccountComponent } from './account/account.component'; 
+import { AuthentificationService } from './authentification.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchBarComponent,
     SidebarComponent,
-    AcceuilComponent
+    AcceuilComponent,
+    LoginDialogComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
@@ -35,9 +42,15 @@ import { MatMenuModule } from '@angular/material/menu';
     MatInputModule,
     MatButtonModule,
     MatSidenavModule,
-    MatMenuModule
+    MatMenuModule,
+    MatIconModule,
+    FormsModule,
+    MatDialogModule
   ],
-  providers: [],
+  entryComponents: [
+    LoginDialogComponent
+  ],
+  providers: [AuthentificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

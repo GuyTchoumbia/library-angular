@@ -1,9 +1,10 @@
 <app-search-bar></app-search-bar>
-<mat-sidenav-container class="sidenav-container" autosize>
+<mat-sidenav-container class="sidenav-container">
   <mat-sidenav id="sidebar" opened mode="side">
     <app-sidebar></app-sidebar>
-  </mat-sidenav>  
-  [Placeholder]
-  <router-outlet></router-outlet>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>       
 </mat-sidenav-container>
 

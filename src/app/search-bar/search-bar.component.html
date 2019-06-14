@@ -1,8 +1,6 @@
 <div class="container-fluid">
-  <div class="row justify-content-md-center align-items-center" id="searchbar">
-    <div class="col-2">      
-      <mat-label>Recherche de document</mat-label>
-    </div>
+  <div class="row justify-content-md-center align-items-center" id="searchbar">    
+    <div class="col-1">Logged In ? {{isLoggedIn | async}}</div>
     <div class="col-1" id="select"> 
       <mat-select [(value)] = "select" class="input">
         <mat-option value = "document">Titre</mat-option>
@@ -10,34 +8,35 @@
         <mat-option value = "editeur">Editeur</mat-option>        
       </mat-select>     
     </div>
-    <div class="col-2">      
-      <input matInput type="text" class="input" id="textfield" placeholder="Tapez ici" [formControl]="libelle"/>
+    <div class="col-2">    
+      <input matInput type="text" class="input" id="textfield" placeholder="Recherche de document" [formControl]="libelle" />
     </div>      
     <div class="col-1">      
       <a mat-flat-button routerLink="/{{select}}/libelle/{{libelle.value}}">
-        <i class="material-icons">search</i>
+        <mat-icon>search</mat-icon>
         Rechercher</a>
     </div>
     <div class="col-1">
-      <a mat-flat-button routerLink="">Login</a>
+      <button mat-flat-button (click)="openLoginDialog()">Login</button>
     </div>    
-    <div class="col-1">
-      <button mat-flat-button [matMenuTriggerFor]="menu">
-        <i class="material-icons">account_circle</i>
+    <div class="col-1">      
+      <button mat-flat-button [matMenuTriggerFor]="menu">        
+        <mat-icon>account_circle</mat-icon>
         {{username}}                
-        <i class="material-icons">arrow_drop_down
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item>              
-              <i class="material-icons">settings</i>
-              Settings
-            </button>
-            <button mat-menu-item>
-              <i class="material-icons">cancel</i>
-              Logout
-            </button>
-          </mat-menu>
-        </i>
+        <mat-icon>arrow_drop_down</mat-icon>
       </button>
+      <mat-menu #menu="matMenu">  
+        <a [routerLink]="['/account/', username]" routerLinkActive="active">      
+          <button mat-menu-item>                        
+            <mat-icon>settings</mat-icon>
+            <span>Settings</span>          
+          </button>
+        </a>
+        <button mat-menu-item (click)="logOut()">
+          <mat-icon>cancel</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-menu>     
     </div>
   </div>               
 </div>
