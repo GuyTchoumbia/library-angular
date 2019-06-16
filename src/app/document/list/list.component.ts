@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { SearchService } from '../search.service';
 import { Document } from '../../classes/document';
 
 @Component({
-  selector: 'app-list',
+  selector: 'app-list',  
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })

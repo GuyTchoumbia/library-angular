@@ -1,0 +1,13 @@
+.material-icons {
+    font-size: 90px;
+    text-justify: center;
+}
+
+.icon {
+    padding: 0px;
+    border-right: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.desc {
+    font-size: 90%;
+}

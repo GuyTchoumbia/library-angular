@@ -1,6 +1,17 @@
-title {
-    color: rgba(0,0,0,.54);
-    background: rgba(0,0,0,.03);
+#title {
+    color: rgba(0,0,0,.54);    
     padding: 8px 20px;
+}  
+
+.filters {
+    margin: 0 1% ;
+    box-shadow: 0 2px 2px rgba(0,0,0,.24), 0 0 2px rgba(0,0,0,.12);    
 }
+
+app-element {
+    height: 110px;
+    margin: 0 1% 1% 1%;
+    box-shadow: 0 2px 2px rgba(0,0,0,.24), 0 0 2px rgba(0,0,0,.12);
+}
+
 
