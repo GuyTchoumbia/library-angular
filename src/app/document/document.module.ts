@@ -9,9 +9,10 @@ import { ElementComponent } from './element/element.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { FiltersComponent } from './filters/filters.component';
 
 @NgModule({
-  declarations: [ListComponent, DetailComponent, ElementComponent],
+  declarations: [ListComponent, DetailComponent, ElementComponent, FiltersComponent],
   imports: [
     CommonModule,
     DocumentRoutingModule,

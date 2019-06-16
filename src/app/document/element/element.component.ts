@@ -7,8 +7,6 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ElementComponent implements OnInit {
   @Input() document: Document;
-  typeIcon = 'book';
-
   constructor() { }
 
   ngOnInit() {

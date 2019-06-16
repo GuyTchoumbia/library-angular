@@ -8,4 +8,5 @@ export class Document {
     auteur: string;
     editeur: string;
     date: Date;
+    bibliotheque: string;
 }
