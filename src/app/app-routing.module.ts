@@ -4,9 +4,16 @@ import { AcceuilComponent } from './acceuil/acceuil.component';
 import { AccountComponent } from './account/account.component';
 
 const routes: Routes = [
-  { path: '', component: AcceuilComponent },
-  { path: 'account/:username', component: AccountComponent },
-  
+  {
+    path: '', component: AcceuilComponent
+  },
+  {
+    path: 'account/:username', component: AccountComponent
+  },
+  {
+    path: 'results',
+    loadChildren: () => import('./document/document.module').then(mod => mod.DocumentModule)
+  },
 ];
 
 @NgModule({

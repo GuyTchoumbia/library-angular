@@ -4,7 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
 import { AuthentificationService } from '../authentification.service';
 import { Router } from '@angular/router';
-import { Observable, of as observableOf } from 'rxjs';
+import { Observable } from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
 
 @Component({
   selector: 'app-search-bar',
@@ -13,26 +14,34 @@ import { Observable, of as observableOf } from 'rxjs';
 })
 export class SearchBarComponent implements OnInit {
   libelle = new FormControl('');
-  isLoggedIn = observableOf(this.authService.isLoggedIn);
+  isLoggedIn: boolean;
   username: string;
   password: string;
+  options: string[] = ['One', 'Two', 'Three'];
+  filteredOptions: Observable<string[]>;
 
   constructor(public dialog: MatDialog,
               private authService: AuthentificationService,
               private router: Router,
               ) { }
 
-  ngOnInit() {    
-    this.authService.obsIsLoggedIn.subscribe((data) => {      
-      console.log(data);
-    });
-  
+  ngOnInit() {
+    this.authService.getIsLoggedIn().subscribe((data) => this.isLoggedIn = data);
+    this.filteredOptions = this.libelle.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filter(value))
+      );
   }
-  
-  logOut():void {
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  }
+
+  logOut(): void {
     this.authService.logOut();
     this.router.navigate(['']);
-    
   }
 
   openLoginDialog(): void {
@@ -42,7 +51,6 @@ export class SearchBarComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.authService.logIn();
       this.username = result.username;
     });
   }

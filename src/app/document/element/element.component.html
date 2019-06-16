@@ -1,0 +1,22 @@
+<a mat-list-item routerLink="/results/detail/{{document.id}}" class="row">
+  <div class="col-1" [ngSwitch]="document.type">
+    <mat-icon matListIcon *ngSwitchCase="1">book</mat-icon>
+    <mat-icon matListIcon *ngSwitchCase="2">album</mat-icon>
+    <mat-icon matListIcon *ngSwitchCase="3">help_outline</mat-icon>
+    <mat-icon matListIcon *ngSwitchCase="4">movie</mat-icon>
+    <mat-icon matListIcon *ngSwitchDefault>help_outline</mat-icon>
+  </div> 
+  <div class="col-5">
+    <span>{{document.libelle}}</span>
+  </div>
+  <div class="col-3">
+    <span>{{document.auteur}}</span>
+  </div>
+  <div class="col-2">
+    <span>{{document.editeur}}</span>
+  </div>
+  <div class="col-2">
+    <span>{{document.date | date:'shortDate' }}</span>
+  </div>      
+</a>
+<mat-divider></mat-divider>

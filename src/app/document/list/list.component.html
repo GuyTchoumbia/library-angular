@@ -1,0 +1,29 @@
+<div class="container-fluid" *ngIf="results; else noresults"> 
+  <h3 mat-subheader>Results: {{results.length}}</h3> 
+  <mat-list class="list" id="title">
+    <mat-list-item class="row header">
+      <div class="col-1">
+        <span>Type</span>
+      </div>
+      <div class="col-5">
+        <span>Titre</span>
+      </div>
+      <div class="col-3">
+        <span>Auteur</span>
+      </div>
+      <div class="col-2">
+        <span>Editeur</span>
+      </div>
+      <div class="col-2">
+        <span>Date</span>
+      </div>  
+    </mat-list-item>  
+    <app-element *ngFor="let result of results" [document]="result"></app-element>  
+  </mat-list>
+</div>
+<ng-template #noresults>
+  <div class="container-fluid" >
+    <h2>Aucun resultats</h2>
+  </div>
+</ng-template>
+
