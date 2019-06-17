@@ -1,0 +1,36 @@
+module document
+ - filtres:
+	* deplacer vers le service
+	*  create map(key, value) where key = document.property and value = nomber of occurences of said property in results
+	for filter listing
+	* html/css
+	* links to result page of each filter
+ - list: 
+	* sort select: ascending/descending by name, etc
+	* html/css
+	* links to auteur and editeur
+ - details:
+	* html/css
+	* links to auteur/ editeur
+	* exemplaire field
+	* link to user
+	* available/ not available (rented/not)
+	* if logged, reservation (reserved property on document)	
+
+ - common
+ 	* user class
+	* document: extend with user property
+		reserved property
+
+ - searchbar
+	* login dialog html css
+
+ - AuthService:
+	* AuthGuard for user settings page
+
+ - Account Settings page
+	* html/css
+	* modify user
+	* see rented documents
+
+ - Advanced Search
