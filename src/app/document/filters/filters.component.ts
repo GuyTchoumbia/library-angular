@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Document } from '../../classes/document';
+import { SearchService } from '../search.service';
 
 @Component({
   selector: 'app-filters',
@@ -7,16 +8,42 @@ import { Document } from '../../classes/document';
   styleUrls: ['./filters.component.css']
 })
 export class FiltersComponent implements OnInit {
-  @Input() results: Document[];
-  auteurs: string[];
-  types: number[];
-  bibliotheques: string[];  
+  auteurs: any;
+  types: any;
+  bibliotheques: any;
+  editeurs: any;
+
+  @Input()
+  set results(results: Document[]){
+    this.auteurs = this.getMap(results, 'auteur');
+    this.types = this.getMap(results, 'type');
+    this.bibliotheques = this.getMap(results, 'bibliotheque');
+    this.editeurs = this.getMap(results, 'editeur');
+  }
+
+  @Output() subResults = new EventEmitter<Document[]>();
+
   constructor() { }
 
-  ngOnInit() {
-    this.auteurs = Array.from(new Set(this.results.map(doc => doc.auteur)));
-    this.types = Array.from(new Set(this.results.map(doc => doc.type)));
-    this.bibliotheques = Array.from(new Set(this.results.map(doc => doc.bibliotheque)));
+  ngOnInit() { }
+
+  getMap(results: Document[], property: string): any {
+    const map = new Map<string, number>();
+    results
+      .map(doc => doc[property])
+      .forEach(element => {
+        if (map.get(element)) {
+          map.set(element, map.get(element) + 1);
+        }
+        else {
+          map.set(element, 1);
+        }
+    });
+    return Array.from(map);
+  }
+
+  subSearch(category: any) {
+    console.log("TODO");
   }
 
 }

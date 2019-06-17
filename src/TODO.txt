@@ -1,7 +1,7 @@
 module document
  - filtres:
-	* deplacer vers le service
-	*  create map(key, value) where key = document.property and value = nomber of occurences of said property in results
+done* deplacer vers le service
+done*create map(key, value) where key = document.property and value = nomber of occurences of said property in results
 	for filter listing
 	* html/css
 	* links to result page of each filter
