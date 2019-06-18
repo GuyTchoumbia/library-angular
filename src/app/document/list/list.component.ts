@@ -8,11 +8,11 @@ import { Document } from '../../classes/document';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  results: Document[] = this.searchService.getResults();
+  results: Document[];
 
   constructor(private searchService: SearchService) { }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() { 
+    this.searchService.results$.subscribe(data => this.results = data);
+  } 
 }

@@ -1,28 +1,33 @@
+<div id="filters" *ngIf="filters.size !=0">
+  <div *ngFor="let filter of filters">
+    {{filter[0]}} {{filter[1]}}
+  </div>
+</div>
 <div>
-  <h6>Auteurs: {{auteurs.length}}</h6>
+  <h6 *ngIf="auteurs.length">Auteurs: {{auteurs.length}}</h6>
   <div *ngFor="let auteur of auteurs">
-    <a href="">{{auteur[0]}} ({{auteur[1]}})</a>
+    <button mat-button (click)="addFilter('auteur', auteur[0])">{{auteur[0]}} ({{auteur[1]}})</button>
   </div>
 </div>
 <div>
 <hr>
-  <h6>Types de document: {{types.length}}</h6>
+  <h6 *ngIf="types.length">Types de document: {{types.length}}</h6>
   <div *ngFor="let type of types">
-    <a href="">{{type[0]}} ({{type[1]}})</a>
+    <button mat-button (click)="addFilter('type', type[0])">{{type[0]}} ({{type[1]}})</button>
   </div>
 </div>
 <div>
 <hr>
-  <h6>Bibliotheques: {{bibliotheques.length}}</h6>
+  <h6 *ngIf="bibliotheques.length">Bibliotheques: {{bibliotheques.length}}</h6>
   <div *ngFor="let bibliotheque of bibliotheques">
-    <a href="">{{bibliotheque[0]}} ({{bibliotheque[1]}})</a>
+    <button mat-button (click)="addFilter('bibliotheque', bibliotheque[0])">{{bibliotheque[0]}} ({{bibliotheque[1]}})</button>
   </div>
 </div>
 <div>
 <hr>
-  <h6>Editeur: {{editeurs.length}}</h6>
+  <h6 *ngIf="editeurs.length">Editeur: {{editeurs.length}}</h6>
   <div *ngFor="let editeur of editeurs">
-    <a href="">{{editeur[0]}} ({{editeur[1]}})</a>
+    <button mat-button (click)="addFilter('editeur', editeur[0])">{{editeur[0]}} ({{editeur[1]}})</button>
   </div>
 </div>
 <div>
