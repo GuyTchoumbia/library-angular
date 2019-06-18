@@ -21,7 +21,7 @@ export class FiltersComponent implements OnInit {
     this.editeurs = this.getMap(results, 'editeur');
   }
 
-  @Output() subResults = new EventEmitter<Document[]>();
+  @Output() filters = new EventEmitter<[string, string]>();
 
   constructor() { }
 
@@ -42,8 +42,8 @@ export class FiltersComponent implements OnInit {
     return Array.from(map);
   }
 
-  subSearch(category: any) {
-    console.log("TODO");
+  filter(key: string, value: string) {
+    this.filters.emit([key, value]);
   }
 
 }

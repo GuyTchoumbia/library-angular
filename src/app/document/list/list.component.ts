@@ -15,4 +15,8 @@ export class ListComponent implements OnInit {
   ngOnInit() {
   }
 
+  onFilter(filter: [string, string]) {
+    this.results = this.results.filter(doc => doc[filter[0]] === filter[1]);
+  }
+
 }

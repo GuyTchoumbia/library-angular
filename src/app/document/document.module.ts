@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { FiltersComponent } from './filters/filters.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [ListComponent, DetailComponent, ElementComponent, FiltersComponent],
@@ -19,6 +20,7 @@ import { FiltersComponent } from './filters/filters.component';
     MatIconModule,
     MatListModule,
     MatSidenavModule,
+    MatButtonModule
   ]
 })
 export class DocumentModule { }
