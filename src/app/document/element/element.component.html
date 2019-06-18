@@ -9,9 +9,15 @@
     <a routerLink="/results/detail/{{document.id}}">
       <h4>{{document.libelle}}</h4> 
     </a>   
-    <div>Auteur: {{document.auteur}}</div>   
-    <div>Editeur: {{document.editeur}}</div>   
-    <div>Date: {{document.date | date:'shortDate' }}</div>
+    <div>
+      <a routerLink="document/auteur/{{document.auteur}}" >Auteur: {{document.auteur}}</a>
+    </div>   
+    <div>
+      <a routerLink="document/editeur/{{document.editeur}}">Editeur: {{document.editeur}}</a>
+    </div>   
+    <div>
+      Date: {{document.date | date:'shortDate' }}
+    </div>
   </div>  
   
 

@@ -12,7 +12,7 @@ done*create map(key, value) where key = document.property and value = nomber of 
  - details:
 	* html/css
 	* links to auteur/ editeur
-	* exemplaire field
+	* exemplaire field ( => quantity property?)
 	* link to user
 	* available/ not available (rented/not)
 	* if logged, reservation (reserved property on document)	
@@ -34,3 +34,4 @@ done*create map(key, value) where key = document.property and value = nomber of 
 	* see rented documents
 
  - Advanced Search
+	*html/css
