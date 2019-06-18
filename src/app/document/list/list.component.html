@@ -1,6 +1,6 @@
 <div class="header">
   <h3 id="title">Results: {{results.length}}</h3> 
-  <mat-chip-list [hidden]="!filters.length"> 
+  <mat-chip-list [style.visibility]="filters.length? 'visible' : 'hidden'"> 
     <mat-chip *ngFor="let filter of filters" [selectable]="true"
       [removable]="true" (removed)="removeFilter(filter)">
       {{filter[0] | titlecase}}: {{filter[1]}}  

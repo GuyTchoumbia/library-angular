@@ -16,6 +16,7 @@ app-element {
 }
 
 .header {
-    margin-bottom: 1%;    
+    margin-bottom: 1%;  
+    height: 100px;  
 }
 
