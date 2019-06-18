@@ -5,12 +5,14 @@ import { DocumentRoutingModule } from './document-routing.module';
 import { ListComponent } from './list/list.component';
 import { DetailComponent } from './detail/detail.component';
 import { ElementComponent } from './element/element.component';
+import { FiltersComponent } from './filters/filters.component';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { FiltersComponent } from './filters/filters.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatChipsModule } from '@angular/material/chips';
+
 
 @NgModule({
   declarations: [ListComponent, DetailComponent, ElementComponent, FiltersComponent],
@@ -20,7 +22,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatIconModule,
     MatListModule,
     MatSidenavModule,
-    MatButtonModule
+    MatButtonModule,
+    MatChipsModule
   ]
 })
 export class DocumentModule { }

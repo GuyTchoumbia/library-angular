@@ -12,6 +12,7 @@ export class FiltersComponent implements OnInit {
   types: any;
   bibliotheques: any;
   editeurs: any;
+  filters = [];
 
   @Input()
   set results(results: Document[]){
@@ -21,7 +22,7 @@ export class FiltersComponent implements OnInit {
     this.editeurs = this.getMap(results, 'editeur');
   }
 
-  @Output() filters = new EventEmitter<[string, string]>();
+  @Output() filter = new EventEmitter<[string, string]>();
 
   constructor() { }
 
@@ -34,16 +35,14 @@ export class FiltersComponent implements OnInit {
       .forEach(element => {
         if (map.get(element)) {
           map.set(element, map.get(element) + 1);
-        }
-        else {
+        } else {
           map.set(element, 1);
         }
     });
     return Array.from(map);
   }
 
-  filter(key: string, value: string) {
-    this.filters.emit([key, value]);
+  addFilter(key: string, value: string) {
+    this.filter.emit([key, value]);
   }
-
 }

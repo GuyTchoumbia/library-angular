@@ -4,7 +4,7 @@ export const DOCUMENTS: Document[] = [
     { id: 1, type: 1, libelle: 'Les Trois Mousquetaires', auteur: 'Alexandre Dumas',
         editeur: 'Folio', date: new Date(2013, 5), bibliotheque: '1er arrondissment' },
     { id: 2, type: 1, libelle: 'Le Comte de Montecristo', auteur: 'Alexandre Dumas',
-        editeur: 'Folio', date: new Date(1597, 1), bibliotheque: '1er arrondissment' },
+        editeur: 'Nathan', date: new Date(1597, 1), bibliotheque: '1er arrondissment' },
     { id: 3, type: 2, libelle: 'GoldBerg Variations', auteur: 'J.S. Bach',
         editeur: 'Sony', date: new Date(1981, 2), bibliotheque: '2eme arrondissment'},
     { id: 4, type: 2, libelle: 'Kind Of Blue', auteur: 'Miles Davis',
