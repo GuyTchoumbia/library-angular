@@ -3,7 +3,7 @@
     <h3>Results: {{results.length}}</h3> 
   </div>
   <div class="row align-items-center">
-    <div class="col-6" id="filtering">
+    <div class="col" id="filtering">
       <mat-chip-list [style.visibility]="filters.length? 'visible' : 'hidden'"> 
         <mat-chip *ngFor="let filter of filters" [selectable]="true"
           [removable]="true" (removed)="removeFilter(filter)">
@@ -12,16 +12,12 @@
         </mat-chip> 
       </mat-chip-list> 
     </div>
-    <div class=col-4></div>
     <mat-form-field class="col-2" id="select">
       <mat-label>Sorting</mat-label>
       <mat-select (valueChange)="sort($event)">
         <mat-option>None</mat-option>
         <mat-option value="libelle">Name</mat-option>
-        <mat-option value="type">Type</mat-option>
-        <mat-option value="bibliotheque">Bibliotheque</mat-option>
-        <mat-option value="auteur">Auteur</mat-option>
-        <mat-option value="editeur">Editeur</mat-option>
+        <mat-option value="type">Type</mat-option>        
         <mat-option value="date">Date</mat-option>
       </mat-select>
     </mat-form-field>
@@ -31,7 +27,7 @@
   <div class="col-2 filters">    
     <app-filters [results]="results" (filter)="onAddFilter($event)"></app-filters> 
   </div>
-  <div class="col-10 results">    
+  <div class="col results">    
     <app-element class="row align-items-center" *ngFor="let result of results" [document]="result"></app-element>   
   </div>
 </div>

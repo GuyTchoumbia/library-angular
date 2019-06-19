@@ -1,13 +1,19 @@
 import { Auteur } from './auteur';
 import { Editeur } from './editeur';
+import { Bibliotheque } from './bibliotheque';
+import { Type } from './type';
 
 export class Document {
     id: number;
-    type: string;
+    type: Type;
     libelle: string;
-    auteur: string;
-    editeur: string;
+    auteurs: Auteur[];
+    editeur: Editeur;
     date: Date;
-    bibliotheque: string;
+    bibliotheques: Bibliotheque[];
     borrowed: boolean;
+
+    toString(): string {
+        return this.libelle;
+    }
 }

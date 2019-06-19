@@ -16,9 +16,9 @@ export class FiltersComponent implements OnInit {
 
   @Input()
   set results(results: Document[]){
-    this.auteurs = this.getMap(results, 'auteur');
+    this.auteurs = this.getMap(results, 'auteurs');
     this.types = this.getMap(results, 'type');
-    this.bibliotheques = this.getMap(results, 'bibliotheque');
+    this.bibliotheques = this.getMap(results, 'bibliotheques');
     this.editeurs = this.getMap(results, 'editeur');
   }
 
@@ -32,11 +32,12 @@ export class FiltersComponent implements OnInit {
     const map = new Map<string, number>();
     results
       .map(doc => doc[property])
+      .flat()
       .forEach(element => {
-        if (map.get(element)) {
-          map.set(element, map.get(element) + 1);
+        if (map.get(element.libelle)) {
+          map.set(element.libelle, map.get(element.libelle) + 1);
         } else {
-          map.set(element, 1);
+          map.set(element.libelle, 1);
         }
     });
     return Array.from(map);

@@ -1,4 +1,4 @@
-  <div class="col-1 icon" [ngSwitch]="document.type">      
+  <div class="col-1 icon" [ngSwitch]="document.type.libelle">      
     <i class="material-icons" *ngSwitchCase="'book'">book</i>
     <i class="material-icons" *ngSwitchCase="'music'">album</i>
     <i class="material-icons" *ngSwitchCase="'paper'">help_outline</i>
@@ -10,10 +10,14 @@
       <h4>{{document.libelle}}</h4> 
     </a>   
     <div>
-        Auteur: <a routerLink="document/auteur/{{document.auteur}}" >{{document.auteur}}</a>
+        Auteur: <a *ngFor="let auteur of document.auteurs" routerLink="document/auteur/{{auteur.id}}">
+          {{auteur.libelle}}
+        </a>
     </div>   
     <div>
-        Editeur: <a routerLink="document/editeur/{{document.editeur}}">{{document.editeur}}</a>
+        Editeur: <a routerLink="document/editeur/{{document.editeur.id}}">
+          {{document.editeur.libelle}}
+        </a>
     </div>   
     <div>
       Date: {{document.date | date:'shortDate' }}

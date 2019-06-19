@@ -1,4 +1,4 @@
-export class Auteur {
+export class Type {
     id: number;
     libelle: string;
 

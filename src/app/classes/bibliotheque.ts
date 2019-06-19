@@ -1,4 +1,4 @@
-export class Auteur {
+export class Bibliotheque {
     id: number;
     libelle: string;
 

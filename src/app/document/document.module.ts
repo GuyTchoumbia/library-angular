@@ -13,6 +13,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [ListComponent, DetailComponent, ElementComponent, FiltersComponent],
@@ -24,7 +25,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatSidenavModule,
     MatButtonModule,
     MatChipsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTabsModule
   ]
 })
 export class DocumentModule { }

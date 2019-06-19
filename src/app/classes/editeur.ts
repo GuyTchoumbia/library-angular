@@ -1,5 +1,8 @@
-export interface Editeur {
-    id: string;
+export class Editeur {
+    id: number;
     libelle: string;
-    documents: Document[];
+
+    toString(): string {
+        return this.libelle;
+    }
 }

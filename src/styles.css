@@ -36,4 +36,9 @@ app-search-bar {
   background-color: #d68b19;
 }
 
+app-element {
+  height: 110px;
+  margin: 0 0 1% 0;
+  box-shadow: 0 2px 2px rgba(0,0,0,.24), 0 0 2px rgba(0,0,0,.12);  
+}
 

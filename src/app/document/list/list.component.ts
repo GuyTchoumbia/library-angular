@@ -19,6 +19,7 @@ export class ListComponent implements OnInit {
 
   onAddFilter(filter: [string, string]) {
     this.filtersMap.set(filter[0], filter[1]);
+    console.log(this.filtersMap);
     this.applyFilters();
     this.filters = Array.from(this.filtersMap);
   }
@@ -31,29 +32,36 @@ export class ListComponent implements OnInit {
 
   applyFilters() {
     if (this.filtersMap.size) {
-      this.filtersMap.forEach((value, key) => this.results = this.searchService.getResults().filter(doc => doc[key] === value));
+      this.filtersMap.forEach((value, key) => {
+        this.results = this.results.filter(doc => {
+          if (Array.isArray(doc[key])) {
+            return doc[key].some(element => element.libelle === value);
+          } else {
+            return doc[key].libelle === value;
+          }
+        });
+      });
     } else {
       this.results = this.searchService.getResults();
-    }    
+    }
   }
 
-  sort(value: any) { 
+  sort(value: any) {
     if (value) {
       this.results.sort((a, b) => {
-        const fieldA = a[value].toUpperCase(); // ignore upper and lowercase
-        const fieldB = b[value].toUpperCase(); // ignore upper and lowercase
+        const fieldA = a[value].toString().toUpperCase();
+        const fieldB = b[value].toString().toUpperCase();
         if (fieldA < fieldB) {
           return -1;
         }
         if (fieldA > fieldB) {
           return 1;
-        }  
+        }
         return 0;
-      }); 
-    }     
-    else {
-      this.results.sort((a, b) => a['id'] - b['id']);
-    }  
-    console.log(this.results); 
+      });
+    } else {
+      this.results.sort((a, b) => a.id - b.id);
+    }
+    console.log(this.results);
   }
 }

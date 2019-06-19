@@ -1,21 +1,21 @@
 <div>
   <h6>Auteurs: {{auteurs.length}}</h6>
   <div *ngFor="let auteur of auteurs">
-    <button mat-button (click)="addFilter('auteur', auteur[0])">{{auteur[0]}} ({{auteur[1]}})</button>
+    <button mat-button (click)="addFilter('auteurs', auteur[0])">{{auteur[0]}} ({{auteur[1]}})</button>
   </div>
 </div>
 <div>
 <hr>
   <h6>Types de document: {{types.length}}</h6>
   <div *ngFor="let type of types">
-    <button mat-button (click)="addFilter('type', type[0])">{{type[0]}} ({{type[1]}})</button>
+    <button mat-button (click)="addFilter('type', type[0])">{{type[0] | titlecase}} ({{type[1]}})</button>
   </div>
 </div>
 <div>
 <hr>
   <h6>Bibliotheques: {{bibliotheques.length}}</h6>
   <div *ngFor="let bibliotheque of bibliotheques">
-    <button mat-button (click)="addFilter('bibliotheque', bibliotheque[0])">{{bibliotheque[0]}} ({{bibliotheque[1]}})</button>
+    <button mat-button (click)="addFilter('bibliotheques', bibliotheque[0])">{{bibliotheque[0]}} ({{bibliotheque[1]}})</button>
   </div>
 </div>
 <div>

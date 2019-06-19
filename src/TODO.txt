@@ -9,6 +9,7 @@ done	* links to result page of each filter
 done	* sort select: ascending/descending by name, etc
 done	* html/css
 done	* links to auteur and editeur
+	* paginator
  - details:
 	* html/css
 	* links to auteur/ editeur
