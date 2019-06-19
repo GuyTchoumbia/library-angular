@@ -15,12 +15,15 @@ app-list .row {
   height: 50px;
 }
 
-.main {    
+app-list {
+  padding: 10%;
+}
+
+.content {    
   position: absolute;
   top: 50px;    
-  height: max-content;  
-  justify-content: center;
-  margin: 1% 10%;
+  height: max-content;    
+  padding: 2% 13%; 
 }
 
 app-search-bar {

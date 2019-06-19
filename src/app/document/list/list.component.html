@@ -1,18 +1,37 @@
-<div class="header">
-  <h3 id="title">Results: {{results.length}}</h3> 
-  <mat-chip-list [style.visibility]="filters.length? 'visible' : 'hidden'"> 
-    <mat-chip *ngFor="let filter of filters" [selectable]="true"
-      [removable]="true" (removed)="removeFilter(filter)">
-      {{filter[0] | titlecase}}: {{filter[1]}}  
-      <mat-icon matChipRemove>cancel</mat-icon> 
-    </mat-chip> 
-  </mat-chip-list> 
+<div class="container-fluid header">
+  <div class="row" id="title">
+    <h3>Results: {{results.length}}</h3> 
+  </div>
+  <div class="row align-items-center">
+    <div class="col-6" id="filtering">
+      <mat-chip-list [style.visibility]="filters.length? 'visible' : 'hidden'"> 
+        <mat-chip *ngFor="let filter of filters" [selectable]="true"
+          [removable]="true" (removed)="removeFilter(filter)">
+          {{filter[0] | titlecase}}: {{filter[1]}}  
+          <mat-icon matChipRemove>cancel</mat-icon> 
+        </mat-chip> 
+      </mat-chip-list> 
+    </div>
+    <div class=col-4></div>
+    <mat-form-field class="col-2" id="select">
+      <mat-label>Sorting</mat-label>
+      <mat-select (valueChange)="sort($event)">
+        <mat-option>None</mat-option>
+        <mat-option value="libelle">Name</mat-option>
+        <mat-option value="type">Type</mat-option>
+        <mat-option value="bibliotheque">Bibliotheque</mat-option>
+        <mat-option value="auteur">Auteur</mat-option>
+        <mat-option value="editeur">Editeur</mat-option>
+        <mat-option value="date">Date</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div> 
 </div>  
 <div class="row" *ngIf="results; else noresults">
   <div class="col-2 filters">    
     <app-filters [results]="results" (filter)="onAddFilter($event)"></app-filters> 
   </div>
-  <div class="col-8">    
+  <div class="col-10 results">    
     <app-element class="row align-items-center" *ngFor="let result of results" [document]="result"></app-element>   
   </div>
 </div>

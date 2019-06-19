@@ -1,8 +1,8 @@
   <div class="col-1 icon" [ngSwitch]="document.type">      
-    <i class="material-icons" *ngSwitchCase="1">book</i>
-    <i class="material-icons" *ngSwitchCase="2">album</i>
-    <i class="material-icons" *ngSwitchCase="3">help_outline</i>
-    <i class="material-icons" *ngSwitchCase="4">movie</i>
+    <i class="material-icons" *ngSwitchCase="'book'">book</i>
+    <i class="material-icons" *ngSwitchCase="'music'">album</i>
+    <i class="material-icons" *ngSwitchCase="'paper'">help_outline</i>
+    <i class="material-icons" *ngSwitchCase="'movie'">movie</i>
     <i class="material-icons" *ngSwitchDefault>help_outline</i>    
   </div> 
   <div class="col-11 desc">

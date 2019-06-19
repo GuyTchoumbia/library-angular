@@ -12,7 +12,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
-
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [ListComponent, DetailComponent, ElementComponent, FiltersComponent],
@@ -23,7 +23,8 @@ import { MatChipsModule } from '@angular/material/chips';
     MatListModule,
     MatSidenavModule,
     MatButtonModule,
-    MatChipsModule
+    MatChipsModule,
+    MatSelectModule
   ]
 })
 export class DocumentModule { }

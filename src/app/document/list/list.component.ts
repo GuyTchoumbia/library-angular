@@ -21,12 +21,10 @@ export class ListComponent implements OnInit {
     this.filtersMap.set(filter[0], filter[1]);
     this.applyFilters();
     this.filters = Array.from(this.filtersMap);
-    console.log(this.filters);
   }
 
   removeFilter(filter: [string, string]) {
     this.filtersMap.delete(filter[0]);
-    console.log(this.filtersMap);
     this.applyFilters();
     this.filters = Array.from(this.filtersMap);
   }
@@ -36,6 +34,26 @@ export class ListComponent implements OnInit {
       this.filtersMap.forEach((value, key) => this.results = this.searchService.getResults().filter(doc => doc[key] === value));
     } else {
       this.results = this.searchService.getResults();
-    }
+    }    
+  }
+
+  sort(value: any) { 
+    if (value) {
+      this.results.sort((a, b) => {
+        const fieldA = a[value].toUpperCase(); // ignore upper and lowercase
+        const fieldB = b[value].toUpperCase(); // ignore upper and lowercase
+        if (fieldA < fieldB) {
+          return -1;
+        }
+        if (fieldA > fieldB) {
+          return 1;
+        }  
+        return 0;
+      }); 
+    }     
+    else {
+      this.results.sort((a, b) => a['id'] - b['id']);
+    }  
+    console.log(this.results); 
   }
 }

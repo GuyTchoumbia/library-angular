@@ -1,14 +1,14 @@
 <div class="container-fluid">
   <div class="row justify-content-end align-items-center" id="searchbar">    
-    <div class="col-1" id="select"> 
-        <mat-select [(value)] = "select" class="input">
+    <div class="col-1"> 
+        <mat-select [(value)]="select">
           <mat-option value="document">Titre</mat-option>
           <mat-option value="auteur">Auteur</mat-option>
           <mat-option value="editeur">Editeur</mat-option>        
         </mat-select> 
     </div>
     <div class="col-2">  
-      <input matInput type="text" class="input" id="textfield" placeholder=" Recherche de document" [formControl]="libelle" [matAutocomplete]="auto" />
+      <input matInput type="text" id="textfield" placeholder=" Recherche de document" [formControl]="libelle" [matAutocomplete]="auto" />
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
           {{option}}
