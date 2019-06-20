@@ -42,4 +42,4 @@ done:		borrowed property
 
  - Advanced Search
 	*html/css
-	*integration/modificatio  of API
+	*integration/modification of API

@@ -1,0 +1,27 @@
+.icon {
+    border-right: 1px solid rgba(0, 0, 0, 0.03);   
+    text-align: center;   
+    height: 100%;    
+}
+
+.icon .material-icons {
+    font-size: 80px;
+    text-justify: center;
+}
+
+#header {    
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03);     
+}
+
+#tab {
+    height: max-content;
+}
+
+.w-100 {
+    margin: 0;    
+}
+
+.desc {
+    padding: 1%;
+}
+

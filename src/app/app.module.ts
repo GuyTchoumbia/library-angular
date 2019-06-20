@@ -19,7 +19,6 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { AccountComponent } from './account/account.component'; 
 import { AcceuilComponent } from './acceuil/acceuil.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';  
 
 import { AuthentificationService } from './authentification.service';
@@ -28,7 +27,6 @@ import { AuthentificationService } from './authentification.service';
   declarations: [
     AppComponent,
     SearchBarComponent,
-    SidebarComponent,
     AcceuilComponent,
     LoginDialogComponent,
     AccountComponent

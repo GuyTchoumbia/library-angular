@@ -16,14 +16,9 @@ app-list .row {
 }
 
 app-list {
-  padding: 10%;
-}
-
-.content {    
-  position: absolute;
-  top: 50px;    
-  height: max-content;    
-  padding: 2% 13%; 
+  width: 100%;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 app-search-bar {
@@ -39,6 +34,15 @@ app-search-bar {
 app-element {
   height: 110px;
   margin: 0 0 1% 0;
+}
+
+app-detail {  
+  padding: 5%;
+  width: 100%;
+}
+
+.box-shadow {
   box-shadow: 0 2px 2px rgba(0,0,0,.24), 0 0 2px rgba(0,0,0,.12);  
 }
+
 

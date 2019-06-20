@@ -1,5 +1,12 @@
-<div class="container-fluid">
-  <div class="row justify-content-end align-items-center" id="searchbar">    
+<div class="w-100">
+  <div class="row justify-content-end align-items-center" id="searchbar"> 
+    <div class="col-1">
+      <button mat-button routerLink="/">
+        <i class="material-icons">home</i>
+        Home
+      </button>
+    </div>   
+    <div class="col-2"></div>
     <div class="col-1"> 
         <mat-select [(value)]="select">
           <mat-option value="document">Titre</mat-option>

@@ -1,11 +1,11 @@
 import { Auteur } from './auteur';
 import { Editeur } from './editeur';
 import { Bibliotheque } from './bibliotheque';
-import { Type } from './type';
+import { Support } from './support';
 
 export class Document {
     id: number;
-    type: Type;
+    support: Support;
     libelle: string;
     auteurs: Auteur[];
     editeur: Editeur;

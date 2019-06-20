@@ -1,4 +1,4 @@
-export class Type {
+export class Support {
     id: number;
     libelle: string;
 

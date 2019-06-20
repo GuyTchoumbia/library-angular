@@ -9,7 +9,7 @@ import { SearchService } from '../search.service';
 })
 export class FiltersComponent implements OnInit {
   auteurs: any;
-  types: any;
+  supports: any;
   bibliotheques: any;
   editeurs: any;
   filters = [];
@@ -17,7 +17,7 @@ export class FiltersComponent implements OnInit {
   @Input()
   set results(results: Document[]){
     this.auteurs = this.getMap(results, 'auteurs');
-    this.types = this.getMap(results, 'type');
+    this.supports = this.getMap(results, 'support');
     this.bibliotheques = this.getMap(results, 'bibliotheques');
     this.editeurs = this.getMap(results, 'editeur');
   }
@@ -31,8 +31,7 @@ export class FiltersComponent implements OnInit {
   getMap(results: Document[], property: string): any {
     const map = new Map<string, number>();
     results
-      .map(doc => doc[property])
-      .flat()
+      .map(doc => doc[property])      
       .forEach(element => {
         if (map.get(element.libelle)) {
           map.set(element.libelle, map.get(element.libelle) + 1);

@@ -8,7 +8,7 @@ import { Location } from '@angular/common';
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.css']
+  styleUrls: ['./detail.component.css']  
 })
 export class DetailComponent implements OnInit {
   document: Document;
@@ -26,6 +26,10 @@ export class DetailComponent implements OnInit {
   getDocument(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.document = this.searchService.getDetail(id);
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }
