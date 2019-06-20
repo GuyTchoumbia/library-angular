@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../search.service';
 import { Document } from '../../classes/document';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-list',
@@ -12,7 +13,13 @@ export class ListComponent implements OnInit {
   filtersMap = new Map<string, string>();
   filters: [string, string][] = [];
 
-  constructor(private searchService: SearchService) { }
+  paginatorLength = this.results.length;
+  paginatorSize = 10;
+  pageSizeOptions: number[] = [5, 10, 20];
+  paginatedResults: Document[] = this.results.slice(0, this.paginatorSize);
+  pageEvent: PageEvent;
+
+  constructor(private searchService: SearchService) {}
 
   ngOnInit() {
   }
@@ -63,5 +70,11 @@ export class ListComponent implements OnInit {
       this.results.sort((a, b) => a.id - b.id);
     }
     console.log(this.results);
+  }
+
+  onPageChanged(e: PageEvent) {
+    let firstCut = e.pageIndex * e.pageSize;
+    let secondCut = firstCut + e.pageSize;
+    this.paginatedResults = this.results.slice(firstCut, secondCut);
   }
 }

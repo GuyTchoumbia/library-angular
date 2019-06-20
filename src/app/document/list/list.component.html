@@ -24,9 +24,10 @@
       </mat-chip-list> 
     </div>    
     <mat-paginator class="col" 
-      [length]="results.length"
-      [pageSize]="10"
-      [pageSizeOptions]="[5, 10, 20]">
+      [length]="paginatorLength"
+      [pageSize]="paginatorSize"
+      [pageSizeOptions]="pageSizeOptions"
+      (page)="onPageChanged($event)">
     </mat-paginator>
   </div> 
 </div>  
@@ -35,7 +36,7 @@
     <app-filters [results]="results" (filter)="onAddFilter($event)"></app-filters> 
   </div>
   <div class="col results">    
-    <app-element class="row align-items-center box-shadow" *ngFor="let result of results" [document]="result"></app-element>   
+    <app-element class="row align-items-center box-shadow" *ngFor="let result of paginatedResults" [document]="result"></app-element>   
   </div>
 </div>
 <ng-template #noresults>
