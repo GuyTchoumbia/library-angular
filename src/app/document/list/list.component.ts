@@ -13,10 +13,11 @@ export class ListComponent implements OnInit {
   filtersMap = new Map<string, string>();
   filters: [string, string][] = [];
 
-  paginatorLength = this.results.length;
   paginatorSize = 10;
-  pageSizeOptions: number[] = [5, 10, 20];
   paginatedResults: Document[] = this.results.slice(0, this.paginatorSize);
+  paginatorLength = this.paginatedResults.length;  
+  pageSizeOptions: number[] = [5, 10, 20];
+  
   pageEvent: PageEvent;
 
   constructor(private searchService: SearchService) {}
@@ -40,7 +41,7 @@ export class ListComponent implements OnInit {
   applyFilters() {
     if (this.filtersMap.size) {
       this.filtersMap.forEach((value, key) => {
-        this.results = this.results.filter(doc => {
+        this.paginatedResults = this.results.filter(doc => {
           if (Array.isArray(doc[key])) {
             return doc[key].some(element => element.libelle === value);
           } else {
@@ -48,8 +49,10 @@ export class ListComponent implements OnInit {
           }
         });
       });
+      this.paginatorLength = this.paginatedResults.length;
     } else {
-      this.results = this.searchService.getResults();
+      this.paginatedResults = this.results;
+      this.paginatorLength = this.paginatedResults.length;
     }
   }
 
