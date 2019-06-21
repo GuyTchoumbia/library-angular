@@ -36,10 +36,40 @@ done:		borrowed property
 
  - Account Settings page
 	* html/css
-	* modify user
+	* modify user properties (not name/surname.birthdate (affect credentials), just adress and contact info...)
 	* see rented documents
 	* see reserved documents
 
  - Advanced Search
 	*html/css
-	*integration/modification of API
+	
+API	
+* integration/modification of API
+ - entites: 
+		* create roles and filters: 
+			-> web request doesnt contain user property of documents, but only isBorrowed property.
+			-> each user can have access, and only access to its own documents (borrowed list);
+		* create quantity property, linked to user/document.
+			Each document is unique, albeit has a unique "Côte" property, but each library can have multiple copies of the same document, 
+			meaning a search of one document will find the multiple copies across libraries.
+			Quantity property would serve to display the different copies each library contains.
+
+			each document has a list of "cotes", each cote has a library (therefore each library has a list of cotes instead of a list of documents)
+
+		* create user.reserved property, same as borrowed, can only be accessed by its user.
+ - authentification through token ???????
+ - deploy on Tomcat 8.5 server
+ - various tweaks on paths.
+
+ -user: id is card number, password is auto generated from birth year and letters from name/surname.
+
+MOBILE:
+ - keep it simple. basicly a simpler version of web features.
+ results are larger (cf google results), filters is a togglabe sidenav of the page. everything is way more vertical.
+
+ menu will include Home, Login/logout/account, exit.
+ Home will include links to library info pages.
+ and thats pretty much it. 
+
+ JAVA CLIENT:
+	- remove card reader feature (no time!)

@@ -31,7 +31,8 @@ export class FiltersComponent implements OnInit {
   getMap(results: Document[], property: string): any {
     const map = new Map<string, number>();
     results
-      .map(doc => doc[property])      
+      .map(doc => doc[property]) 
+      //.flat()     
       .forEach(element => {
         if (map.get(element.libelle)) {
           map.set(element.libelle, map.get(element.libelle) + 1);

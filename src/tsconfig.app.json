@@ -3,6 +3,7 @@
   "compilerOptions": {
     "outDir": "../out-tsc/app",
     "types": [],
+    "target": "es2015",
     "lib": [
       "esnext.array",
       "es2018",
