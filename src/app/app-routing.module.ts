@@ -8,12 +8,13 @@ const routes: Routes = [
     path: '', component: AcceuilComponent
   },
   {
-    path: 'account/:username', component: AccountComponent
-  },
-  {
     path: 'results',
     loadChildren: () => import('./document/document.module').then(mod => mod.DocumentModule)
   },
+  {
+    path: 'account',
+    loadChildren: () => import('./account/account.module').then(mod => mod.AccountModule)
+  }
 ];
 
 @NgModule({

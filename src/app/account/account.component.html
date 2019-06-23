@@ -1,50 +1,24 @@
-<h1>Account Details</h1>
-<div id="info">
-    <h2>Personal Information</h2>
-    <p>Name : {{user.name}}</p>
-    <p>Surname : {{user.surname}}</p>
-    <p>Card Number : {{user.id}}</p>
-    <form [formGroup]="addressForm">
-        <div>
-            <mat-form-field>
-                <label>Numero</label>
-                <input matInput formControlName="numero">
-            </mat-form-field>
+<div class="w-100" id="title">
+        <h2>Mon Compte</h2>
+    </div> 
+    <div class="row">
+        <div class="col-3">
+            <mat-list>
+                <mat-list-item>
+                  <a routerLink="/account">Home</a>
+                </mat-list-item>
+                <mat-list-item>
+                  <a routerLink="/account/info">Personal Information</a>
+                </mat-list-item>
+                <mat-list-item>
+                  <a routerLink="/account/documents">Documents Empruntés</a>
+                </mat-list-item>
+                <mat-list-item>
+                  <a routerLink="/account/reservations">Réservations</a>
+                </mat-list-item>
+            </mat-list>
         </div>
-        <div>
-            <mat-form-field>
-                <label>Rue</label>
-                <input matInput formControlName="rue">
-            </mat-form-field>
-        </div>
-        <div>
-            <mat-form-field>
-                <label>Code Postal</label>
-                <input matInput formControlName="codePostal">
-            </mat-form-field>
-        </div>
-        <div>
-            <mat-form-field>
-                <label>Ville</label>
-                <input matInput formControlName="ville">
-            </mat-form-field>
-        </div>
-        <div>
-            <mat-form-field>
-                <label>Phone</label>
-                <input matInput formControlName="phone">
-            </mat-form-field>
-        </div>
-    </form>        
-   
-</div>
-<div id="documents">
-    <h2>Documents</h2>
-    <div *ngFor="let document of user.documents">
-        <p>{{document.libelle}}</p>
-        <p>{{document.editeur.libelle}}</p>
-    </div>
-    <h2>Reservations</h2>
-    <div *ngFor="let reservation of user.reservations">
-        <p>{{reservation.libelle}}</p>
+        <div class="col-6">
+            <router-outlet></router-outlet>        
+        </div>   
     </div>

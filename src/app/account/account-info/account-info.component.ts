@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../classes/user';
-import { AuthentificationService } from '../authentification.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
-
+import { AuthentificationService } from 'src/app/authentification.service';
+import { User } from 'src/app/classes/user';
 
 @Component({
-  selector: 'app-account',
-  templateUrl: './account.component.html',
-  styleUrls: ['./account.component.css']
+  selector: 'app-account-info',
+  templateUrl: './account-info.component.html',
+  styleUrls: ['./account-info.component.css']
 })
-export class AccountComponent implements OnInit {
+export class AccountInfoComponent implements OnInit {
   user: User;
   addressForm: FormGroup;
 
@@ -28,6 +27,7 @@ export class AccountComponent implements OnInit {
       });
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
 }

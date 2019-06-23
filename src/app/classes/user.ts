@@ -1,12 +1,13 @@
 import { Document } from './document';
 import { Address } from './address';
 
-export interface User {   
+export interface User {
    id: string;
    name: string;
    surname: string;
    address: Address;
    phone: string;
+   email: string;
    birthdate: Date;
    documents: Document[];
    reservations: Document[];

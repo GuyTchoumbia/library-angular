@@ -1,0 +1,16 @@
+#main-menu {
+    width: 100%;    
+    justify-content: center;
+    text-align: center;
+}
+
+.menu {
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    margin-bottom: 3%;
+    padding: 1%;    
+}
+
+.desc {
+    border-bottom: 1px solid #dadce0;
+}

@@ -11,6 +11,7 @@ export const USER: User = {
         ville: 'Lyon'
     },
     phone: '1534534345',
+    email: 'x@y.z',
     birthdate: new Date(1956, 10, 2),
     documents: [
         {

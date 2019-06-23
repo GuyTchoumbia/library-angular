@@ -26,7 +26,7 @@ export class SearchBarComponent implements OnInit {
               ) { }
 
   ngOnInit() {
-    this.authService.getIsLoggedIn().subscribe((data) => this.isLoggedIn = data);
+    this.authService.getIsLoggedIn().subscribe(data => this.isLoggedIn = data);    
     this.filteredOptions = this.libelle.valueChanges
       .pipe(
         startWith(''),

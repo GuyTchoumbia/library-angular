@@ -1,6 +1,5 @@
 #searchbar {
     height: 50px;    
-    background-color:  orange;
 }
 
 #textfield {
@@ -14,7 +13,6 @@
 
 button, a {
     font-size: 18px;
-    background-color: orange;
 }
 
 .button:hover {

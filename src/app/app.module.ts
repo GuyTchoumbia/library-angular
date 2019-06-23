@@ -15,11 +15,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatListModule } from '@angular/material/list';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { SearchBarComponent } from './search-bar/search-bar.component';
-import { AccountComponent } from './account/account.component'; 
 import { AcceuilComponent } from './acceuil/acceuil.component';
-import { LoginDialogComponent } from './login-dialog/login-dialog.component';  
+import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 
 import { AuthentificationService } from './authentification.service';
 
@@ -28,8 +29,7 @@ import { AuthentificationService } from './authentification.service';
     AppComponent,
     SearchBarComponent,
     AcceuilComponent,
-    LoginDialogComponent,
-    AccountComponent
+    LoginDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +44,9 @@ import { AuthentificationService } from './authentification.service';
     MatMenuModule,
     MatIconModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatListModule,
+    MatExpansionModule
   ],
   entryComponents: [
     LoginDialogComponent

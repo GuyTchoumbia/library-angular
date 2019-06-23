@@ -1,7 +1,12 @@
 .material-icons {
-    font-size: 80px;
-    text-justify: center;
+    font-size: 80px;    
 }
 .desc {
     font-size: 90%;
+}
+
+.icon {
+    min-width: max-content;
+    border-right: 1px solid rgba(0, 0, 0, 0.03);
+    text-align: center;    
 }

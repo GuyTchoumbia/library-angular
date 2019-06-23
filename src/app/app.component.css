@@ -1,6 +1,6 @@
 .content {    
-  position: absolute;
-  top: 50px;    
-  height: max-content;    
-  padding: 3% 13%; 
-}
+    position: absolute;
+    top: 50px;    
+    height: max-content;    
+    padding: 3% 0; 
+  }

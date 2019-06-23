@@ -1,47 +1,49 @@
-<div class="w-100 header">
-  <div class="row" id="title">
-    <h3>Results: {{results.length}}</h3> 
+<div id="list">
+  <div class="w-100 header">
+    
+    <div class="row justify-content-between">
+      <div class="col-2" id="title">
+        <h3>Results: {{results.length}}</h3> 
+      </div>
+      <mat-form-field class="col-2" id="select">
+        <mat-label>Sorting</mat-label>
+        <mat-select (valueChange)="sort($event)">
+          <mat-option>None</mat-option>
+          <mat-option value="libelle">Name</mat-option>
+          <mat-option value="support">support</mat-option>        
+          <mat-option value="date">Date</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="row align-items-center justify-content-between">
+      <div class="col" id="filtering">
+        <mat-chip-list [style.visibility]="filters.length? 'visible' : 'hidden'"> 
+          <mat-chip *ngFor="let filter of filters" [selectable]="true"
+            [removable]="true" (removed)="removeFilter(filter)">
+            {{filter[0] | titlecase}}: {{filter[1]}}  
+            <mat-icon matChipRemove>cancel</mat-icon> 
+          </mat-chip> 
+        </mat-chip-list> 
+      </div>    
+      <mat-paginator class="col" 
+        [length]="paginatorLength"
+        [pageSize]="paginatorSize"
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="onPageChanged($event)">
+      </mat-paginator>
+    </div> 
+  </div>  
+  <div class="row" *ngIf="results; else noresults">
+    <div class="col-2 filters box-shadow">    
+      <app-filters [results]="results" (filter)="onAddFilter($event)"></app-filters> 
+    </div>
+    <div class="col results">    
+      <app-element class="row align-items-center box-shadow" *ngFor="let result of paginatedResults" [document]="result"></app-element>   
+    </div>
   </div>
-  <div class="row justify-content-end">
-    <mat-form-field class="col-2" id="select">
-      <mat-label>Sorting</mat-label>
-      <mat-select (valueChange)="sort($event)">
-        <mat-option>None</mat-option>
-        <mat-option value="libelle">Name</mat-option>
-        <mat-option value="support">support</mat-option>        
-        <mat-option value="date">Date</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-  <div class="row align-items-center justify-content-between">
-    <div class="col" id="filtering">
-      <mat-chip-list [style.visibility]="filters.length? 'visible' : 'hidden'"> 
-        <mat-chip *ngFor="let filter of filters" [selectable]="true"
-          [removable]="true" (removed)="removeFilter(filter)">
-          {{filter[0] | titlecase}}: {{filter[1]}}  
-          <mat-icon matChipRemove>cancel</mat-icon> 
-        </mat-chip> 
-      </mat-chip-list> 
-    </div>    
-    <mat-paginator class="col" 
-      [length]="paginatorLength"
-      [pageSize]="paginatorSize"
-      [pageSizeOptions]="pageSizeOptions"
-      (page)="onPageChanged($event)">
-    </mat-paginator>
-  </div> 
-</div>  
-<div class="row" *ngIf="results; else noresults">
-  <div class="col-2 filters box-shadow">    
-    <app-filters [results]="results" (filter)="onAddFilter($event)"></app-filters> 
-  </div>
-  <div class="col results">    
-    <app-element class="row align-items-center box-shadow" *ngFor="let result of paginatedResults" [document]="result"></app-element>   
-  </div>
+  <ng-template #noresults>
+    <div class="w-100" >
+      <h2>Aucun resultats</h2>
+    </div>
+  </ng-template>
 </div>
-<ng-template #noresults>
-  <div class="w-100" >
-    <h2>Aucun resultats</h2>
-  </div>
-</ng-template>
-
