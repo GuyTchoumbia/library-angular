@@ -32,8 +32,10 @@
   </div>   
   <mat-tab-group>
     <mat-tab label="Exemplaires">
-      <div> 
-        <h3>[placeholder]</h3> 
+      <div *ngFor="let cote of document.cotes"> 
+        <span>{{cote.libelle}}</span>
+        <span>{{cote.bibliotheque.libelle}}</span>
+        <span *ngIf="cote.coteUser.length==0">Disponible</span>
       </div>
     </mat-tab>
     <mat-tab label="Metadata">

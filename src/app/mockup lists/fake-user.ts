@@ -1,4 +1,5 @@
 import { User } from '../classes/user';
+import { Cote } from '../classes/cote';
 
 export const USER: User = {
     id: '24544536453',
@@ -13,54 +14,24 @@ export const USER: User = {
     phone: '1534534345',
     email: 'x@y.z',
     birthdate: new Date(1956, 10, 2),
-    documents: [
+    userCotes: [
         {
-            id: 1,
-            support: {id: 1, libelle: 'book'},
-            libelle: 'Les Trois Mousquetaires',
-            auteurs: [
-                {id: 1, libelle: 'Alexandre Dumas'}
-            ],
-            editeur: { id: 1, libelle: 'Folio'},
-            date: new Date(2013, 5),
-            bibliotheques: [
-                { id: 1, libelle: '1er arrondissment'},
-                { id: 3, libelle: '3eme arrondissment'},
-            ],
-            borrowed: true
+            cote : { 
+                libelle: 'RODUTR' ,
+                bibliotheque: { id: 1, libelle: '1er Arrondissement' },  
+                coteUser: []              
+            },
+            dateEmprunt: null,
+            isReserved: true       
         },
         {
-            id: 2,
-            support: {id: 1, libelle: 'book'},
-            libelle: 'Le Comte de Montecristo',
-            auteurs: [
-                { id: 1, libelle: 'Alexandre Dumas'}
-            ],
-            editeur: {id: 2, libelle: 'Nathan'},
-            date: new Date(1597, 1),
-            bibliotheques: [
-                { id: 2, libelle: '2eme arrondissment'},
-                { id: 4, libelle: '4eme arrondissment'},
-            ],
-            borrowed: true
-        }
-    ],
-    reservations: [
-        {
-            id: 6,
-            support: {id: 4, libelle: 'movie'},
-            libelle: 'Singing In The Rain',
-            auteurs: [
-                { id: 5, libelle: 'Various'}
-            ],
-            editeur: { id: 5, libelle: 'N/A' },
-            date: new Date(1951, 4),
-            bibliotheques: [
-                { id: 1, libelle: '1er arrondissment'},
-                { id: 5, libelle: '5eme arrondissment'},
-            ],
-            borrowed: false
-        }
+            cote : { 
+                libelle: 'JADAKI' ,
+                bibliotheque: { id: 1, libelle: '1er Arrondissement' },  
+                coteUser: []              
+            },
+            dateEmprunt: new Date(2019, 6, 2),
+            isReserved: false    
+        }   
     ]
-
 }

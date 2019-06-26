@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthentificationService } from 'src/app/authentification.service';
-import { Document } from '../../classes/document';
+import { AuthentificationService } from '../../authentification.service';
+import { UserCote } from '../../classes/userCote';
 
 @Component({
   selector: 'app-account-reservations',
@@ -8,10 +8,10 @@ import { Document } from '../../classes/document';
   styleUrls: ['./account-reservations.component.css']
 })
 export class AccountReservationsComponent implements OnInit {
-  userReservations: Document[];
+  userReservations: UserCote[];
 
   constructor(private authService: AuthentificationService) {
-    this.authService.getUser().subscribe(user => this.userReservations = user.reservations)
+    this.authService.getUser().subscribe(user => this.userReservations = user.userCotes.filter(element => element.isReserved == true))
    }
 
   ngOnInit() {

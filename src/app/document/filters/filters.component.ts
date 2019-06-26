@@ -12,14 +12,16 @@ export class FiltersComponent implements OnInit {
   supports: any;
   bibliotheques: any;
   editeurs: any;
+  themes: any;
   filters = [];
 
   @Input()
   set results(results: Document[]){
     this.auteurs = this.getMap(results, 'auteurs');
     this.supports = this.getMap(results, 'support');
-    this.bibliotheques = this.getMap(results, 'bibliotheques');
+    this.bibliotheques = this.getMap(results, 'cotes');
     this.editeurs = this.getMap(results, 'editeur');
+    this.themes = this.getMap(results, 'themes');
   }
 
   @Output() filter = new EventEmitter<[string, string]>();
@@ -32,7 +34,7 @@ export class FiltersComponent implements OnInit {
     const map = new Map<string, number>();
     results
       .map(doc => doc[property])
-        .flat()
+      //  .flat()
       .forEach(element => {
         if (map.get(element.libelle)) {
           map.set(element.libelle, map.get(element.libelle) + 1);

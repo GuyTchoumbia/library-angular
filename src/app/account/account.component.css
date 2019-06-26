@@ -1,9 +1,22 @@
-.row {    
-    padding-bottom: 3%;    
-}
-
 #title {
     padding: 1%;
+}
+
+a .row {
+    height: 50px;
+    align-content: center;
+    color: black;
+    border-bottom-right-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+a .row:hover {
+    background-color: #f1f3f4;
+}
+
+a .row:active {
+    background-color: #e8f0fe;
+    color: #3d9eeb;
 }
 
 

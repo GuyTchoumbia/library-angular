@@ -7,7 +7,6 @@ import { Document } from '../classes/document';
 })
 export class SearchService {
   results: Document[] = DOCUMENTS;
-  detailedResult: Document;
   constructor() { }
 
   getResults(): Document[] {

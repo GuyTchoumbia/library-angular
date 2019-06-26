@@ -2,22 +2,37 @@
         <h2>Mon Compte</h2>
     </div> 
     <div class="row">
-        <div class="col-3">
-            <mat-list>
-                <mat-list-item>
-                  <a routerLink="/account">Home</a>
-                </mat-list-item>
-                <mat-list-item>
-                  <a routerLink="/account/info">Personal Information</a>
-                </mat-list-item>
-                <mat-list-item>
-                  <a routerLink="/account/documents">Documents Empruntés</a>
-                </mat-list-item>
-                <mat-list-item>
-                  <a routerLink="/account/reservations">Réservations</a>
-                </mat-list-item>
-            </mat-list>
+        <div class="col-2">            
+              <a routerLink="/account">    
+                <div class="row">                                
+                  <i class="col-2 material-icons" >person</i>
+                  <span class="col-8">Home</span>
+                  <i class="col-1 material-icons" >chevron_right</i>                  
+                </div>
+              </a>              
+              <a routerLink="/account/info">
+                <div class="row">                  
+                  <i class="col-2 material-icons" >face</i>  
+                  <span class="col-8">Personal Information</span>                    
+                  <i class="col-1 material-icons" >chevron_right</i>
+                </div>
+              </a>
+              <a routerLink="/account/documents">
+                <div class="row">                  
+                  <i class="col-2 material-icons" >book</i>
+                  <span class="col-8">Documents Empruntés</span>
+                  <i class="col-1 material-icons" >chevron_right</i>
+                </div>
+              </a>
+              <a routerLink="/account/reservations">
+                <div class="row">                  
+                  <i class="col-2 material-icons" >bookmarks</i>
+                  <span class="col-8">Réservations</span>
+                  <i class="col-1 material-icons" >chevron_right</i>                  
+                </div>
+              </a>            
         </div>
+        <div class="col-1"></div>
         <div class="col-6">
             <router-outlet></router-outlet>        
         </div>   

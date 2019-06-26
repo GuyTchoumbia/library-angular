@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +7,9 @@ import { environment } from 'src/environments/environment';
 })
 export class AppComponent implements OnInit {
   title = 'library';
-  cookieMessage: 'This Website uses cookies to ensure you get the best experience on our Website';
-  cookieDismiss: 'Got It!';
-  cookieLinkText: 'Learn More';
+  cookieMessage ='This Website uses cookies to ensure you get the best experience on our Website';
+  cookieDismiss = 'Got It!';
+  cookieLinkText = 'Learn More';
 
   ngOnInit(): void {
     const cc = window as any;

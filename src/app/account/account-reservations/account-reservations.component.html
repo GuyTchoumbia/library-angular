@@ -1,3 +1,10 @@
-<p>
-  account-reservations works!
-</p>
+<div id="reservations">
+    <div class="document" *ngFor="let userCote of userReservations">
+      <div>
+        <span>{{userCote.cote.libelle}}</span>
+      </div>
+      <div>
+          <span>{{userCote.cote.bibliotheque.libelle}}</span>
+        </div>      
+    </div>
+  </div>

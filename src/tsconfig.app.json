@@ -5,8 +5,7 @@
     "types": [],
     "target": "es2015",
     "lib": [
-      "esnext.array",
-      "es2018",
+      "esnext",      
       "dom"      
     ]
   },

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthentificationService } from 'src/app/authentification.service';
-import { Document } from '../../classes/document';
+import { AuthentificationService } from '../../authentification.service';
+import { UserCote } from '../../classes/userCote';
 
 @Component({
   selector: 'app-account-documents',
@@ -8,10 +8,10 @@ import { Document } from '../../classes/document';
   styleUrls: ['./account-documents.component.css']
 })
 export class AccountDocumentsComponent implements OnInit {
-  userDocuments: Document[];
+  userDocuments: UserCote[];
 
   constructor(private authService: AuthentificationService) {
-    this.authService.getUser().subscribe(user => this.userDocuments = user.documents);
+    this.authService.getUser().subscribe(user => this.userDocuments = user.userCotes.filter(element => element.dateEmprunt != null));
    }
 
   ngOnInit() {

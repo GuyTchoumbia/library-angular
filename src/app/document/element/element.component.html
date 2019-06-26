@@ -22,6 +22,11 @@
     <div>
       Date: {{document.date | date:'shortDate' }}
     </div>
+    <div>
+      Theme: <a *ngFor="let theme of document.themes" routerLink="document/theme/{{theme.id}}">
+        {{theme.libelle}}
+      </a>
+    </div>
   </div>  
  
 

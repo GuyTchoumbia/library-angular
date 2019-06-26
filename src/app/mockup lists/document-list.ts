@@ -10,11 +10,16 @@ export const DOCUMENTS: Document[] = [
         ],
         editeur: { id: 1, libelle: 'Folio'},
         date: new Date(2013, 5),
-        bibliotheques: [
-            { id: 1, libelle: '1er arrondissment'},
-            { id: 3, libelle: '3eme arrondissment'},
+        themes: [
+            { id: 1, libelle: 'Roman'}
         ],
-        borrowed: true
+        cotes: [
+            { 
+                libelle: 'RODUTR',
+                bibliotheque: { id: 1, libelle: '1er Arrondissement' },
+                coteUser: []                                
+            }
+        ]
     },
     {
         id: 2,
@@ -25,11 +30,16 @@ export const DOCUMENTS: Document[] = [
         ],
         editeur: {id: 2, libelle: 'Nathan'},
         date: new Date(1597, 1),
-        bibliotheques: [
-            { id: 2, libelle: '2eme arrondissment'},
-            { id: 4, libelle: '4eme arrondissment'},
+        themes: [
+            { id: 1, libelle: 'Roman'}
         ],
-        borrowed: true
+        cotes: [
+            { 
+                libelle: 'RODUCO',
+                bibliotheque: { id: 1, libelle: '1er Arrondissement' },
+                coteUser: []                        
+            }
+        ]
     },
     {
         id: 3,
@@ -40,11 +50,16 @@ export const DOCUMENTS: Document[] = [
         ],
         editeur: { id: 3, libelle: 'Sony'},
         date: new Date(1981, 2),
-        bibliotheques: [
-            { id: 3, libelle: '3eme arrondissment'},
-            { id: 4, libelle: '4eme arrondissment'},
+        themes: [
+            { id: 1, libelle: 'Classique'}
         ],
-        borrowed: true
+        cotes: [
+            { 
+                libelle: 'CLABAGO',
+                bibliotheque: { id: 1, libelle: '1er Arrondissement' },
+                coteUser: []               
+            }
+        ]
     },
     {
         id: 4,
@@ -55,11 +70,16 @@ export const DOCUMENTS: Document[] = [
         ],
         editeur: { id: 4, libelle: 'Columbia'},
         date: new Date(1981, 2),
-        bibliotheques: [
-            { id: 3, libelle: '3eme arrondissment'},
-            { id: 4, libelle: '4eme arrondissment'},
+        themes: [
+            { id: 1, libelle: 'Jazz'}
         ],
-        borrowed: false
+        cotes: [
+            { 
+                libelle: 'JADAKI',
+                bibliotheque: { id: 1, libelle: '1er Arrondissement' },
+                coteUser: []                
+            }
+        ]
     },
     {
         id: 5,
@@ -70,11 +90,16 @@ export const DOCUMENTS: Document[] = [
         ],
         editeur: { id: 5, libelle: 'N/A' },
         date: new Date(1981, 2),
-        bibliotheques: [
-            { id: 1, libelle: '1er arrondissment'},
-            { id: 5, libelle: '5eme arrondissment'},
+        themes: [
+            { id: 1, libelle: 'Geographie'}
         ],
-        borrowed: true
+        cotes: [
+            { 
+                libelle: 'GENAVA',
+                bibliotheque: { id: 1, libelle: '1er Arrondissement' },
+                coteUser: []                
+            }
+        ]
     },
     {
         id: 6,
@@ -85,11 +110,16 @@ export const DOCUMENTS: Document[] = [
         ],
         editeur: { id: 5, libelle: 'N/A' },
         date: new Date(1951, 4),
-        bibliotheques: [
-            { id: 1, libelle: '1er arrondissment'},
-            { id: 5, libelle: '5eme arrondissment'},
+        themes: [
+            { id: 1, libelle: 'Comédie Musicale'}
         ],
-        borrowed: false
+        cotes: [
+            { 
+                libelle: 'CMVASI',
+                bibliotheque: { id: 1, libelle: '1er Arrondissement'  },
+                coteUser: []        
+            }
+        ]
     },
 ];
 

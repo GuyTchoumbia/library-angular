@@ -1,7 +1,8 @@
 import { Auteur } from './auteur';
 import { Editeur } from './editeur';
-import { Bibliotheque } from './bibliotheque';
 import { Support } from './support';
+import { Cote } from './cote';
+import { Theme } from './theme';
 
 export class Document {
     id: number;
@@ -9,9 +10,9 @@ export class Document {
     libelle: string;
     auteurs: Auteur[];
     editeur: Editeur;
+    themes: Theme[];
     date: Date;
-    bibliotheques: Bibliotheque[];
-    borrowed: boolean;
+    cotes: Cote[];
 
     toString(): string {
         return this.libelle;
