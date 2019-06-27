@@ -1,14 +1,5 @@
 <div id="documents">
   <div class="document row" *ngFor="let userCote of userDocuments">
-    <div class="col-2">
-      <a routerLink="/search/cote/{{userCote.cote.id}}">{{userCote.cote.libelle}}</a>
-    </div>
-    <div class="col-2">
-      <span>{{userCote.cote.bibliotheque.libelle}}</span>
-    </div>
-    <div class="col-2">
-      <span>Date de retour prévu :{{userCote.cote.dateEmprunt}}</span>
-    </div>
-
+    <app-emprunt class="w-100" [userCote]="userCote"></app-emprunt>
   </div>
 </div>

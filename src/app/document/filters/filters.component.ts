@@ -10,7 +10,6 @@ import { SearchService } from '../search.service';
 export class FiltersComponent implements OnInit {
   auteurs: any;
   supports: any;
-  bibliotheques: any;
   editeurs: any;
   themes: any;
   filters = [];
@@ -19,7 +18,6 @@ export class FiltersComponent implements OnInit {
   set results(results: Document[]){
     this.auteurs = this.getMap(results, 'auteurs');
     this.supports = this.getMap(results, 'support');
-    this.bibliotheques = this.getMap(results, 'cotes');
     this.editeurs = this.getMap(results, 'editeur');
     this.themes = this.getMap(results, 'themes');
   }

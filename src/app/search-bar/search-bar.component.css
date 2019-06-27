@@ -1,25 +1,55 @@
 #searchbar {
-    height: 50px;    
+    height: 50px; 
+    padding-top: 4px;   
 }
 
 #textfield {
-    height: 35px;
-    min-width: 150px;
-    max-width: 300px;
-    width: 100%;
-    border: none;
-    border-radius: 2px;
+   border: none;  
+   padding: 0; 
+   margin: 0;    
 }
 
 button, a {
-    font-size: 18px;
+    font-size: 18px;    
 }
 
 .button:hover {
     color: rgb(77, 144, 254);
     outline-color: rgb(77, 144, 254);
-    border: 1px solid rgb(77, 144, 254);;
+    border: 1px solid rgb(77, 144, 254);
     border-radius: 5px;
+}
+
+#input {
+    border: none;
+    border-radius: 3px;
+    background-color: white;
+    padding: 0;
+}
+
+#search-button {
+    padding: 0;
+    background-color: #008bff;
+    color: white; 
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+}
+
+#advanced-search-button {
+    font-size: 0.8em;
+    padding: 0 5px ;
+    border: none;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+#advanced-search-menu {
+    width: 650px;
+    padding: 3%;
+}
+
+::ng-deep div.mat-menu-panel {    
+    max-width: none;
 }
 
 

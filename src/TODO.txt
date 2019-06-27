@@ -11,15 +11,15 @@ done	* html/css
 done	* links to auteur and editeur
 	* paginator
  - details:
-done	* html/css
-	* links to auteur/ editeur: needs API implementation
-	* exemplaire field
+	* html/css
+	* links to auteur/ editeur
+	* exemplaire field ( => quantity property?)
 	* link to user
 	* available/ not available (rented/not)
 	* if logged, reservation (reserved property on document)	
 
  - common
-done 	* user class
+ 	* user class
 	* document: 
 done:		borrowed property
 		NB: BORROWED PROPERTY IS INFERRED BACK SIDE FROM THE PRESENCE OR NOT OF A USER PROPERTY ASSOCIATED WITH THE BOOK. 
@@ -37,14 +37,11 @@ done:		borrowed property
  - Account Settings page
 	* html/css
 	* modify user properties (not name/surname.birthdate (affect credentials), just adress and contact info...)
-done	* see rented documents
-done	* see reserved documents, (remove them?)
+	* see rented documents
+	* see reserved documents
 
  - Advanced Search
- 	* menu from search bar input, like hotmail.
 	*html/css
-
- - COOKIES AND COOKIES POLICY SHIT 	
 	
 API	
 * integration/modification of API
@@ -54,14 +51,15 @@ API
 			-> each user can have access, and only access to its own documents (borrowed list);
 		* create quantity property, linked to user/document.
 			Each document is unique, albeit has a unique "Côte" property, but each library can have multiple copies of the same document, 
-			meaning a search of one document will return the multiple copies across libraries.
-			Quantity property would serve to display the different copies each library contains.
+			meaning a search of one document will find the multiple copies (or "cotes") across libraries.
+			"Cotes" will contain:
+			 - a dateEmprunt in case the cote is borrowed
+			 - a user property, referencing the user detaining the document
+			 - a reserved property (which should have a date attached but will not in the case of this exercise)
 
 			each document has a list of "cotes", each cote has a library (therefore each library has a list of cotes instead of a list of documents)
 
-		* create user.reserved property, same as borrowed, can only be accessed by its user.
-		* create document.borrowDate: date d'emprunt.
-			return date is inferred: like BorrowDate+15 days.
+		* create user.reserved property, same as borrowed, can only be accessed by its user. contains reference to the user reserving.
  - authentification through token ???????
  - deploy on Tomcat 8.5 server
  - various tweaks on paths.

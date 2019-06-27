@@ -7,12 +7,16 @@
 .menu {
     border: 1px solid #dadce0;
     border-radius: 8px;
-    margin-bottom: 3%;
     padding: 1%; 
     height: 150px; 
+}
+
+.row {
+    margin: 4% 0;    
 }
 
 .desc {
     border-bottom: 1px solid #dadce0;
     height: 50%;
+    
 }

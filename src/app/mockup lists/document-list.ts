@@ -12,14 +12,7 @@ export const DOCUMENTS: Document[] = [
         date: new Date(2013, 5),
         themes: [
             { id: 1, libelle: 'Roman'}
-        ],
-        cotes: [
-            { 
-                libelle: 'RODUTR',
-                bibliotheque: { id: 1, libelle: '1er Arrondissement' },
-                coteUser: []                                
-            }
-        ]
+        ],        
     },
     {
         id: 2,
@@ -32,14 +25,7 @@ export const DOCUMENTS: Document[] = [
         date: new Date(1597, 1),
         themes: [
             { id: 1, libelle: 'Roman'}
-        ],
-        cotes: [
-            { 
-                libelle: 'RODUCO',
-                bibliotheque: { id: 1, libelle: '1er Arrondissement' },
-                coteUser: []                        
-            }
-        ]
+        ],        
     },
     {
         id: 3,
@@ -52,14 +38,7 @@ export const DOCUMENTS: Document[] = [
         date: new Date(1981, 2),
         themes: [
             { id: 1, libelle: 'Classique'}
-        ],
-        cotes: [
-            { 
-                libelle: 'CLABAGO',
-                bibliotheque: { id: 1, libelle: '1er Arrondissement' },
-                coteUser: []               
-            }
-        ]
+        ],        
     },
     {
         id: 4,
@@ -72,14 +51,7 @@ export const DOCUMENTS: Document[] = [
         date: new Date(1981, 2),
         themes: [
             { id: 1, libelle: 'Jazz'}
-        ],
-        cotes: [
-            { 
-                libelle: 'JADAKI',
-                bibliotheque: { id: 1, libelle: '1er Arrondissement' },
-                coteUser: []                
-            }
-        ]
+        ],        
     },
     {
         id: 5,
@@ -92,14 +64,7 @@ export const DOCUMENTS: Document[] = [
         date: new Date(1981, 2),
         themes: [
             { id: 1, libelle: 'Geographie'}
-        ],
-        cotes: [
-            { 
-                libelle: 'GENAVA',
-                bibliotheque: { id: 1, libelle: '1er Arrondissement' },
-                coteUser: []                
-            }
-        ]
+        ],        
     },
     {
         id: 6,
@@ -112,14 +77,7 @@ export const DOCUMENTS: Document[] = [
         date: new Date(1951, 4),
         themes: [
             { id: 1, libelle: 'Comédie Musicale'}
-        ],
-        cotes: [
-            { 
-                libelle: 'CMVASI',
-                bibliotheque: { id: 1, libelle: '1er Arrondissement'  },
-                coteUser: []        
-            }
-        ]
+        ],        
     },
 ];
 

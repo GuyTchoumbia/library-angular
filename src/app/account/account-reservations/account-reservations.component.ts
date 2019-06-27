@@ -11,7 +11,7 @@ export class AccountReservationsComponent implements OnInit {
   userReservations: UserCote[];
 
   constructor(private authService: AuthentificationService) {
-    this.authService.getUser().subscribe(user => this.userReservations = user.userCotes.filter(element => element.isReserved == true))
+    this.authService.getUser().subscribe(user => this.userReservations = user.userCotes.filter(element => element.dateReservation != null))
    }
 
   ngOnInit() {

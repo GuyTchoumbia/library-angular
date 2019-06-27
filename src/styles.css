@@ -42,8 +42,15 @@ app-detail {
   box-shadow: 0 2px 2px rgba(0,0,0,.24), 0 0 2px rgba(0,0,0,.12);  
 }
 
+/* bootstrap row class without padding/margin */
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 app-account {
   width: 100%;  
 }
+
 
 

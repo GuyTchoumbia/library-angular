@@ -1,33 +1,41 @@
 <div id="main-menu">
-  <h3>Welcome, {{user.name}}</h3>
-  <div class="menu" id="info">
-    <div class="desc">
-      <span>Visualize and Edit Your Personal Info</span>
-    </div>
-    <div class="link">
-      <a routerLink="/account/info">
-        <span>Go To Your Personal Information Page</span>
-      </a>
+  <div class="row">
+    <div class="col">
+      <h3>Welcome, {{user.name}}</h3>
     </div>
   </div>
-  <div class="menu" id="documents">
-    <div class="desc">
-      <span>Manage Your Borrowed Books</span>
+  <div class="row justify-content-around">
+    <div class="menu col-5" id="info">
+      <div class="desc">
+        <span>Visualize and Edit Your Personal Info</span>
+      </div>
+      <div class="link">
+        <a routerLink="/account/info">
+          <span>Go To Your Personal Information Page</span>
+        </a>
+      </div>
     </div>
-    <div class="link">
-      <a routerLink="/account/documents">
-        <span>Go To Your Borrowed Books Page</span>
-      </a>
+    <div class="menu col-5" id="documents">
+      <div class="desc">
+        <span>Manage Your Borrowed Books</span>
+      </div>
+      <div class="link">
+        <a routerLink="/account/documents">
+          <span>Go To Your Borrowed Books Page</span>
+        </a>
+      </div>
     </div>
   </div>
-  <div class="menu" id="reservations">
-    <div class="desc">
-      <span>Manage Your Reservations</span>
-    </div>
-    <div class="link">
-      <a routerLink="/account/reservations">
-        <span>Go To Your Reservations Page</span>
-      </a>
+  <div class="row justify-content-around">
+    <div class="menu col-5" id="reservations">
+      <div class="desc">
+        <span>Manage Your Reservations</span>
+      </div>
+      <div class="link">
+        <a routerLink="/account/reservations">
+          <span>Go To Your Reservations Page</span>
+        </a>
+      </div>
     </div>
   </div>
 </div>

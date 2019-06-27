@@ -12,8 +12,7 @@ export class Document {
     editeur: Editeur;
     themes: Theme[];
     date: Date;
-    cotes: Cote[];
-
+    
     toString(): string {
         return this.libelle;
     }

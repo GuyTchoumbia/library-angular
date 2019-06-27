@@ -1,0 +1,35 @@
+<div class="row" id="emprunt">
+  <div class="col-1 icon" [ngSwitch]="userCote.cote.document.support.libelle">      
+    <i class="material-icons" *ngSwitchCase="'book'">book</i>
+    <i class="material-icons" *ngSwitchCase="'music'">album</i>
+    <i class="material-icons" *ngSwitchCase="'paper'">help_outline</i>
+    <i class="material-icons" *ngSwitchCase="'movie'">movie</i>
+    <i class="material-icons" *ngSwitchDefault>help_outline</i>    
+  </div> 
+  <div class="col desc">    
+    <h4>{{userCote.cote.document.libelle}}</h4>   
+    <hr>  
+    <div>
+        Auteur: <a *ngFor="let auteur of userCote.cote.document.auteurs" routerLink="document/auteur/{{auteur.id}}">
+          {{auteur.libelle}}
+        </a>
+    </div>  
+    <div class="row">
+      <div class="col-2">
+        Côte: {{userCote.cote.libelle}}
+      </div>
+      <div class="col-3">
+        {{userCote.cote.bibliotheque.libelle}}
+      </div>
+      <div class="col-3">
+        Date d'emprunt: {{userCote.dateEmprunt| date:"shortDate"}}
+      </div>
+      <div class="col-4">
+        Date de retour prévue : {{userCote.dateEmprunt | date:"shortDate"}}
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+ 
