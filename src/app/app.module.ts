@@ -17,19 +17,22 @@ import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatCheckboxModule } from '@angular/material/checkbox'; 
 
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { AcceuilComponent } from './acceuil/acceuil.component';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 
 import { AuthentificationService } from './authentification.service';
+import { AdvancedSearchComponent } from './advanced-search/advanced-search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchBarComponent,
     AcceuilComponent,
-    LoginDialogComponent
+    LoginDialogComponent,
+    AdvancedSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ import { AuthentificationService } from './authentification.service';
     FormsModule,
     MatDialogModule,
     MatListModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatCheckboxModule
   ],
   entryComponents: [
     LoginDialogComponent

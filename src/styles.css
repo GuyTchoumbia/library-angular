@@ -33,11 +33,6 @@ app-element {
   margin: 0 0 1% 0;
 }
 
-app-detail {  
-  padding: 5%;
-  width: 100%;
-}
-
 .box-shadow {
   box-shadow: 0 2px 2px rgba(0,0,0,.24), 0 0 2px rgba(0,0,0,.12);  
 }
@@ -50,6 +45,11 @@ app-detail {
 
 app-account {
   width: 100%;  
+}
+
+app-advanced-search {
+  margin: 5%;
+  padding: 1%;
 }
 
 

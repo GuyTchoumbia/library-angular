@@ -1,0 +1,48 @@
+<div id="advanced-search">
+  <h2>Recherche Avancée</h2>
+  <div id="criterias" class="box-shadow">
+    <section class="flex">      
+      <mat-form-field class="col-2">
+        <mat-select placeholder="Selectionnez...">
+          <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="col-3">
+        <input matInput placeholder="Entrez une expression...">
+      </mat-form-field>
+    </section>
+    <mat-divider></mat-divider>    
+    <section>
+      <h6>Bibliotheque</h6>
+      <div class="flex justify-content-around">
+        <mat-checkbox>1er arrondissement</mat-checkbox>
+        <mat-checkbox>2eme arrondissement</mat-checkbox>
+        <mat-checkbox>3eme arrondissement</mat-checkbox>
+        <mat-checkbox>4eme arrondissement</mat-checkbox>
+        <mat-checkbox>5eme arrondissement</mat-checkbox>
+      </div>
+    </section>
+    <mat-divider></mat-divider>    
+    <section>
+        <h6>Support</h6>
+        <div class="flex justify-content-start">
+          <mat-checkbox>Livre</mat-checkbox>
+          <mat-checkbox>CD</mat-checkbox>
+          <mat-checkbox>Presse</mat-checkbox>
+          <mat-checkbox>Video</mat-checkbox> 
+        </div>
+      </section>
+      <section>
+        <div class="flex justify-content-end">
+          <a class="col-2" mat-button>
+            <i class="material-icons">search</i>
+            Rechercher
+          </a>
+          <button class="col-2" mat-button>
+            <i class="material-icons">clear</i>
+            Réinitialiser
+          </button>
+        </div>
+      </section>
+  </div> 
+</div>

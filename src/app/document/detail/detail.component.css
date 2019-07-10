@@ -1,3 +1,7 @@
+#detail {
+    padding: 0 15%;
+}
+
 .icon {
     border-right: 1px solid rgba(0, 0, 0, 0.03);   
     text-align: center;   

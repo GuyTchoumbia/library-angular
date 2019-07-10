@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AcceuilComponent } from './acceuil/acceuil.component';
 import { AccountComponent } from './account/account.component';
+import { AdvancedSearchComponent } from './advanced-search/advanced-search.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,10 @@ const routes: Routes = [
   {
     path: 'account',
     loadChildren: () => import('./account/account.module').then(mod => mod.AccountModule)
+  },
+  {
+    path: 'advancedSearch',
+    component: AdvancedSearchComponent
   }
 ];
 

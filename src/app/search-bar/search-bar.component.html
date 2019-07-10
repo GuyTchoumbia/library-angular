@@ -15,19 +15,9 @@
         </mat-select> 
     </div>
     <div class="col-4 flex justify-content-end" id="input">  
-      <button id="advanced-search-button" mat-flat-button [matMenuTriggerFor]="advancedSearch">
-        <i class="material-icons">add</i>
-        <mat-menu #advancedSearch="matMenu">
-          <div id="advanced-search-menu">
-            <div>
-              a field
-            </div>
-            <div>
-              another field
-            </div> 
-          </div>
-        </mat-menu>
-      </button>        
+      <a routerLink="/advancedSearch" id="advanced-search-button" mat-flat-button >
+        <i class="material-icons">add</i>        
+      </a>        
       <input class="col" id="textfield" matInput type="text"  placeholder=" Recherche de document" [formControl]="libelle" [matAutocomplete]="auto" />
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let option of filteredOptions | async" [value]="option">

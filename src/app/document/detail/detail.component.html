@@ -1,47 +1,49 @@
-<div id="back">
-  <button mat-button (click)="goBack()">
-    <i class="material-icons">chevron_left</i>
-    Go Back To Results
-  </button>
+<div id="detail">
+  <div id="back">
+    <button mat-button (click)="goBack()">
+      <i class="material-icons">chevron_left</i>
+      Go Back To Results
+    </button>
+  </div>
+  <div class="box-shadow" id="document">
+    <div class="row no-gutters align-items-center" id="header">
+      <div class="col-1 icon" [ngSwitch]="document.support.libelle">      
+        <i class="material-icons" *ngSwitchCase="'book'">book</i>
+        <i class="material-icons" *ngSwitchCase="'music'">album</i>
+        <i class="material-icons" *ngSwitchCase="'paper'">help_outline</i>
+        <i class="material-icons" *ngSwitchCase="'movie'">movie</i>
+        <i class="material-icons" *ngSwitchDefault>help_outline</i>    
+      </div> 
+      <div class="col-11 desc">
+        <h4>{{document.libelle}}</h4>    
+        <div>
+            Auteur: <a *ngFor="let auteur of document.auteurs" routerLink="document/auteur/{{auteur.id}}">
+              {{auteur.libelle}}
+            </a>
+        </div>   
+        <div>
+            Editeur: <a routerLink="document/editeur/{{document.editeur.id}}">
+              {{document.editeur.libelle}}
+            </a>
+        </div>   
+        <div>
+          Date: {{document.date | date:'shortDate' }}
+        </div>
+      </div> 
+    </div>   
+    <mat-tab-group>
+      <mat-tab label="Exemplaires">
+        <div *ngFor="let cote of document.cotes"> 
+          <span>{{cote.libelle}}</span>
+          <span>{{cote.bibliotheque.libelle}}</span>
+          <span *ngIf="cote.coteUser.length==0">Disponible</span>
+        </div>
+      </mat-tab>
+      <mat-tab label="Metadata">
+        <div>
+          <h3>[placeholder]</h3> 
+        </div>
+      </mat-tab>      
+    </mat-tab-group>  
+  </div>     
 </div>
-<div class="w-100 box-shadow" id="detail">
-  <div class="row no-gutters align-items-center" id="header">
-    <div class="col-1 icon" [ngSwitch]="document.support.libelle">      
-      <i class="material-icons" *ngSwitchCase="'book'">book</i>
-      <i class="material-icons" *ngSwitchCase="'music'">album</i>
-      <i class="material-icons" *ngSwitchCase="'paper'">help_outline</i>
-      <i class="material-icons" *ngSwitchCase="'movie'">movie</i>
-      <i class="material-icons" *ngSwitchDefault>help_outline</i>    
-    </div> 
-    <div class="col-11 desc">
-      <h4>{{document.libelle}}</h4>    
-      <div>
-          Auteur: <a *ngFor="let auteur of document.auteurs" routerLink="document/auteur/{{auteur.id}}">
-            {{auteur.libelle}}
-          </a>
-      </div>   
-      <div>
-          Editeur: <a routerLink="document/editeur/{{document.editeur.id}}">
-            {{document.editeur.libelle}}
-          </a>
-      </div>   
-      <div>
-        Date: {{document.date | date:'shortDate' }}
-      </div>
-    </div> 
-  </div>   
-  <mat-tab-group>
-    <mat-tab label="Exemplaires">
-      <div *ngFor="let cote of document.cotes"> 
-        <span>{{cote.libelle}}</span>
-        <span>{{cote.bibliotheque.libelle}}</span>
-        <span *ngIf="cote.coteUser.length==0">Disponible</span>
-      </div>
-    </mat-tab>
-    <mat-tab label="Metadata">
-      <div>
-        <h3>[placeholder]</h3> 
-      </div>
-    </mat-tab>      
-  </mat-tab-group>  
-</div>     
