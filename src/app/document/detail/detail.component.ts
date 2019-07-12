@@ -25,7 +25,11 @@ export class DetailComponent implements OnInit {
 
   getDocument(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.document = this.searchService.getDetail(id);
+    this.searchService.requestDetail(id).subscribe(response => {
+      if (response.body) {
+        this.document = response.body;
+      }
+    });
   }
 
   goBack(): void {

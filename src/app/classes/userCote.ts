@@ -1,7 +1,9 @@
-import { Cote } from "./cote";
+import { Cote } from './cote';
+import { User } from './user';
 
-export class UserCote {    
-    cote: Cote;    
-    dateEmprunt: Date;   
-    dateReservation: Date; 
+export class UserCote {
+    user: User;
+    cote: Cote;
+    dateEmprunt: Date;
+    dateReservation: Date;
 }

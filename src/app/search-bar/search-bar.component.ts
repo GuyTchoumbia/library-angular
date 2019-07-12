@@ -14,19 +14,28 @@ import {map, startWith} from 'rxjs/operators';
 })
 export class SearchBarComponent implements OnInit {
   libelle = new FormControl('');
+  select = 'libelle';
   isLoggedIn: boolean;
   username: string;
-  password: string;
   options: string[] = ['One', 'Two', 'Three'];
   filteredOptions: Observable<string[]>;
 
   constructor(public dialog: MatDialog,
               private authService: AuthentificationService,
               private router: Router,
-              ) { }
+              ) {
+  }
 
   ngOnInit() {
-    this.authService.getIsLoggedIn().subscribe(data => this.isLoggedIn = data);    
+    this.authService.getIsLoggedIn().subscribe(isLoggedIn => {
+      if (isLoggedIn) {
+        this.username = this.authService.getUser().value.civil.prenom;
+      }
+      else {
+        this.username = undefined;
+      }
+      this.isLoggedIn = isLoggedIn;
+    });
     this.filteredOptions = this.libelle.valueChanges
       .pipe(
         startWith(''),
@@ -47,11 +56,17 @@ export class SearchBarComponent implements OnInit {
   openLoginDialog(): void {
     const dialogRef = this.dialog.open(LoginDialogComponent, {
       width: '250px',
-      data: {name: this.username, password: this.password}
     });
+  }
 
-    dialogRef.afterClosed().subscribe(result => {
-      this.username = result.username;
-    });
+  search() {
+    if (this.libelle.value !== '') {
+      if (this.select === 'libelle') {
+        this.router.navigate(['results', this.select, this.libelle.value]);
+      }
+      else {
+        this.router.navigate(['results', this.select, 'libelle', this.libelle.value]);
+      }
+    }
   }
 }

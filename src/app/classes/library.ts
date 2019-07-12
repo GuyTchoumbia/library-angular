@@ -1,4 +1,4 @@
-export class Bibliotheque {
+export class Library {
     id: number;
     libelle: string;
 

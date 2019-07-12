@@ -10,11 +10,10 @@ import { User } from '../../classes/user';
 export class AccountMainComponent implements OnInit {
   user: User;
 
-  constructor(private authService: AuthentificationService) {
-    this.authService.getUser().subscribe(user => this.user = user);
-   }
+  constructor(private authService: AuthentificationService) { }
 
   ngOnInit() {
+    this.authService.getUser().subscribe(user => this.user = user);
   }
 
 }

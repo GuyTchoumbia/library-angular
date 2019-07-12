@@ -1,10 +1,7 @@
-import { Bibliotheque } from "./bibliotheque";
-import { CoteUser } from "./coteUser";
-import { Document } from './document';
+import { Library } from './library';
 
 export class Cote {
-    libelle: string; 
-    document: Document;
-    bibliotheque: Bibliotheque; 
-    coteUser: CoteUser[];
+    id: number;
+    libelle: string;
+    library: Library;
 }

@@ -2,15 +2,16 @@ import { Auteur } from './auteur';
 import { Editeur } from './editeur';
 import { Support } from './support';
 import { Cote } from './cote';
-import { Theme } from './theme';
+import { Tag } from './tag';
 
 export class Document {
-    id: number;
-    support: Support;
+    id: number;    
     libelle: string;
+    isbn: string;
+    support: Support;
     auteurs: Auteur[];
     editeur: Editeur;
-    themes: Theme[];
+    tags: Tag[];
     date: Date;
     
     toString(): string {

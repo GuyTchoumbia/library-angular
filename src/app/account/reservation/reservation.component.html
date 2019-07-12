@@ -1,16 +1,16 @@
 <div class="row" id="emprunt">
-    <div class="col-1 icon" [ngSwitch]="userCote.cote.document.support.libelle">      
-      <i class="material-icons" *ngSwitchCase="'book'">book</i>
-      <i class="material-icons" *ngSwitchCase="'music'">album</i>
-      <i class="material-icons" *ngSwitchCase="'paper'">help_outline</i>
-      <i class="material-icons" *ngSwitchCase="'movie'">movie</i>
+    <div class="col-1 icon" [ngSwitch]="userCote.cote.document.support.id">      
+      <i class="material-icons" *ngSwitchCase="1">book</i>
+      <i class="material-icons" *ngSwitchCase="2">album</i>
+      <i class="material-icons" *ngSwitchCase="3">help_outline</i>
+      <i class="material-icons" *ngSwitchCase="4">movie</i>
       <i class="material-icons" *ngSwitchDefault>help_outline</i>    
     </div> 
     <div class="col desc">    
       <h4>{{userCote.cote.document.libelle}}</h4>   
       <hr>  
       <div>
-          Auteur: <a *ngFor="let auteur of userCote.cote.document.auteurs" routerLink="document/auteur/{{auteur.id}}">
+          Auteur: <a *ngFor="let auteur of userCote.cote.document.auteurs" routerLink="/results/auteur/id/{{auteur.id}}">
             {{auteur.libelle}}
           </a>
       </div>  
@@ -19,7 +19,7 @@
           Côte: {{userCote.cote.libelle}}
         </div>
         <div class="col-3">
-          {{userCote.cote.bibliotheque.libelle}}
+          {{userCote.cote.library.libelle}}
         </div>
         <div class="col-5">
           Date de réservation: {{userCote.dateReservation| date:"shortDate"}}

@@ -11,7 +11,7 @@ export class FiltersComponent implements OnInit {
   auteurs: any;
   supports: any;
   editeurs: any;
-  themes: any;
+  tags: any;
   filters = [];
 
   @Input()
@@ -19,7 +19,7 @@ export class FiltersComponent implements OnInit {
     this.auteurs = this.getMap(results, 'auteurs');
     this.supports = this.getMap(results, 'support');
     this.editeurs = this.getMap(results, 'editeur');
-    this.themes = this.getMap(results, 'themes');
+    this.tags = this.getMap(results, 'tags');
   }
 
   @Output() filter = new EventEmitter<[string, string]>();
@@ -32,7 +32,7 @@ export class FiltersComponent implements OnInit {
     const map = new Map<string, number>();
     results
       .map(doc => doc[property])
-      //  .flat()
+      .flat()
       .forEach(element => {
         if (map.get(element.libelle)) {
           map.set(element.libelle, map.get(element.libelle) + 1);

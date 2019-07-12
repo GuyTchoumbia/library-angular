@@ -1,8 +1,8 @@
-  <div class="col-1 icon" [ngSwitch]="document.support.libelle">      
-    <i class="material-icons" *ngSwitchCase="'book'">book</i>
-    <i class="material-icons" *ngSwitchCase="'music'">album</i>
-    <i class="material-icons" *ngSwitchCase="'paper'">help_outline</i>
-    <i class="material-icons" *ngSwitchCase="'movie'">movie</i>
+  <div class="col-1 icon" [ngSwitch]="document.support.id">      
+    <i class="material-icons" *ngSwitchCase="1">book</i>
+    <i class="material-icons" *ngSwitchCase="2">album</i>
+    <i class="material-icons" *ngSwitchCase="3">help_outline</i>
+    <i class="material-icons" *ngSwitchCase="4">movie</i>
     <i class="material-icons" *ngSwitchDefault>help_outline</i>    
   </div> 
   <div class="col desc">
@@ -10,21 +10,21 @@
       <h4>{{document.libelle}}</h4> 
     </a>   
     <div>
-        Auteur: <a *ngFor="let auteur of document.auteurs" routerLink="document/auteur/{{auteur.id}}">
-          {{auteur.libelle}}
-        </a>
+      Auteur: <a *ngFor="let auteur of document.auteurs" routerLink="/results/auteur/id/{{auteur.id}}">
+        {{auteur.libelle}}
+      </a>
     </div>   
     <div>
-        Editeur: <a routerLink="document/editeur/{{document.editeur.id}}">
-          {{document.editeur.libelle}}
-        </a>
+      Editeur: <a routerLink="/results/editeur/id/{{document.editeur.id}}">
+        {{document.editeur.libelle}}
+      </a>
     </div>   
     <div>
       Date: {{document.date | date:'shortDate' }}
     </div>
     <div>
-      Theme: <a *ngFor="let theme of document.themes" routerLink="document/theme/{{theme.id}}">
-        {{theme.libelle}}
+      Tag: <a *ngFor="let tag of document.tags" routerLink="/results/tag/id/{{tag.id}}">
+        {{tag.libelle}}
       </a>
     </div>
   </div>  

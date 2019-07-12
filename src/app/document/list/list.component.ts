@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../search.service';
 import { Document } from '../../classes/document';
 import { PageEvent } from '@angular/material/paginator';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -9,20 +10,36 @@ import { PageEvent } from '@angular/material/paginator';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  results: Document[] = this.searchService.getResults();
+  results: Document[] = [];
   filtersMap = new Map<string, string>();
   filters: [string, string][] = [];
 
   paginatorSize = 10;
   paginatedResults: Document[] = this.results.slice(0, this.paginatorSize);
-  paginatorLength = this.paginatedResults.length;  
+  paginatorLength = this.paginatedResults.length;
   pageSizeOptions: number[] = [5, 10, 20];
-  
+
   pageEvent: PageEvent;
 
-  constructor(private searchService: SearchService) {}
+  constructor(private searchService: SearchService,
+              private route: ActivatedRoute) {}
 
   ngOnInit() {
+    this.getResults();
+  }
+
+  getResults() {
+    let path: string;
+    this.route.url.subscribe(url => {
+      console.log(url);
+      path = url.map(urlSegment => urlSegment.path).join('/');
+      console.log(path);
+      this.searchService.requestList(path).subscribe(response => {
+        this.results = response.body;
+        console.log(this.results.length);
+        this.paginatedResults = this.results.slice(0, this.paginatorSize);
+      });
+    });
   }
 
   onAddFilter(filter: [string, string]) {
@@ -75,9 +92,11 @@ export class ListComponent implements OnInit {
     console.log(this.results);
   }
 
-  onPageChanged(e: PageEvent) {
-    let firstCut = e.pageIndex * e.pageSize;
-    let secondCut = firstCut + e.pageSize;
+onPageChanged(e: PageEvent) {
+    const firstCut = e.pageIndex * e.pageSize;
+    const secondCut = firstCut + e.pageSize;
     this.paginatedResults = this.results.slice(firstCut, secondCut);
   }
+
+
 }

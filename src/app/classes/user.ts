@@ -1,15 +1,12 @@
-import { Document } from './document';
-import { Address } from './address';
 import { UserCote } from './userCote';
-import { Cote } from './cote';
+import { Civil } from './civil';
+import { Contact } from './contact';
+import { Credentials } from './credentials';
 
-export interface User {
+export class User {
    id: string;
-   name: string;
-   surname: string;
-   address: Address;
-   phone: string;
-   email: string;
-   birthdate: Date;
-   userCotes: UserCote[];   
+   civil: Civil;
+   contact: Contact;
+   credentials: Credentials;
+   userCotes: UserCote[];
 }

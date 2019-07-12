@@ -1,6 +1,5 @@
-<div id="list">
-  <div class="w-100 header">
-    
+<div id="list" *ngIf="results.length != 0; else noresults">
+  <div class="w-100 header">    
     <div class="row justify-content-between">
       <div class="col-2" id="title">
         <h3>Results: {{results.length}}</h3> 
@@ -9,8 +8,8 @@
         <mat-label>Sorting</mat-label>
         <mat-select (valueChange)="sort($event)">
           <mat-option>None</mat-option>
-          <mat-option value="libelle">Name</mat-option>
-          <mat-option value="support">support</mat-option>        
+          <mat-option value="libelle">Libelle</mat-option>
+          <mat-option value="support">Support</mat-option>        
           <mat-option value="date">Date</mat-option>
         </mat-select>
       </mat-form-field>
@@ -33,17 +32,17 @@
       </mat-paginator>
     </div> 
   </div>  
-  <div class="row" *ngIf="results; else noresults">
+  <div class="row">
     <div class="col-2 filters box-shadow">    
       <app-filters [results]="results" (filter)="onAddFilter($event)"></app-filters> 
     </div>
     <div class="col results">    
       <app-element class="row align-items-center box-shadow" *ngFor="let result of paginatedResults" [document]="result"></app-element>   
     </div>
-  </div>
-  <ng-template #noresults>
-    <div class="w-100" >
-      <h2>Aucun resultats</h2>
-    </div>
-  </ng-template>
+  </div>  
 </div>
+<ng-template #noresults>
+  <div class="w-100" >
+    <h2>Aucun resultats</h2>
+  </div>
+</ng-template>

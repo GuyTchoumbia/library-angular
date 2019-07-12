@@ -16,18 +16,17 @@ export class AccountComponent implements OnInit {
   constructor(
     private authService: AuthentificationService,
     private formBuilder: FormBuilder
-  ) {
-      this.authService.getUser().subscribe(user => this.user = user);
-      this.addressForm = this.formBuilder.group({
-        numero: this.user.address.numero,
-        rue: this.user.address.rue,
-        codePostal: this.user.address.codePostal,
-        ville: this.user.address.ville,
-        email: this.user.email,
-        phone: this.user.phone
+  ) { }
+
+  ngOnInit() {
+    this.authService.getUser().subscribe(user => this.user = user);
+    this.addressForm = this.formBuilder.group({
+        numero: this.user.contact.adress.numero,
+        rue: this.user.contact.adress.rue,
+        codePostal: this.user.contact.adress.codePostal,
+        ville: this.user.contact.adress.ville,
+        email: this.user.contact.email,
+        phone: this.user.contact.phone
       });
   }
-
-  ngOnInit() { }
-
 }

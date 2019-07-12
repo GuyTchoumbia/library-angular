@@ -10,11 +10,10 @@ import { UserCote } from '../../classes/userCote';
 export class AccountReservationsComponent implements OnInit {
   userReservations: UserCote[];
 
-  constructor(private authService: AuthentificationService) {
-    this.authService.getUser().subscribe(user => this.userReservations = user.userCotes.filter(element => element.dateReservation != null))
-   }
+  constructor(private authService: AuthentificationService) { }
 
   ngOnInit() {
+    this.authService.getUser().subscribe(user => this.userReservations = user.userCotes.filter(element => element.dateReservation != null))
   }
 
 }

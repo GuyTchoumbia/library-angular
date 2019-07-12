@@ -5,7 +5,14 @@ import { DetailComponent } from './detail/detail.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':criteria/id/:value',
+    component: ListComponent
+  },
+  { path: ':criteria/libelle/:value',
+    component: ListComponent
+  },
+  {
+    path: ':criteria/:value',
     component: ListComponent
   },
   {

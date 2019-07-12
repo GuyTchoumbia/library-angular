@@ -1,20 +1,28 @@
 import { Injectable } from '@angular/core';
-import { DOCUMENTS } from '../mockup lists/document-list';
 import { Document } from '../classes/document';
+import { Observable } from 'rxjs';
+import { HttpResponse, HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchService {
-  results: Document[] = DOCUMENTS;
-  constructor() { }
+
+  results: any;
+  baseUrl = 'http://localhost:8080/library-api/document/';
+
+  constructor(private http: HttpClient) { }
 
   getResults(): Document[] {
     /*TODO*/
     return this.results;
   }
 
-  getDetail(id: number): Document {
-    return this.results.find((document) => document.id === id);
+  requestDetail(id: number): Observable<HttpResponse<Document>> {
+    return this.http.get<Document>(this.baseUrl + id, { observe: 'response'});
+  }
+
+  requestList(path: string): Observable<HttpResponse<Document[]>> {
+    return this.http.get<Document[]>(this.baseUrl + path, {observe: 'response'});
   }
 }
