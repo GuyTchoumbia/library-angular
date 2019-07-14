@@ -1,14 +1,49 @@
 <div id="advanced-search">
   <h2>Recherche Avancée</h2>
   <div id="criterias" class="box-shadow">
-    <section class="flex">      
-      <mat-form-field class="col-2">
-        <mat-select placeholder="Selectionnez...">
-          <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option>
-        </mat-select>
+    <section class="flex">
+      <div class="col-1"></div>       
+      <mat-form-field class="col-4">
+        <input matInput placeholder="Titre" [(ngModel)]="libelle">   
+        <button mat-button *ngIf="libelle" matSuffix mat-icon-button aria-label="Clear" (click)="libelle=''">
+            <mat-icon>close</mat-icon>
+          </button>     
       </mat-form-field>
-      <mat-form-field class="col-3">
-        <input matInput placeholder="Entrez une expression...">
+    </section>
+    <section class="flex">
+      <div class="col-1"></div>       
+      <mat-form-field class="col-4">
+        <input matInput placeholder="Auteur" [(ngModel)]="auteur">   
+        <button mat-button *ngIf="auteur" matSuffix mat-icon-button aria-label="Clear" (click)="auteur=''">
+            <mat-icon>close</mat-icon>
+          </button>     
+      </mat-form-field>
+    </section>
+    <section class="flex">
+      <div class="col-1"></div>       
+      <mat-form-field class="col-4">
+        <input matInput placeholder="Editeur" [(ngModel)]="editeur">   
+        <button mat-button *ngIf="editeur" matSuffix mat-icon-button aria-label="Clear" (click)="editeur=''">
+            <mat-icon>close</mat-icon>
+          </button>     
+      </mat-form-field>
+    </section>
+    <section class="flex">
+      <div class="col-1"></div>       
+      <mat-form-field class="col-4">
+        <input matInput placeholder="Cote" [(ngModel)]="cote">   
+        <button mat-button *ngIf="cote" matSuffix mat-icon-button aria-label="Clear" (click)="cote=''">
+            <mat-icon>close</mat-icon>
+          </button>     
+      </mat-form-field>
+    </section>
+    <section class="flex">
+      <div class="col-1"></div>       
+      <mat-form-field class="col-4">
+        <input matInput placeholder="Isbn" [(ngModel)]="isbn">   
+        <button mat-button *ngIf="isbn" matSuffix mat-icon-button aria-label="Clear" (click)="isbn=''">
+            <mat-icon>close</mat-icon>
+          </button>     
       </mat-form-field>
     </section>
     <mat-divider></mat-divider>    
@@ -34,11 +69,11 @@
       </section>
       <section>
         <div class="flex justify-content-end">
-          <a class="col-2" mat-button>
+          <a class="col-2" mat-button (click)="search()">
             <i class="material-icons">search</i>
             Rechercher
           </a>
-          <button class="col-2" mat-button>
+          <button class="col-2" mat-button (click)="reset()">
             <i class="material-icons">clear</i>
             Réinitialiser
           </button>

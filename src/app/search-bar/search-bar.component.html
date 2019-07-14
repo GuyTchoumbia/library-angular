@@ -9,6 +9,7 @@
     <div class="col-2"></div>
     <div class="col-1"> 
         <mat-select [(value)]="select">
+            <mat-option value="any">Tous</mat-option>
           <mat-option value="libelle">Titre</mat-option>
           <mat-option value="auteur">Auteur</mat-option>
           <mat-option value="editeur">Editeur</mat-option>        
@@ -30,13 +31,13 @@
     </div>
     <div class="col-2"></div>
     <div class="col-2" *ngIf="!isLoggedIn">
-      <button mat-flat-button (click)="openLoginDialog()" class="button">
+      <button mat-button (click)="openLoginDialog()" class="button">
           <i class="material-icons">vpn_key</i>
         <span> Login</span>
       </button>
     </div>    
     <div class="col-2" *ngIf="isLoggedIn">      
-      <button mat-flat-button [matMenuTriggerFor]="menu" class="button">        
+      <button mat-button [matMenuTriggerFor]="menu" class="button">        
         <i class="material-icons">account_circle</i>
         {{username}}                
         <i class="material-icons">arrow_drop_down</i>

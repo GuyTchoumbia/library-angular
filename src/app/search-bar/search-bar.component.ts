@@ -14,7 +14,8 @@ import {map, startWith} from 'rxjs/operators';
 })
 export class SearchBarComponent implements OnInit {
   libelle = new FormControl('');
-  select = 'libelle';
+  selectable = ['Tous', 'Libelle', 'Auteur', 'Editeur'];
+  select = 'any';
   isLoggedIn: boolean;
   username: string;
   options: string[] = ['One', 'Two', 'Three'];
@@ -61,7 +62,7 @@ export class SearchBarComponent implements OnInit {
 
   search() {
     if (this.libelle.value !== '') {
-      if (this.select === 'libelle') {
+      if (this.select === 'libelle' || this.select === 'any') {
         this.router.navigate(['results', this.select, this.libelle.value]);
       }
       else {
