@@ -5,15 +5,16 @@ import { Cote } from './cote';
 import { Tag } from './tag';
 
 export class Document {
-    id: number;    
+    id: number;
     libelle: string;
     isbn: string;
     support: Support;
     auteurs: Auteur[];
     editeur: Editeur;
     tags: Tag[];
-    date: Date;
-    
+    date: number;
+    cotes: Cote[];
+
     toString(): string {
         return this.libelle;
     }

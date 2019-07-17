@@ -6,6 +6,7 @@ import { AuthentificationService } from '../authentification.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-search-bar',
@@ -24,6 +25,7 @@ export class SearchBarComponent implements OnInit {
   constructor(public dialog: MatDialog,
               private authService: AuthentificationService,
               private router: Router,
+              private snackBar: MatSnackBar
               ) {
   }
 
@@ -52,6 +54,7 @@ export class SearchBarComponent implements OnInit {
   logOut(): void {
     this.authService.logOut();
     this.router.navigate(['']);
+    this.snackBar.open('Logged Out', '', { duration: 3000, horizontalPosition: 'center' });
   }
 
   openLoginDialog(): void {
@@ -62,12 +65,8 @@ export class SearchBarComponent implements OnInit {
 
   search() {
     if (this.libelle.value !== '') {
-      if (this.select === 'libelle' || this.select === 'any') {
-        this.router.navigate(['results', this.select, this.libelle.value]);
-      }
-      else {
         this.router.navigate(['results', this.select, 'libelle', this.libelle.value]);
-      }
     }
   }
+
 }

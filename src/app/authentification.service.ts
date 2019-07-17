@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable, of as observableOf, BehaviorSubject } from 'rxjs';
 import { User } from './classes/user';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Authority } from './classes/authority';
-import { Credentials } from './classes/credentials';
-
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +31,9 @@ export class AuthentificationService {
   }
 
   logIn(username: string, password: string): Observable<HttpResponse<User>> {
-    const creds = new Credentials(username, password, Authority.ANO);
+    const creds = new User();
+    creds.id = username;
+    creds.password = password;
     return this.http.post<User>(this.url, creds, {observe: 'response'});
   }
 

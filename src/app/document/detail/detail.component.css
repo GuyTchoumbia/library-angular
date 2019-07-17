@@ -1,5 +1,5 @@
 #detail {
-    padding: 0 15%;
+    padding: 0 20%;
 }
 
 .icon {
@@ -28,4 +28,9 @@
 .desc {
     padding: 1%;
 }
+
+.tab-content {
+    padding: 2%;
+}
+
 

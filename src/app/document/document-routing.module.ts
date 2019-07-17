@@ -4,15 +4,7 @@ import { ListComponent } from './list/list.component';
 import { DetailComponent } from './detail/detail.component';
 
 const routes: Routes = [
-  {
-    path: ':criteria/id/:value',
-    component: ListComponent
-  },
-  { path: ':criteria/libelle/:value',
-    component: ListComponent
-  },
-  {
-    path: ':criteria/:value',
+  { path: ':criteria/:field/:value',
     component: ListComponent
   },
   {

@@ -20,7 +20,7 @@
       </a>
     </div>   
     <div>
-      Date: {{document.date | date:'shortDate' }}
+      Date: {{document.date}}
     </div>
     <div>
       Tag: <a *ngFor="let tag of document.tags" routerLink="/results/tag/id/{{tag.id}}">

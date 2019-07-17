@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../search.service';
 import { Document } from '../../classes/document';
 import { PageEvent } from '@angular/material/paginator';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { switchMap, map, filter } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { SlicePipe, Location } from '@angular/common';
 
 @Component({
   selector: 'app-list',
@@ -11,35 +14,40 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ListComponent implements OnInit {
   results: Document[] = [];
+  results$ = new Observable<Document>();
   filtersMap = new Map<string, string>();
   filters: [string, string][] = [];
 
   paginatorSize = 10;
-  paginatedResults: Document[] = this.results.slice(0, this.paginatorSize);
+  paginatedResults = this.results.slice(0, this.paginatorSize);
+  paginatedResults$ = this.results$.pipe(
+    filter((value, index) => index < this.paginatorSize)
+    );
   paginatorLength = this.paginatedResults.length;
   pageSizeOptions: number[] = [5, 10, 20];
 
   pageEvent: PageEvent;
 
   constructor(private searchService: SearchService,
-              private route: ActivatedRoute) {}
+              private route: ActivatedRoute,
+              private location: Location) {}
 
   ngOnInit() {
     this.getResults();
   }
 
   getResults() {
-    let path: string;
-    this.route.url.subscribe(url => {
-      console.log(url);
-      path = url.map(urlSegment => urlSegment.path).join('/');
-      console.log(path);
-      this.searchService.requestList(path).subscribe(response => {
-        this.results = response.body;
-        console.log(this.results.length);
-        this.paginatedResults = this.results.slice(0, this.paginatorSize);
-      });
-    });
+    this.route.paramMap.subscribe(
+      params => {
+        const criteria =  params.get('criteria');
+        const field = params.get('field');
+        const value =  params.get('value');
+        this.searchService.requestList(criteria, field, value).subscribe(response => {
+          this.results = response.body;
+          this.paginatedResults = this.results.slice(0, this.paginatorSize);
+        });
+      }
+    );
   }
 
   onAddFilter(filter: [string, string]) {
@@ -97,6 +105,11 @@ onPageChanged(e: PageEvent) {
     const secondCut = firstCut + e.pageSize;
     this.paginatedResults = this.results.slice(firstCut, secondCut);
   }
+
+  goBack() {
+    this.location.back();
+  }
+
 
 
 }

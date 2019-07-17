@@ -7,40 +7,41 @@
   </div>
   <div class="box-shadow" id="document">
     <div class="row no-gutters align-items-center" id="header">
-      <div class="col-1 icon" [ngSwitch]="document.support.libelle">      
-        <i class="material-icons" *ngSwitchCase="'book'">book</i>
-        <i class="material-icons" *ngSwitchCase="'music'">album</i>
-        <i class="material-icons" *ngSwitchCase="'paper'">help_outline</i>
-        <i class="material-icons" *ngSwitchCase="'movie'">movie</i>
+      <div class="col-1 icon" [ngSwitch]="document.support.id">      
+        <i class="material-icons" *ngSwitchCase="1">book</i>
+        <i class="material-icons" *ngSwitchCase="2">album</i>
+        <i class="material-icons" *ngSwitchCase="3">help_outline</i>
+        <i class="material-icons" *ngSwitchCase="4">movie</i>
         <i class="material-icons" *ngSwitchDefault>help_outline</i>    
       </div> 
       <div class="col-11 desc">
         <h4>{{document.libelle}}</h4>    
         <div>
-            Auteur: <a *ngFor="let auteur of document.auteurs" routerLink="document/auteur/{{auteur.id}}">
+            Auteur: <a *ngFor="let auteur of document.auteurs" routerLink="/results/auteur/id/{{auteur.id}}">
               {{auteur.libelle}}
             </a>
         </div>   
         <div>
-            Editeur: <a routerLink="document/editeur/{{document.editeur.id}}">
+            Editeur: <a routerLink="/results/editeur/id/{{document.editeur.id}}">
               {{document.editeur.libelle}}
             </a>
         </div>   
         <div>
-          Date: {{document.date | date:'shortDate' }}
+          Date: {{document.date}}
         </div>
       </div> 
     </div>   
     <mat-tab-group>
       <mat-tab label="Exemplaires">
-        <div *ngFor="let cote of document.cotes"> 
-          <span>{{cote.libelle}}</span>
-          <span>{{cote.bibliotheque.libelle}}</span>
-          <span *ngIf="cote.coteUser.length==0">Disponible</span>
-        </div>
+        <div class="tab-content">
+          <div *ngFor="let cote of document.cotes"> 
+            <a routerLink="/cote/{{cote.libelle}}">{{cote.libelle}} </a>
+            <span>: {{cote.library.libelle}} </span>          
+          </div>
+        </div> 
       </mat-tab>
       <mat-tab label="Metadata">
-        <div>
+        <div class="tab-content">
           <h3>[placeholder]</h3> 
         </div>
       </mat-tab>      

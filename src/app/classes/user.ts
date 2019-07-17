@@ -1,12 +1,13 @@
 import { UserCote } from './userCote';
 import { Civil } from './civil';
 import { Contact } from './contact';
-import { Credentials } from './credentials';
+import { Authority } from './authority';
 
 export class User {
    id: string;
    civil: Civil;
    contact: Contact;
-   credentials: Credentials;
+   password: string;
+   authority: Authority;
    userCotes: UserCote[];
 }

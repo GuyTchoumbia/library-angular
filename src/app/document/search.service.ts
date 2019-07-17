@@ -13,16 +13,12 @@ export class SearchService {
 
   constructor(private http: HttpClient) { }
 
-  getResults(): Document[] {
-    /*TODO*/
-    return this.results;
+  requestDetail(id: number): Observable<Document> {
+    return this.http.get<Document>(this.baseUrl + 'id/' + id);
   }
 
-  requestDetail(id: number): Observable<HttpResponse<Document>> {
-    return this.http.get<Document>(this.baseUrl + id, { observe: 'response'});
+  requestList(criteria: string, field: string, value: string): Observable<HttpResponse<Document[]>> {
+    return this.http.get<Document[]>(this.baseUrl + criteria + '/' + field + '/' + value, {observe: 'response'});
   }
-
-  requestList(path: string): Observable<HttpResponse<Document[]>> {
-    return this.http.get<Document[]>(this.baseUrl + path, {observe: 'response'});
-  }
+  
 }

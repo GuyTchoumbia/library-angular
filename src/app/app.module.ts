@@ -17,7 +17,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { MatCheckboxModule } from '@angular/material/checkbox'; 
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { AcceuilComponent } from './acceuil/acceuil.component';
@@ -50,7 +51,8 @@ import { AdvancedSearchComponent } from './advanced-search/advanced-search.compo
     MatDialogModule,
     MatListModule,
     MatExpansionModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSnackBarModule
   ],
   entryComponents: [
     LoginDialogComponent

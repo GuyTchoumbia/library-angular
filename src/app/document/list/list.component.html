@@ -41,8 +41,12 @@
     </div>
   </div>  
 </div>
-<ng-template #noresults>
-  <div class="w-100" >
+<ng-template #noresults >
+  <div class="w-100" id="noresults">
     <h2>Aucun resultats</h2>
+    <button mat-button (click)="goBack()">
+      <i class="material-icons">chevron_left</i>
+      Go Back
+    </button>
   </div>
 </ng-template>
