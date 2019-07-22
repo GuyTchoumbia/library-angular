@@ -20,5 +20,10 @@ export class SearchService {
   requestList(criteria: string, field: string, value: string): Observable<HttpResponse<Document[]>> {
     return this.http.get<Document[]>(this.baseUrl + criteria + '/' + field + '/' + value, {observe: 'response'});
   }
-  
+
+  autocomplete(libelle: string): Observable<Document[]> {
+    console.log('queried');
+    return this.http.get<Document[]>(this.baseUrl + 'autocomplete/' + libelle);
+  }
+
 }

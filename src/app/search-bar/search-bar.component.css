@@ -5,7 +5,7 @@
 }
 
 .material-icons {
-    text-align: center;
+    vertical-align: middle;
 }
 
 #textfield {
@@ -16,7 +16,7 @@
 
 button, a {
     font-size: 18px;  
-    border-radius: 3px;  
+    border-radius: 3px;     
 }
 
 /* .button:hover {
@@ -54,7 +54,4 @@ button, a {
     padding: 3%;
 }
 
-::ng-deep div.mat-menu-panel {    
-    max-width: none;
-}
 

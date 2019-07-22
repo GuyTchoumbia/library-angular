@@ -1,14 +1,14 @@
 #main-menu {
     width: 100%;    
     justify-content: center;
-    text-align: center;
+    text-align: center;    
 }
 
 .menu {
     border: 1px solid #dadce0;
     border-radius: 8px;
     padding: 1%; 
-    height: 150px; 
+    height: 150px;     
 }
 
 .row {
@@ -18,5 +18,10 @@
 .desc {
     border-bottom: 1px solid #dadce0;
     height: 50%;
-    
+    vertical-align: middle;    
+}
+
+.material-icons {
+    font-size: 50px;
+    text-justify: center;
 }

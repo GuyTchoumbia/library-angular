@@ -29,7 +29,6 @@ export class DetailComponent implements OnInit {
     this.route.paramMap.subscribe(
       (params: ParamMap) => {
         const id = +params.get('id');
-        console.log(id);
         this.searchService.requestDetail(id).subscribe(
           response => this.document = response);
       }

@@ -5,8 +5,9 @@ import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
 import { AuthentificationService } from '../authentification.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import {map, startWith, debounceTime, switchMap, filter} from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SearchService } from '../document/search.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -19,11 +20,11 @@ export class SearchBarComponent implements OnInit {
   select = 'any';
   isLoggedIn: boolean;
   username: string;
-  options: string[] = ['One', 'Two', 'Three'];
-  filteredOptions: Observable<string[]>;
+  options: string[];
 
   constructor(public dialog: MatDialog,
               private authService: AuthentificationService,
+              private searchService: SearchService,
               private router: Router,
               private snackBar: MatSnackBar
               ) {
@@ -33,22 +34,22 @@ export class SearchBarComponent implements OnInit {
     this.authService.getIsLoggedIn().subscribe(isLoggedIn => {
       if (isLoggedIn) {
         this.username = this.authService.getUser().value.civil.prenom;
-      }
-      else {
+      } else {
         this.username = undefined;
       }
       this.isLoggedIn = isLoggedIn;
     });
-    this.filteredOptions = this.libelle.valueChanges
+    this.libelle.valueChanges
       .pipe(
-        startWith(''),
-        map(value => this._filter(value))
-      );
+        debounceTime(300),
+        filter(value => value.length > 2),
+        switchMap(value => this.searchService.autocomplete(value))
+      )
+      .subscribe(response => this.options = response.map(value => value.libelle));
   }
 
   private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+    return null;
   }
 
   logOut(): void {

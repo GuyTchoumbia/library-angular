@@ -21,7 +21,7 @@
       </a>        
       <input class="col" id="textfield" matInput type="text"  placeholder=" Recherche de document" value="" [formControl]="libelle" [matAutocomplete]="auto" />
       <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        <mat-option *ngFor="let option of options" [value]="option">
           {{option}}
         </mat-option>
       </mat-autocomplete>          
@@ -45,11 +45,11 @@
       <mat-menu #menu="matMenu">          
         <button mat-menu-item routerLink="/account">                                
           <i class="material-icons">settings</i>
-          <span>Settings</span>                 
+          <span> Settings </span>                 
         </button>        
         <button mat-menu-item (click)="logOut()">
             <i class="material-icons">cancel</i>
-          <span>Logout</span>
+          <span> Logout </span>
         </button>
       </mat-menu>     
     </div>
