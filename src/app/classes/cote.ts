@@ -5,5 +5,5 @@ export class Cote {
     id: number;
     libelle: string;
     library: Library;
-    userCote: UserCote;
+    userCotes: UserCote[];
 }

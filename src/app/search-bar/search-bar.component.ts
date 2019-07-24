@@ -27,7 +27,8 @@ export class SearchBarComponent implements OnInit {
               private searchService: SearchService,
               private router: Router,
               private snackBar: MatSnackBar
-              ) {
+  ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
   ngOnInit() {
@@ -66,7 +67,7 @@ export class SearchBarComponent implements OnInit {
 
   search() {
     if (this.libelle.value !== '') {
-        this.router.navigate(['results', this.select, 'libelle', this.libelle.value]);
+      this.router.navigate(['results', this.select, 'libelle', this.libelle.value]);
     }
   }
 

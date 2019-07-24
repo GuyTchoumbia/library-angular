@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 import { AcceuilComponent } from './acceuil/acceuil.component';
 import { AccountComponent } from './account/account.component';
 import { AdvancedSearchComponent } from './advanced-search/advanced-search.component';
@@ -22,8 +22,12 @@ const routes: Routes = [
   }
 ];
 
+const config: ExtraOptions = {
+  onSameUrlNavigation: 'reload'
+};
+
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, config)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

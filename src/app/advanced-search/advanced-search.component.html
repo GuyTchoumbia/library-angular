@@ -1,10 +1,10 @@
-<div id="advanced-search">
+<div id="advanced-search" [formGroup]="searchParams">
   <h2>Recherche Avancée</h2>
   <div id="criterias" class="box-shadow">
     <section class="flex">
       <div class="col-1"></div>       
       <mat-form-field class="col-4">
-        <input matInput placeholder="Titre" [(ngModel)]="libelle">   
+        <input matInput placeholder="Titre" formControlName="libelle"/>   
         <button mat-button *ngIf="libelle" matSuffix mat-icon-button aria-label="Clear" (click)="libelle=''">
             <mat-icon>close</mat-icon>
           </button>     
@@ -13,7 +13,7 @@
     <section class="flex">
       <div class="col-1"></div>       
       <mat-form-field class="col-4">
-        <input matInput placeholder="Auteur" [(ngModel)]="auteur">   
+        <input matInput placeholder="Auteur" formControlName="auteur"/>   
         <button mat-button *ngIf="auteur" matSuffix mat-icon-button aria-label="Clear" (click)="auteur=''">
             <mat-icon>close</mat-icon>
           </button>     
@@ -22,7 +22,7 @@
     <section class="flex">
       <div class="col-1"></div>       
       <mat-form-field class="col-4">
-        <input matInput placeholder="Editeur" [(ngModel)]="editeur">   
+        <input matInput placeholder="Editeur" formControlName="editeur"/>   
         <button mat-button *ngIf="editeur" matSuffix mat-icon-button aria-label="Clear" (click)="editeur=''">
             <mat-icon>close</mat-icon>
           </button>     
@@ -31,7 +31,7 @@
     <section class="flex">
       <div class="col-1"></div>       
       <mat-form-field class="col-4">
-        <input matInput placeholder="Cote" [(ngModel)]="cote">   
+        <input matInput placeholder="Cote" formControlName="cote"/>   
         <button mat-button *ngIf="cote" matSuffix mat-icon-button aria-label="Clear" (click)="cote=''">
             <mat-icon>close</mat-icon>
           </button>     
@@ -40,8 +40,17 @@
     <section class="flex">
       <div class="col-1"></div>       
       <mat-form-field class="col-4">
-        <input matInput placeholder="Isbn" [(ngModel)]="isbn">   
+        <input matInput placeholder="Isbn" formControlName="isbn"/>   
         <button mat-button *ngIf="isbn" matSuffix mat-icon-button aria-label="Clear" (click)="isbn=''">
+            <mat-icon>close</mat-icon>
+          </button>     
+      </mat-form-field>
+    </section>
+    <section class="flex">
+      <div class="col-1"></div>       
+      <mat-form-field class="col-4">
+        <input matInput placeholder="Tag" formControlName="tag"/>   
+        <button mat-button *ngIf="tag" matSuffix mat-icon-button aria-label="Clear" (click)="tag=''">
             <mat-icon>close</mat-icon>
           </button>     
       </mat-form-field>
@@ -49,24 +58,18 @@
     <mat-divider></mat-divider>    
     <section>
       <h6>Bibliotheque</h6>
-      <div class="flex justify-content-around">
-        <mat-checkbox>1er arrondissement</mat-checkbox>
-        <mat-checkbox>2eme arrondissement</mat-checkbox>
-        <mat-checkbox>3eme arrondissement</mat-checkbox>
-        <mat-checkbox>4eme arrondissement</mat-checkbox>
-        <mat-checkbox>5eme arrondissement</mat-checkbox>
+      <div class="flex justify-content-around"  formArrayName="libraries">
+          <mat-checkbox *ngFor="let library of libraries; let i=index" [formControlName]="i">{{library.libelle}}</mat-checkbox>          
       </div>
     </section>
     <mat-divider></mat-divider>    
     <section>
         <h6>Support</h6>
-        <div class="flex justify-content-start">
-          <mat-checkbox>Livre</mat-checkbox>
-          <mat-checkbox>CD</mat-checkbox>
-          <mat-checkbox>Presse</mat-checkbox>
-          <mat-checkbox>Video</mat-checkbox> 
+        <div class="flex justify-content-start" formArrayName="supports">
+          <mat-checkbox *ngFor="let support of supports; let i=index" [formControlName]="i">{{support.libelle}}</mat-checkbox>           
         </div>
       </section>
+      <mat-divider></mat-divider>
       <section>
         <div class="flex justify-content-end">
           <a class="col-2" mat-button (click)="search()">

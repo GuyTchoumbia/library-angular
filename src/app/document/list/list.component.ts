@@ -13,46 +13,31 @@ import { SlicePipe, Location } from '@angular/common';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  results: Document[] = [];
-  results$ = new Observable<Document>();
+  results: Document[];
   filtersMap = new Map<string, string>();
   filters: [string, string][] = [];
 
   paginatorSize = 10;
-  paginatedResults = this.results.slice(0, this.paginatorSize);
-  paginatedResults$ = this.results$.pipe(
-    filter((value, index) => index < this.paginatorSize)
-    );
-  paginatorLength = this.paginatedResults.length;
+  paginatedResults: Document[];
+  paginatorLength: number;
   pageSizeOptions: number[] = [5, 10, 20];
 
   pageEvent: PageEvent;
 
-  constructor(private searchService: SearchService,
-              private route: ActivatedRoute,
-              private location: Location) {}
+  constructor(private location: Location,
+              private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
-    this.getResults();
-  }
-
-  getResults() {
-    this.route.paramMap.subscribe(
-      params => {
-        const criteria =  params.get('criteria');
-        const field = params.get('field');
-        const value =  params.get('value');
-        this.searchService.requestList(criteria, field, value).subscribe(response => {
-          this.results = response.body;
-          this.paginatedResults = this.results.slice(0, this.paginatorSize);
-        });
-      }
-    );
+    this.route.data.subscribe((data: { results: Document[] }) => {
+      this.results = data.results;
+      this.paginatedResults = this.results.slice(0, this.paginatorSize);
+      this.paginatorLength = this.paginatedResults.length;
+    });
   }
 
   onAddFilter(filter: [string, string]) {
     this.filtersMap.set(filter[0], filter[1]);
-    console.log(this.filtersMap);
     this.applyFilters();
     this.filters = Array.from(this.filtersMap);
   }

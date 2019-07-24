@@ -7,7 +7,7 @@
   </div>
   <div class="box-shadow" id="document">
     <div class="row no-gutters align-items-center" id="header">
-      <div class="col-1 icon" [ngSwitch]="document.support.id">      
+      <div class="col-1 icon" [ngSwitch]="document?.support.id">      
         <i class="material-icons" *ngSwitchCase="1">book</i>
         <i class="material-icons" *ngSwitchCase="2">album</i>
         <i class="material-icons" *ngSwitchCase="3">help_outline</i>
@@ -17,12 +17,12 @@
       <div class="col desc">
         <h4>{{document.libelle}}</h4>    
         <div>
-            Auteur: <a *ngFor="let auteur of document.auteurs" routerLink="/results/auteur/id/{{auteur.id}}">
+            Auteur: <a *ngFor="let auteur of document?.auteurs" routerLink="" (click)="getDocumentsOf('auteur', auteur)">
               {{auteur.libelle}}
             </a>
         </div>   
         <div>
-            Editeur: <a routerLink="/results/editeur/id/{{document.editeur.id}}">
+            Editeur: <a routerLink="" (click)="getDocumentsOf('editeur', document.editeur)">
               {{document.editeur.libelle}}
             </a>
         </div>   
@@ -35,8 +35,15 @@
       <mat-tab label="Exemplaires">
         <div class="tab-content">
           <div *ngFor="let cote of document.cotes"> 
-            <a routerLink="/cote/{{cote.libelle}}">{{cote.libelle}} </a>
-            <span>: {{cote.library.libelle}} </span>          
+            {{cote.libelle}}
+            <span>: {{cote.library.libelle}} </span> 
+            <div *ngIf="isAvailable(cote); then available else notAvailable" ></div>    
+            <ng-template #available>
+              <span> - En rayon</span>
+            </ng-template>
+            <ng-template #notAvailable>
+              <span> - Date de retour prévue : {{dateRetour | date:"shortDate"}}</span>
+            </ng-template>     
           </div>
         </div> 
       </mat-tab>

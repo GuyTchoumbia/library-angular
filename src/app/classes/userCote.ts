@@ -6,4 +6,5 @@ export class UserCote {
     cote: Cote;
     dateEmprunt: Date;
     dateReservation: Date;
+    dateRetour: Date;
 }
