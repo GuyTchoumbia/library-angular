@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -27,6 +27,7 @@ import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 
 import { AuthenticationService } from './auth/authentication.service';
 import { AdvancedSearchComponent } from './advanced-search/advanced-search.component';
+import { httpInterceptorProviders } from 'src';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,10 @@ import { AdvancedSearchComponent } from './advanced-search/advanced-search.compo
   entryComponents: [
     LoginDialogComponent
   ],
-  providers: [AuthenticationService],
+  providers: [
+    AuthenticationService,
+    httpInterceptorProviders
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
