@@ -36,12 +36,14 @@ export class ListComponent implements OnInit {
     });
   }
 
+  // tslint:disable-next-line: no-shadowed-variable
   onAddFilter(filter: [string, string]) {
     this.filtersMap.set(filter[0], filter[1]);
     this.applyFilters();
     this.filters = Array.from(this.filtersMap);
   }
 
+  // tslint:disable-next-line: no-shadowed-variable
   removeFilter(filter: [string, string]) {
     this.filtersMap.delete(filter[0]);
     this.applyFilters();

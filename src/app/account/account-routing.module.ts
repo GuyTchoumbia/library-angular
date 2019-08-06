@@ -5,27 +5,35 @@ import { AccountDocumentsComponent } from './account-documents/account-documents
 import { AccountReservationsComponent } from './account-reservations/account-reservations.component';
 import { AccountInfoComponent } from './account-info/account-info.component';
 import { AccountComponent } from './account.component';
+import { AuthGuard } from '../auth/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: AccountComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
-        component: AccountMainComponent
-      },
-      {
-        path: 'info',
-        component: AccountInfoComponent
-      },
-      {
-        path: 'documents',
-        component: AccountDocumentsComponent
-      },
-      {
-        path: 'reservations',
-        component: AccountReservationsComponent
+        canActivateChild: [AuthGuard],
+        children: [
+          {
+            path: '',
+            component: AccountMainComponent
+          },
+          {
+            path: 'info',
+            component: AccountInfoComponent
+          },
+          {
+            path: 'documents',
+            component: AccountDocumentsComponent
+          },
+          {
+            path: 'reservations',
+            component: AccountReservationsComponent
+          }
+        ]
       }
     ]
   }

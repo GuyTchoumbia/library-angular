@@ -10,12 +10,12 @@
       <h4>{{document.libelle}}</h4> 
     </a>   
     <div>
-      Auteur: <a *ngFor="let auteur of document.auteurs" routerLink="" (click)="getDocumentsOf('auteur', auteur.id)">
+      Auteur: <a *ngFor="let auteur of document.auteurs" routerLink="/results/auteur/id/{{auteur.id}}">
         {{auteur.libelle}}
       </a>
     </div>   
     <div>
-      Editeur: <a routerLink="" (click)="getDocumentsOf('editeur', document.editeur.id)">
+      Editeur: <a routerLink="/results/editeur/id/{{document.editeur.id}}">
         {{document.editeur.libelle}}
       </a>
     </div>   
@@ -23,7 +23,7 @@
       Date: {{document.date}}
     </div>
     <div>
-      Tag: <a *ngFor="let tag of document.tags" routerLink="" (click)="getDocumentsOf('tag', tag.id)">
+      Tag: <a *ngFor="let tag of document.tags" routerLink="/results/tag/id/{{tag.id}}">
         {{tag.libelle}}
       </a>
     </div>

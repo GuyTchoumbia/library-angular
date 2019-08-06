@@ -17,12 +17,12 @@
       <div class="col desc">
         <h4>{{document.libelle}}</h4>    
         <div>
-            Auteur: <a *ngFor="let auteur of document?.auteurs" routerLink="" (click)="getDocumentsOf('auteur', auteur)">
+            Auteur: <a *ngFor="let auteur of document?.auteurs" routerLink="/results/auteur/id/{{auteur.id}}">
               {{auteur.libelle}}
             </a>
         </div>   
         <div>
-            Editeur: <a routerLink="" (click)="getDocumentsOf('editeur', document.editeur)">
+            Editeur: <a routerLink="/results/editeur/id/{{document.editeur.id}}">
               {{document.editeur.libelle}}
             </a>
         </div>   

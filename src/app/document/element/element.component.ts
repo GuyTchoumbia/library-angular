@@ -23,9 +23,4 @@ export class ElementComponent implements OnInit {
     this.router.navigate(['results', 'detail', this.document.id]);
   }
 
-  getDocumentsOf(criteria: string, id: number) {
-    this.searchService.requestList(criteria, 'id', id.toString());
-    this.router.navigate(['/results']);
-  }
-
 }

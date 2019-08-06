@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { AuthentificationService } from 'src/app/authentification.service';
+import { AuthenticationService } from 'src/app/auth/authentication.service';
 import { User } from 'src/app/classes/user';
 
 @Component({
@@ -13,7 +13,7 @@ export class AccountInfoComponent implements OnInit {
   addressForm: FormGroup;
 
   constructor(
-    private authService: AuthentificationService,
+    private authService: AuthenticationService,
     private formBuilder: FormBuilder
   ) { }
 

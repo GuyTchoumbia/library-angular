@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthentificationService } from '../../authentification.service';
+import { AuthenticationService } from 'src/app/auth/authentication.service';
 import { UserCote } from '../../classes/userCote';
 
 @Component({
@@ -10,10 +10,10 @@ import { UserCote } from '../../classes/userCote';
 export class AccountReservationsComponent implements OnInit {
   userReservations: UserCote[];
 
-  constructor(private authService: AuthentificationService) { }
+  constructor(private authService: AuthenticationService) { }
 
   ngOnInit() {
-    this.authService.getUser().subscribe(user => this.userReservations = user.userCotes.filter(element => element.dateReservation != null))
+    this.authService.getUser().subscribe(user => this.userReservations = user.userCotes.filter(element => element.dateReservation != null));
   }
 
 }

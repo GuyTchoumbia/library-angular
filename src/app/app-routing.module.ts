@@ -23,11 +23,12 @@ const routes: Routes = [
 ];
 
 const config: ExtraOptions = {
-  onSameUrlNavigation: 'reload'
+  enableTracing: true,
+  onSameUrlNavigation: 'reload',
 };
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, config)],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

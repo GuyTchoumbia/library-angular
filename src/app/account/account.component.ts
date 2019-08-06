@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../classes/user';
-import { AuthentificationService } from '../authentification.service';
+import { AuthenticationService } from '../auth/authentication.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 
@@ -14,7 +14,7 @@ export class AccountComponent implements OnInit {
   addressForm: FormGroup;
 
   constructor(
-    private authService: AuthentificationService,
+    private authService: AuthenticationService,
     private formBuilder: FormBuilder
   ) { }
 

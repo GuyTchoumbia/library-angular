@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
-import { AuthentificationService } from '../authentification.service';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import {map, startWith, debounceTime, switchMap, filter} from 'rxjs/operators';
+import { AuthenticationService } from '../auth/authentication.service';
+import { Router, NavigationStart, NavigationEnd, ResolveStart, ResolveEnd, Event } from '@angular/router';
+import {debounceTime, switchMap, filter, map} from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SearchService } from '../document/search.service';
+import { calcPossibleSecurityContexts } from '@angular/compiler/src/template_parser/binding_parser';
 
 @Component({
   selector: 'app-search-bar',
@@ -21,36 +21,51 @@ export class SearchBarComponent implements OnInit {
   isLoggedIn: boolean;
   username: string;
   options: string[];
+  progressBarValue: number;
 
   constructor(public dialog: MatDialog,
-              private authService: AuthentificationService,
+              private authService: AuthenticationService,
               private searchService: SearchService,
               private router: Router,
               private snackBar: MatSnackBar
-  ) {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-  }
+  ) { }
 
   ngOnInit() {
+    // checks if loggedIn
     this.authService.getIsLoggedIn().subscribe(isLoggedIn => {
       if (isLoggedIn) {
-        this.username = this.authService.getUser().value.civil.prenom;
+        this.authService.getUser().subscribe(user => {
+          this.username = user.civil.nom + ' ' + user.civil.prenom;
+        });
       } else {
         this.username = undefined;
       }
       this.isLoggedIn = isLoggedIn;
     });
+    // autocomplete
     this.libelle.valueChanges
       .pipe(
         debounceTime(300),
-        filter(value => value.length > 2),
-        switchMap(value => this.searchService.autocomplete(value))
+        filter((value: string) => value.length > 2),
+        switchMap(value => this.searchService.autocomplete(value)),
       )
       .subscribe(response => this.options = response.map(value => value.libelle));
-  }
 
-  private _filter(value: string): string[] {
-    return null;
+    // progress bar
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationStart) {
+        this.progressBarValue = 10;
+      }
+      if (event instanceof ResolveStart) {
+        this.progressBarValue = 20;
+      }
+      if (event instanceof ResolveEnd) {
+        this.progressBarValue = 50;
+      }
+      if (event instanceof NavigationEnd) {
+        this.progressBarValue = 100;
+      }
+    });
   }
 
   logOut(): void {
@@ -69,6 +84,10 @@ export class SearchBarComponent implements OnInit {
     if (this.libelle.value !== '') {
       this.router.navigate(['results', this.select, 'libelle', this.libelle.value]);
     }
+  }
+
+  onAnimationEnd(event: Event) {
+    this.progressBarValue = 0;
   }
 
 }

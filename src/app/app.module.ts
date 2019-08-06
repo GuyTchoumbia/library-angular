@@ -19,12 +19,13 @@ import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { AcceuilComponent } from './acceuil/acceuil.component';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 
-import { AuthentificationService } from './authentification.service';
+import { AuthenticationService } from './auth/authentication.service';
 import { AdvancedSearchComponent } from './advanced-search/advanced-search.component';
 
 @NgModule({
@@ -52,12 +53,13 @@ import { AdvancedSearchComponent } from './advanced-search/advanced-search.compo
     MatListModule,
     MatExpansionModule,
     MatCheckboxModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressBarModule
   ],
   entryComponents: [
     LoginDialogComponent
   ],
-  providers: [AuthentificationService],
+  providers: [AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

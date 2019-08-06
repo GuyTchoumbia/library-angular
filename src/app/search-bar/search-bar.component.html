@@ -54,6 +54,7 @@
       </mat-menu>     
     </div>
     <div class="col-1"></div>
-  </div>               
+  </div>
+  <mat-progress-bar mode="determinate" [value]="progressBarValue" (animationEnd)="onAnimationEnd($event)"></mat-progress-bar>               
 </div>
 
