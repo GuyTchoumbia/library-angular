@@ -62,7 +62,6 @@ import { httpInterceptorProviders } from 'src';
   ],
   providers: [
     AuthenticationService,
-    httpInterceptorProviders
   ],
   bootstrap: [AppComponent]
 })

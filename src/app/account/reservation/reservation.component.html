@@ -14,18 +14,17 @@
             {{auteur.libelle}}
           </a>
       </div>  
-      <div class="row">
-        <div class="col-2">
+      <div>
+        <span>
           Côte: {{userCote.cote.libelle}}
-        </div>
-        <div class="col-3">
-          {{userCote.cote.library.libelle}}
-        </div>
-        <div class="col-5">
-          Date de réservation: {{userCote.dateReservation| date:"shortDate"}}
-        </div>
-        
+        </span>
       </div>
+      <div>
+        <span>{{userCote.cote.library.libelle}}</span>
+      </div>
+      <div>
+        <span>Date de réservation: {{userCote.dateReservation| date:"shortDate"}}</span>
+      </div>     
     </div>
   </div>
   

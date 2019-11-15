@@ -13,6 +13,7 @@ import { ReservationComponent } from './reservation/reservation.component';
 import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { MatDividerModule } from '@angular/material/divider';
     AccountRoutingModule,
     MatListModule,
     MatExpansionModule,
-    MatDividerModule
+    MatDividerModule,
+    MatButtonModule
   ]
 })
 export class AccountModule { }

@@ -18,7 +18,10 @@
 .desc {
     border-bottom: 1px solid #dadce0;
     height: 50%;
-    vertical-align: middle;    
+    vertical-align: middle;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    align-items: center; 
 }
 
 .material-icons {

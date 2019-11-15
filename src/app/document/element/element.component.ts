@@ -19,6 +19,7 @@ export class ElementComponent implements OnInit {
 
   }
 
+  // routing to the page detailing the document
   getDetail() {
     this.router.navigate(['results', 'detail', this.document.id]);
   }

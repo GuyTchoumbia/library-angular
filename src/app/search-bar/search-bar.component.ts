@@ -80,6 +80,7 @@ export class SearchBarComponent implements OnInit {
     });
   }
 
+  // navigates to the search result page, passing the search arguments.
   search() {
     if (this.libelle.value !== '') {
       this.router.navigate(['results', this.select, 'libelle', this.libelle.value]);

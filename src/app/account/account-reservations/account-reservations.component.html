@@ -1,4 +1,10 @@
 <div id="reservations">
+  <div class="row d-inline d-md-none">    
+    <button mat-button (click)="goBack()">
+      <i class="material-icons">chevron_left</i>
+      Go Back To Account Page
+    </button>
+  </div> 
     <div class="document row" *ngFor="let userCote of userReservations">
       <app-reservation class="w-100" [userCote]="userCote"></app-reservation>
     </div>

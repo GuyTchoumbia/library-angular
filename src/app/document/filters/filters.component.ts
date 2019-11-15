@@ -28,6 +28,10 @@ export class FiltersComponent implements OnInit {
 
   ngOnInit() { }
 
+  // the main function of the filter component
+  // counts occurences of field titles in the list of results,
+  // places them in a map where the key is the title (libelle field) and the value is the count number.
+  // then converts it into an array (because the framework unfortunately only works with arrays)
   getMap(results: Document[], property: string): any {
     const map = new Map<string, number>();
     results
@@ -43,6 +47,7 @@ export class FiltersComponent implements OnInit {
     return Array.from(map);
   }
 
+  // passes the filter paramater (a key/value pair) to the result component
   addFilter(key: string, value: string) {
     this.filter.emit([key, value]);
   }

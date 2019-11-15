@@ -16,6 +16,8 @@ export class DetailResolverService implements Resolve<Document> {
               private snackBar: MatSnackBar
   ) { }
 
+  // resolver: this is where the request to the api is actually made, before the page is loaded
+  // a snackbar is displayed in case of failure
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Document> | Observable<never> {
     const id = +route.paramMap.get('id');
     return this.searchService.requestDetail(id).pipe(

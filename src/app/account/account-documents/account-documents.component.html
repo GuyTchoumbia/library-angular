@@ -1,4 +1,10 @@
 <div id="documents">
+  <div class="row d-inline d-md-none">    
+    <button mat-button (click)="goBack()">
+      <i class="material-icons">chevron_left</i>
+      Go Back To Account Page
+    </button>
+  </div> 
   <div class="document row" *ngFor="let userCote of userDocuments">
     <app-emprunt class="w-100" [userCote]="userCote"></app-emprunt>
   </div>

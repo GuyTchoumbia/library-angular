@@ -22,6 +22,7 @@ export class LoginDialogComponent implements OnInit {
   ngOnInit() {
   }
 
+
   logIn(): void {
     if (this.username === '' || this.password === '') {
       this.snackBar.open('Missing Fields', 'Error', { duration: 3000, } );

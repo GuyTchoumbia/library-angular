@@ -39,10 +39,10 @@ export class DetailComponent implements OnInit {
     this.searchService.requestList(criteria, 'id', id.toString());
     this.router.navigate(['/results']);
   }
+
   // determine if the cote is available; if not, also stores the due date
   isAvailable(cote: Cote): boolean {
     let isAvailable = true;
-
     cote.userCotes.forEach((userCote: UserCote) => {
       if (isNullOrUndefined(userCote.dateRetour) && !isNullOrUndefined(userCote.dateEmprunt)) {
         isAvailable = false;

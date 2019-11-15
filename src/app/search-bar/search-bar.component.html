@@ -1,13 +1,13 @@
 <div class="w-100">
   <div class="row justify-content-end align-items-center" id="searchbar"> 
-    <div class="col-1">
+    <div class="col-2 col-sm-1 col-md-1 col-lg-1">
       <button mat-button routerLink="/">
         <i class="material-icons">home</i>
-        Home
+        <span class="d-none d-sm-inline">Home</span>
       </button>
     </div>   
-    <div class="col-2"></div>
-    <div class="col-1"> 
+    <div class="col-sm-1 col-md-1 col-lg-2 d-none d-sm-inline"></div>
+    <div class="col-1 col-sm-2 col-md-2 col-lg-1"> 
         <mat-select [(value)]="select">
             <mat-option value="any">Tous</mat-option>
           <mat-option value="document">Titre</mat-option>
@@ -15,11 +15,11 @@
           <mat-option value="editeur">Editeur</mat-option>        
         </mat-select> 
     </div>
-    <div class="col-4 flex justify-content-end" id="input">  
+    <div class="col-7 col-sm-4 col-md-4 col-lg-4 flex justify-content-center" id="input">  
       <a routerLink="/advancedSearch" id="advanced-search-button" mat-flat-button >
         <i class="material-icons">add</i>        
       </a>        
-      <input class="col" id="textfield" matInput type="text"  placeholder=" Recherche de document" value="" [formControl]="libelle" [matAutocomplete]="auto" />
+      <input class="col col-sm col-md col-lg" id="textfield" matInput type="text"  placeholder=" Recherche de document" value="" [formControl]="libelle" [matAutocomplete]="auto" />
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let option of options" [value]="option">
           {{option}}
@@ -28,18 +28,17 @@
       <button id="search-button" mat-flat-button (click)="search()">
         <i class="material-icons">search</i>
       </button>      
-    </div>
-    <div class="col-2"></div>
-    <div class="col-2" *ngIf="!isLoggedIn">
+    </div>    
+    <div class="col-2 col-sm-4 col-md-4 col-lg-4" *ngIf="!isLoggedIn">
       <button mat-button (click)="openLoginDialog()" class="button">
           <i class="material-icons">vpn_key</i>
-        <span> Login</span>
+        <span class="d-none d-sm-inline"> Login</span>
       </button>
     </div>    
-    <div class="col-2" *ngIf="isLoggedIn">      
+    <div class="col-2 col-sm-4 col-md-4 col-lg-4" *ngIf="isLoggedIn">      
       <button mat-button [matMenuTriggerFor]="menu" class="button">        
         <i class="material-icons">account_circle</i>
-        {{username}}                
+        <span class="d-none d-sm-inline">{{username}}</span>                
         <i class="material-icons">arrow_drop_down</i>
       </button>
       <mat-menu #menu="matMenu">          
@@ -52,8 +51,7 @@
           <span> Logout </span>
         </button>
       </mat-menu>     
-    </div>
-    <div class="col-1"></div>
+    </div>    
   </div>
   <mat-progress-bar mode="determinate" [value]="progressBarValue" (animationEnd)="onAnimationEnd($event)"></mat-progress-bar>               
 </div>

@@ -1,10 +1,10 @@
 <div id="list" *ngIf="results.length != 0; else noresults">
   <div class="w-100 header">    
     <div class="row justify-content-between">
-      <div class="col-2" id="title">
+      <div class="col col-sm-3 col-md-3 col-lg-2" id="title">
         <h3>Results: {{results.length}}</h3> 
       </div>
-      <mat-form-field class="col-2" id="select">
+      <mat-form-field class="col-3 col-sm-3 col-md-3 col-lg-2" id="select">
         <mat-label>Sorting</mat-label>
         <mat-select (valueChange)="sort($event)">
           <mat-option>None</mat-option>
@@ -15,7 +15,7 @@
       </mat-form-field>
     </div>
     <div class="row align-items-center justify-content-between">
-      <div class="col" id="filtering">
+      <div id="filtering">
         <mat-chip-list [style.visibility]="filters.length? 'visible' : 'hidden'"> 
           <mat-chip *ngFor="let filter of filters" [selectable]="true"
             [removable]="true" (removed)="removeFilter(filter)">
@@ -24,7 +24,7 @@
           </mat-chip> 
         </mat-chip-list> 
       </div>    
-      <mat-paginator class="col" 
+      <mat-paginator  
         [length]="paginatorLength"
         [pageSize]="paginatorSize"
         [pageSizeOptions]="pageSizeOptions"
@@ -33,7 +33,7 @@
     </div> 
   </div>  
   <div class="row">
-    <div class="col-2 filters box-shadow">    
+    <div class="col-sm-2 col-md-2 col-lg-2 filters box-shadow">    
       <app-filters [results]="results" (filter)="onAddFilter($event)"></app-filters> 
     </div>
     <div class="col results">    
