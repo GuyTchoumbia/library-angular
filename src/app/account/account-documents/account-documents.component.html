@@ -6,6 +6,6 @@
     </button>
   </div> 
   <div class="document row" *ngFor="let userCote of userDocuments">
-    <app-emprunt class="w-100" [userCote]="userCote"></app-emprunt>
+    <app-emprunt class="w-100" [userCote]="userCote" (extendEvent)=onExtend($event)></app-emprunt>
   </div>
 </div>

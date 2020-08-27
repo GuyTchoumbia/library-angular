@@ -6,6 +6,7 @@ import { Library } from '../classes/library';
 import { Support } from '../classes/support';
 import { take, catchError } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserCote } from '../classes/userCote';
 
 @Injectable({
   providedIn: 'root'
@@ -48,10 +49,30 @@ export class SearchService {
     return this.http.get<Library[]>(this.baseUrl + 'library/all');
   }
 
+  // get the info for a single library, used in page for info and opening hours
+  getLibrary(id: number): Observable<Library> {
+    return this.http.get<Library>(this.baseUrl + 'library/' + id);
+  }
+
   // search for a list of support titles
   getAllSupports(): Observable<Support[]> {
     return this.http.get<Support[]>(this.baseUrl + 'support/all');
   }
+
+  // reservation request
+  reserve(coteId: number, userId: number): Observable<any> {
+    return this.http.get<any>(this.baseUrl + 'usercote/reserve/cote/' + coteId + '/user/' + userId);
+  }
+
+  // cancel reservation request
+  cancelReserve(id: number): Observable<any> {
+    return this.http.get<any>(this.baseUrl + 'usercote/delete/' + id);
+  }
+
+  extend(id: number): Observable<UserCote> {
+    return this.http.get<UserCote>(this.baseUrl + 'usercote/extend/' + id);
+  }
+
 
   // accessors
 

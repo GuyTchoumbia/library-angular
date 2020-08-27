@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { UserCote } from '../../classes/userCote';
+import { User } from 'src/app/classes/user';
 
 @Component({
   selector: 'app-emprunt',
@@ -9,10 +10,15 @@ import { UserCote } from '../../classes/userCote';
 export class EmpruntComponent implements OnInit {
 
   @Input() userCote: UserCote;
+  @Output() extendEvent = new EventEmitter<UserCote>();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  extend(userCote: UserCote) {
+    this.extendEvent.emit(userCote);
   }
 
 }

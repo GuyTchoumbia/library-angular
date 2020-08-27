@@ -1,69 +1,75 @@
-<div id="advanced-search" [formGroup]="searchParams">
+<div id="advanced-search" [formGroup]="searchParams" appAtLeastOneRequired>
   <h2>Recherche Avancée</h2>
+  <div *ngIf="searchParams.errors?.atLeastOneRequired" class="cross-validation-error-message alert alert-danger">
+    Name cannot match alter ego.
+  </div>
   <div id="criterias" class="box-shadow">
-    <section class="flex">
-      <div class="col-1"></div>       
-      <mat-form-field class="col col-sm-6 col-md-6 col-lg-4">
-        <input matInput placeholder="Titre" formControlName="libelle"/>   
-        <button mat-button *ngIf="libelle" matSuffix mat-icon-button aria-label="Clear" (click)="libelle=''">
-            <mat-icon>close</mat-icon>
-          </button>     
-      </mat-form-field>
-    </section>
-    <section class="flex">
-      <div class="col-1"></div>       
-      <mat-form-field class="col col-sm-6 col-md-6 col-lg-4">
-        <input matInput placeholder="Auteur" formControlName="auteur"/>   
-        <button mat-button *ngIf="auteur" matSuffix mat-icon-button aria-label="Clear" (click)="auteur=''">
-            <mat-icon>close</mat-icon>
-          </button>     
-      </mat-form-field>
-    </section>
-    <section class="flex">
-      <div class="col-1"></div>       
-      <mat-form-field class="col col-sm-6 col-md-6 col-lg-4">
-        <input matInput placeholder="Editeur" formControlName="editeur"/>   
-        <button mat-button *ngIf="editeur" matSuffix mat-icon-button aria-label="Clear" (click)="editeur=''">
-            <mat-icon>close</mat-icon>
-          </button>     
-      </mat-form-field>
-    </section>
-    <section class="flex">
-      <div class="col-1"></div>       
-      <mat-form-field class="col col-sm-6 col-md-6 col-lg-4">
-        <input matInput placeholder="Cote" formControlName="cote"/>   
-        <button mat-button *ngIf="cote" matSuffix mat-icon-button aria-label="Clear" (click)="cote=''">
-            <mat-icon>close</mat-icon>
-          </button>     
-      </mat-form-field>
-    </section>
-    <section class="flex">
-      <div class="col-1"></div>       
-      <mat-form-field class="col col-sm-6 col-md-6 col-lg-4">
-        <input matInput placeholder="Isbn" formControlName="isbn"/>   
-        <button mat-button *ngIf="isbn" matSuffix mat-icon-button aria-label="Clear" (click)="isbn=''">
-            <mat-icon>close</mat-icon>
-          </button>     
-      </mat-form-field>
-    </section>
-    <section class="flex">
-      <div class="col-1"></div>       
-      <mat-form-field class="col col-sm-6 col-md-6 col-lg-4">
-        <input matInput placeholder="Tag" formControlName="tag"/>   
-        <button mat-button *ngIf="tag" matSuffix mat-icon-button aria-label="Clear" (click)="tag=''">
-            <mat-icon>close</mat-icon>
-          </button>     
-      </mat-form-field>
-    </section>
-    <mat-divider></mat-divider>    
-    <section>
-      <h6>Bibliotheque</h6>
-      <div class="flex justify-content-around"  formArrayName="libraries">
-          <mat-checkbox *ngFor="let library of libraries; let i=index" [formControlName]="i">{{library.libelle}}</mat-checkbox>          
-      </div>
-    </section>
-    <mat-divider></mat-divider>    
-    <section>
+    <div formGroupName="textinputs">
+      <section class="flex">
+        <div class="col-1"></div>       
+        <mat-form-field class="col col-sm-6 col-md-6 col-lg-4">
+          <input matInput placeholder="Titre" formControlName="libelle"/>   
+          <button mat-button *ngIf="libelle" matSuffix mat-icon-button aria-label="Clear" (click)="libelle=''">
+              <mat-icon>close</mat-icon>
+            </button>     
+        </mat-form-field>
+      </section>
+      <section class="flex">
+        <div class="col-1"></div>       
+        <mat-form-field class="col col-sm-6 col-md-6 col-lg-4">
+          <input matInput placeholder="Auteur" formControlName="auteur"/>   
+          <button mat-button *ngIf="auteur" matSuffix mat-icon-button aria-label="Clear" (click)="auteur=''">
+              <mat-icon>close</mat-icon>
+            </button>     
+        </mat-form-field>
+      </section>
+      <section class="flex">
+        <div class="col-1"></div>       
+        <mat-form-field class="col col-sm-6 col-md-6 col-lg-4">
+          <input matInput placeholder="Editeur" formControlName="editeur"/>   
+          <button mat-button *ngIf="editeur" matSuffix mat-icon-button aria-label="Clear" (click)="editeur=''">
+              <mat-icon>close</mat-icon>
+            </button>     
+        </mat-form-field>
+      </section>
+      <section class="flex">
+        <div class="col-1"></div>       
+        <mat-form-field class="col col-sm-6 col-md-6 col-lg-4">
+          <input matInput placeholder="Cote" formControlName="cote"/>   
+          <button mat-button *ngIf="cote" matSuffix mat-icon-button aria-label="Clear" (click)="cote=''">
+              <mat-icon>close</mat-icon>
+            </button>     
+        </mat-form-field>
+      </section>
+      <section class="flex">
+        <div class="col-1"></div>       
+        <mat-form-field class="col col-sm-6 col-md-6 col-lg-4">
+          <input matInput placeholder="Isbn" formControlName="isbn"/>   
+          <button mat-button *ngIf="isbn" matSuffix mat-icon-button aria-label="Clear" (click)="isbn=''">
+              <mat-icon>close</mat-icon>
+            </button>     
+        </mat-form-field>
+      </section>
+      <section class="flex">
+        <div class="col-1"></div>       
+        <mat-form-field class="col col-sm-6 col-md-6 col-lg-4">
+          <input matInput placeholder="Tag" formControlName="tag"/>   
+          <button mat-button *ngIf="tag" matSuffix mat-icon-button aria-label="Clear" (click)="tag=''">
+              <mat-icon>close</mat-icon>
+            </button>     
+        </mat-form-field>
+      </section>
+    </div>
+    <mat-divider></mat-divider>  
+    <div formGroupName="checkboxes">  
+      <section>
+        <h6>Bibliotheque</h6>
+        <div class="flex justify-content-around"  formArrayName="libraries">
+            <mat-checkbox *ngFor="let library of libraries; let i=index" [formControlName]="i">{{library.libelle}}</mat-checkbox>          
+        </div>
+      </section>
+      <mat-divider></mat-divider>    
+      <section>
         <h6>Support</h6>
         <div class="flex justify-content-start" formArrayName="supports">
           <mat-checkbox *ngFor="let support of supports; let i=index" [formControlName]="i">{{support.libelle}}</mat-checkbox>           
@@ -82,5 +88,6 @@
           </button>
         </div>
       </section>
+    </div>
   </div> 
 </div>

@@ -1,8 +1,47 @@
 <div class="w-100">
   <div class="row">
-    <div class=col-8>
-      <h1>[Placeholder]</h1>
+    <div class="col-md-4 col-lg-3 d-none d-md-block">
+      <div>
+        <h3>Informations</h3>
+      </div>
+      <div class="header">
+        <button mat-button (click)="toggleBiblio()">
+          <span>Horaires et adresse</span>
+          <mat-icon *ngIf="!isBiblioClicked">chevron_right</mat-icon>
+          <mat-icon *ngIf="isBiblioClicked">expand_more</mat-icon>
+        </button>
+        <div class="sub-menu" [@toggleBiblio]="isBiblioClicked? 'open' : 'closed'">
+          <div *ngFor="let library of libraries" >
+            <a routerLink="/accueil/biblio/{{library.id}}" mat-button>
+              <span>{{library.libelle}}</span>
+            </a>  
+          </div>          
+        </div>      
+      </div>
+      <div class="header">
+        <button mat-button (click)="toggleModal()">
+          <span> Modalités</span>
+          <mat-icon *ngIf="!isModalClicked">chevron_right</mat-icon> 
+          <mat-icon *ngIf="isModalClicked">expand_more</mat-icon>   
+        </button>
+        <div class="sub-menu" [@toggleModal]="isModalClicked? 'open' : 'closed'">
+          <div>
+            <a routerLink="/accueil/emprunter" mat-button>
+              <span>Emprunter, réserver</span>
+            </a>
+          </div>
+          <div>
+            <a routerLink="/accueil/inscription" mat-button>
+              <span>Inscription</span>      
+            </a> 
+          </div> 
+        </div>             
+      </div>      
+    </div>
+    <div class="col-11 col-sm-11 col-md-7 col-lg-6">
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>
+
 

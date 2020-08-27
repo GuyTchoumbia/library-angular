@@ -1,13 +1,13 @@
   <div class="col-1 icon" [ngSwitch]="document.support.id">      
     <i class="material-icons" *ngSwitchCase="1">book</i>
     <i class="material-icons" *ngSwitchCase="2">album</i>
-    <i class="material-icons" *ngSwitchCase="3">help_outline</i>
+    <i class="material-icons" *ngSwitchCase="3">library_music</i>
     <i class="material-icons" *ngSwitchCase="4">movie</i>
     <i class="material-icons" *ngSwitchDefault>help_outline</i>    
   </div> 
   <div class="col desc">
     <a routerLink="" (click)="getDetail()">
-      <h4>{{document.libelle}}</h4> 
+      <h4>{{document.libelle}} [{{document.support.libelle}}]</h4> 
     </a>   
     <div>
       Auteur: <a *ngFor="let auteur of document.auteurs" routerLink="/results/auteur/id/{{auteur.id}}">

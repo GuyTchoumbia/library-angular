@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { SearchService } from '../search.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Router, ActivatedRouteSnapshot, RouterStateSnapshot, Resolve } from '@angular/router';
 import { Observable, of, EMPTY } from 'rxjs';
 import { take, mergeMap } from 'rxjs/operators';
 import { Document } from 'src/app/classes/document';
@@ -9,7 +9,7 @@ import { Document } from 'src/app/classes/document';
 @Injectable({
   providedIn: 'root'
 })
-export class AdvancedSearchResolverService {
+export class AdvancedSearchResolverService implements Resolve<Document[]> {
 
   constructor(private searchService: SearchService,
               private snackBar: MatSnackBar,

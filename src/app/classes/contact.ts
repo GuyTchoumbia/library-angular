@@ -1,7 +1,7 @@
-import { Address } from './address';
+import { Adress } from './adress';
 
 export class Contact {
-    adress: Address;
+    adress: Adress;
     phone: string;
     email: string;
 }

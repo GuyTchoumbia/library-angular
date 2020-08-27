@@ -1,6 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { LoginData } from '../classes/loginData';
 import { AuthenticationService } from '../auth/authentication.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -12,7 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class LoginDialogComponent implements OnInit {
 
   isSuccessfull: boolean;
-  username: string;
+  username: number;
   password: string;
 
   constructor(public dialogRef: MatDialogRef<LoginDialogComponent>,
@@ -22,9 +21,9 @@ export class LoginDialogComponent implements OnInit {
   ngOnInit() {
   }
 
-
   logIn(): void {
-    if (this.username === '' || this.password === '') {
+    // little trick here: an empty string evaluates to false.
+    if (!this.username || this.password === '') {
       this.snackBar.open('Missing Fields', 'Error', { duration: 3000, } );
     } else {
       this.authService.logIn(this.username, this.password).subscribe(

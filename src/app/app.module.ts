@@ -22,19 +22,20 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import { SearchBarComponent } from './search-bar/search-bar.component';
-import { AcceuilComponent } from './acceuil/acceuil.component';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 
 import { AuthenticationService } from './auth/authentication.service';
 import { AdvancedSearchComponent } from './advanced-search/advanced-search.component';
 import { httpInterceptorProviders } from 'src';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchBarComponent,
-    AcceuilComponent,
     LoginDialogComponent,
+    ConfirmDialogComponent,
     AdvancedSearchComponent
   ],
   imports: [
@@ -58,7 +59,8 @@ import { httpInterceptorProviders } from 'src';
     MatProgressBarModule
   ],
   entryComponents: [
-    LoginDialogComponent
+    LoginDialogComponent,
+    ConfirmDialogComponent
   ],
   providers: [
     AuthenticationService,

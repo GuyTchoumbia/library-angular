@@ -33,7 +33,7 @@ export class AuthenticationService {
     this.user$ = of(user);
   }
 
-  logIn(username: string, password: string): Observable<boolean> {
+  logIn(username: number, password: string): Observable<boolean> {
     const creds = new User();
     creds.id = username;
     creds.password = password;

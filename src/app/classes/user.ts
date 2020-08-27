@@ -4,7 +4,7 @@ import { Contact } from './contact';
 import { Authority } from './authority';
 
 export class User {
-   id: string;
+   id: number;
    civil: Civil;
    contact: Contact;
    password: string;

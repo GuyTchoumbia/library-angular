@@ -1,14 +1,15 @@
-<h1 mat-dialog-title>Login</h1>
+<h1 mat-dialog-title>Connexion</h1>
 <div mat-dialog-content>
-  Enter Credentials
+  <h6>Entrez vos identifiants</h6>
   <mat-form-field>
-    <input matInput [(ngModel)]="username">
+    <input matInput [(ngModel)]="username" placeholder="Numéro d'abonné">
   </mat-form-field>
   <mat-form-field>
-      <input matInput type="password" [(ngModel)]="password">
-    </mat-form-field>
+    <input matInput type="password" [(ngModel)]="password" placeholder="Mot de passe">
+  </mat-form-field>
 </div>
-<div mat-dialog-actions>
-  <button mat-button (click)="cancel()">Cancel</button>
+<mat-checkbox class="text-wrap">Se souvenir du numéro d'abonné</mat-checkbox>
+<div class="justify-content-end" mat-dialog-actions>  
+  <button mat-button (click)="cancel()">Annuler</button>
   <button mat-button (click)="logIn()" cdkFocusInitial>Ok</button>
 </div>

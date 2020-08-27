@@ -7,7 +7,6 @@ import { Router, NavigationStart, NavigationEnd, ResolveStart, ResolveEnd, Event
 import {debounceTime, switchMap, filter, map} from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SearchService } from '../document/search.service';
-import { calcPossibleSecurityContexts } from '@angular/compiler/src/template_parser/binding_parser';
 
 @Component({
   selector: 'app-search-bar',
@@ -76,7 +75,7 @@ export class SearchBarComponent implements OnInit {
 
   openLoginDialog(): void {
     const dialogRef = this.dialog.open(LoginDialogComponent, {
-      width: '250px',
+      width: '300px',
     });
   }
 

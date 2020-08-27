@@ -6,6 +6,11 @@ import { Location } from '@angular/common';
 import { UserCote } from 'src/app/classes/userCote';
 import { Cote } from 'src/app/classes/cote';
 import { isNull, isNullOrUndefined } from 'util';
+import { AuthenticationService } from 'src/app/auth/authentication.service';
+import { User } from 'src/app/classes/user';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginDialogComponent } from 'src/app/login-dialog/login-dialog.component';
+import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
 
 
 @Component({
@@ -16,18 +21,31 @@ import { isNull, isNullOrUndefined } from 'util';
 export class DetailComponent implements OnInit {
   document: Document;
   dateRetour = new Date();
+  isLoggedIn: boolean;
+  user: User;
 
   constructor(
+    private authService: AuthenticationService,
     private searchService: SearchService,
     private location: Location,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit() {
-    // this.searchService.getDetail().subscribe(response => this.document = response);
     this.route.data.subscribe((data: { document: Document }) => {
       this.document = data.document;
+    });
+
+    // checks if logged in
+    this.authService.getIsLoggedIn().subscribe(isLoggedIn => {
+      this.isLoggedIn = isLoggedIn;
+      if (isLoggedIn) {
+        this.authService.getUser().subscribe(user => {
+          this.user = user;
+        });
+      }
     });
   }
 
@@ -52,4 +70,36 @@ export class DetailComponent implements OnInit {
     return isAvailable;
   }
 
+  // determine if said cote is reserved or not.
+  isReserved(cote: Cote): boolean {
+    let isReserved = false;
+    cote.userCotes.forEach((userCote: UserCote) => {
+      if (!isNullOrUndefined(userCote.dateReservation)) {
+        isReserved = true;
+      }
+    });
+    return isReserved;
+  }
+
+  reserve(cote: Cote): void {
+    if (this.isLoggedIn) {
+      const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+        width: '300px',
+        data: this.document.libelle
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.searchService.reserve(cote.id, this.user.id).subscribe(document => {
+            this.document = document;
+          });
+        }
+      });
+    }
+    else {
+      const dialogRef = this.dialog.open(LoginDialogComponent, {
+        width: '300px',
+      });
+    }
+  }
+  
 }

@@ -2,7 +2,7 @@
   <div id="back">
     <button mat-button (click)="goBack()">
       <i class="material-icons">chevron_left</i>
-      Go Back To Results
+      Retour aux résultats
     </button>
   </div>
   <div class="box-shadow" id="document">
@@ -10,12 +10,12 @@
       <div class="col-1 icon" [ngSwitch]="document?.support.id">      
         <i class="material-icons" *ngSwitchCase="1">book</i>
         <i class="material-icons" *ngSwitchCase="2">album</i>
-        <i class="material-icons" *ngSwitchCase="3">help_outline</i>
+        <i class="material-icons" *ngSwitchCase="3">library_music</i>
         <i class="material-icons" *ngSwitchCase="4">movie</i>
         <i class="material-icons" *ngSwitchDefault>help_outline</i>    
       </div> 
       <div class="col desc">
-        <h4>{{document.libelle}}</h4>    
+        <h4>{{document.libelle}} [{{document.support.libelle}}]</h4>    
         <div>
             Auteur: <a *ngFor="let auteur of document?.auteurs" routerLink="/results/auteur/id/{{auteur.id}}">
               {{auteur.libelle}}
@@ -34,15 +34,16 @@
     <mat-tab-group>
       <mat-tab label="Exemplaires">
         <div class="tab-content">
-          <div *ngFor="let cote of document.cotes"> 
+          <div class="document d-flex" *ngFor="let cote of document.cotes"> 
             {{cote.libelle}}
-            <span>: {{cote.library.libelle}} </span> 
+            <span>: {{cote.library.libelle}}  </span> 
             <div *ngIf="isAvailable(cote); then available else notAvailable" ></div>    
             <ng-template #available>
               <span> - En rayon</span>
             </ng-template>
             <ng-template #notAvailable>
               <span> - Date de retour prévue : {{dateRetour | date:"shortDate"}}</span>
+              <button *ngIf="!isReserved(cote)" id="reserve" class="ml-auto" mat-button (click)="reserve(cote)">Réservation disponible</button>     
             </ng-template>     
           </div>
         </div> 

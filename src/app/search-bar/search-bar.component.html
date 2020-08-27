@@ -3,7 +3,7 @@
     <div class="col-2 col-sm-1 col-md-1 col-lg-1">
       <button mat-button routerLink="/">
         <i class="material-icons">home</i>
-        <span class="d-none d-sm-inline">Home</span>
+        <span class="d-none d-sm-inline"> Page d'accueil</span>
       </button>
     </div>   
     <div class="col-sm-1 col-md-1 col-lg-2 d-none d-sm-inline"></div>
@@ -29,26 +29,26 @@
         <i class="material-icons">search</i>
       </button>      
     </div>    
-    <div class="col-2 col-sm-4 col-md-4 col-lg-4" *ngIf="!isLoggedIn">
+    <div class="col-2 col-sm-4 col-md-4 col-lg-4 flex justify-content-end" *ngIf="!isLoggedIn">
       <button mat-button (click)="openLoginDialog()" class="button">
           <i class="material-icons">vpn_key</i>
-        <span class="d-none d-sm-inline"> Login</span>
+        <span class="d-none d-sm-inline"> Connexion</span>
       </button>
     </div>    
-    <div class="col-2 col-sm-4 col-md-4 col-lg-4" *ngIf="isLoggedIn">      
+    <div class="col-2 col-sm-4 col-md-4 col-lg-4 flex justify-content-end" *ngIf="isLoggedIn">      
       <button mat-button [matMenuTriggerFor]="menu" class="button">        
         <i class="material-icons">account_circle</i>
-        <span class="d-none d-sm-inline">{{username}}</span>                
+        <span class="d-none d-sm-inline"> {{username}}</span>                
         <i class="material-icons">arrow_drop_down</i>
       </button>
       <mat-menu #menu="matMenu">          
         <button mat-menu-item routerLink="/account">                                
           <i class="material-icons">settings</i>
-          <span> Settings </span>                 
+          <span> Page personnelle </span>                 
         </button>        
         <button mat-menu-item (click)="logOut()">
             <i class="material-icons">cancel</i>
-          <span> Logout </span>
+          <span> Déconnection </span>
         </button>
       </mat-menu>     
     </div>    

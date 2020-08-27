@@ -1,13 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, ExtraOptions } from '@angular/router';
-import { AcceuilComponent } from './acceuil/acceuil.component';
-import { AccountComponent } from './account/account.component';
 import { AdvancedSearchComponent } from './advanced-search/advanced-search.component';
 
 const routes: Routes = [
-  {
-    path: '', component: AcceuilComponent
-  },
   {
     path: 'results',
     loadChildren: () => import('./document/document.module').then(mod => mod.DocumentModule)
@@ -19,7 +14,15 @@ const routes: Routes = [
   {
     path: 'advancedSearch',
     component: AdvancedSearchComponent
-  }
+  },
+  {
+    path: '',
+    loadChildren: () => import('./acceuil/accueil.module').then(mod => mod.AccueilModule)
+  },
+  {
+    path: 'acceuil',
+    loadChildren: () => import('./acceuil/accueil.module').then(mod => mod.AccueilModule)
+  },
 ];
 
 const config: ExtraOptions = {

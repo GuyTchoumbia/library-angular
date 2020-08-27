@@ -1,13 +1,16 @@
 <div class="row" id="emprunt">
-  <div class="col-1 icon" [ngSwitch]="userCote.cote.document.support.libelle">      
+  <div class="col-1 icon" [ngSwitch]="userCote.cote.document.support.id">      
     <i class="material-icons" *ngSwitchCase="1">book</i>
     <i class="material-icons" *ngSwitchCase="2">album</i>
-    <i class="material-icons" *ngSwitchCase="3">help_outline</i>
+    <i class="material-icons" *ngSwitchCase="3">library_music</i>
     <i class="material-icons" *ngSwitchCase="4">movie</i>
     <i class="material-icons" *ngSwitchDefault>help_outline</i>    
   </div> 
-  <div class="col desc">    
-    <h4>{{userCote.cote.document.libelle}}</h4>   
+  <div class="col desc"> 
+    <div class="d-lg-flex">
+      <h4>{{userCote.cote.document.libelle}} [{{userCote.cote.document.support.libelle}}]</h4> 
+      <button mat-button class="ml-auto extend" (click)="extend(userCote)" *ngIf="!userCote.prolongation">Prolonger l'emprunt</button> 
+    </div> 
     <hr>  
     <div>
       <div>
@@ -32,7 +35,7 @@
       </div>
       <div>
         <span>
-          Date de retour prévue : {{userCote.dateEmprunt | date:"shortDate"}}
+          Date de retour prévue : {{userCote.dateRetour | date:"shortDate"}}
         </span>
       </div>
     </div>

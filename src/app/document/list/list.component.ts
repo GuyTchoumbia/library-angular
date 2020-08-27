@@ -25,7 +25,8 @@ export class ListComponent implements OnInit {
   pageEvent: PageEvent;
 
   constructor(private location: Location,
-              private route: ActivatedRoute
+              private route: ActivatedRoute,
+              private router: Router
   ) { }
 
   ngOnInit() {
@@ -95,6 +96,10 @@ onPageChanged(e: PageEvent) {
 
   goBack() {
     this.location.back();
+  }
+
+  goBackToSearch() {
+    this.router.navigate(['/advancedSearch']);
   }
 
 

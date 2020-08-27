@@ -3,6 +3,7 @@ import { AuthenticationService } from 'src/app/auth/authentication.service';
 import { User } from '../../classes/user';
 import { Location } from '@angular/common';
 
+
 @Component({
   selector: 'app-account-main',
   templateUrl: './account-main.component.html',

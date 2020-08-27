@@ -2,12 +2,15 @@
     <div class="col-1 icon" [ngSwitch]="userCote.cote.document.support.id">      
       <i class="material-icons" *ngSwitchCase="1">book</i>
       <i class="material-icons" *ngSwitchCase="2">album</i>
-      <i class="material-icons" *ngSwitchCase="3">help_outline</i>
+      <i class="material-icons" *ngSwitchCase="3">library_music</i>
       <i class="material-icons" *ngSwitchCase="4">movie</i>
       <i class="material-icons" *ngSwitchDefault>help_outline</i>    
     </div> 
-    <div class="col desc">    
-      <h4>{{userCote.cote.document.libelle}}</h4>   
+    <div class="col desc">
+      <div class="d-lg-flex align-items-center"> 
+        <h4>{{userCote.cote.document.libelle}} [{{userCote.cote.document.support.libelle}}]</h4>   
+        <button class="annuler ml-auto" mat-button (click)="cancelReserve(userCote)">Annuler la réservation</button>
+      </div>
       <hr>  
       <div>
           Auteur: <a *ngFor="let auteur of userCote.cote.document.auteurs" routerLink="/results/auteur/id/{{auteur.id}}">
