@@ -1,3 +1,4 @@
+<!-- table displaying the personal info of connected user -->
 <div class="w-100" id=info>
   <div class="row d-inline d-md-none">    
     <button mat-button (click)="goBack()">
@@ -14,7 +15,7 @@
         <h3>NAME</h3>
       </div>
       <div class="col-8">
-        <span>{{user.civil.nom}}</span>
+        <span id="nom">{{user.civil.nom}}</span>
       </div>      
     </div>
     <mat-divider></mat-divider>
@@ -23,7 +24,7 @@
         <h3>SURNAME</h3>
       </div>
       <div class="col-8">
-        <span>{{user.civil.prenom}}</span>
+        <span id="prenom">{{user.civil.prenom}}</span>
       </div>      
     </div>
     <mat-divider></mat-divider>
@@ -32,7 +33,7 @@
         <h3>BIRTHDATE</h3>
       </div>
       <div class="col-8">
-        <span>{{user.civil.dateNaissance | date:'shortDate'}}</span>
+        <span id="birthdate">{{user.civil.dateNaissance | date:'shortDate'}}</span>
       </div>      
     </div>
     <mat-divider></mat-divider>
@@ -41,7 +42,7 @@
         <h3>CARD ID</h3>
       </div>
       <div class="col-8">
-        <span>{{user.id}}</span>
+        <span id="id">{{user.id}}</span>
       </div>      
     </div>    
   </div>
@@ -54,7 +55,7 @@
         <h3>ADDRESS</h3>
       </div>
       <div class="col-7">
-        <span>{{user.contact.adress.numero}} {{user.contact.adress.rue}} {{user.contact.adress.codePostal}} {{user.contact.adress.ville}}</span>
+        <span id="address">{{user.contact.adress.numero}} {{user.contact.adress.rue}} {{user.contact.adress.codePostal}} {{user.contact.adress.ville}}</span>
       </div>
       <div class="col-1">
         <i class="material-icons">chevron_right</i>
@@ -66,7 +67,7 @@
         <h3>PHONE</h3>
       </div>
       <div class="col-7">
-        <span>{{user.contact.phone}}</span>
+        <span id="phone">{{user.contact.phone}}</span>
       </div>
     <div class="col-1">
         <i class="material-icons">chevron_right</i>
@@ -78,7 +79,7 @@
         <h3>EMAIL</h3>
       </div>
       <div class="col-7">
-        <span>{{user.contact.email}}</span>
+        <span id="email">{{user.contact.email}}</span>
       </div>
       <div class="col-1">
         <i class="material-icons">chevron_right</i>

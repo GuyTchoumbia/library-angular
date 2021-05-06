@@ -5,7 +5,6 @@ import { Document } from '../../classes/document';
 import { Location } from '@angular/common';
 import { UserCote } from 'src/app/classes/userCote';
 import { Cote } from 'src/app/classes/cote';
-import { isNull, isNullOrUndefined } from 'util';
 import { AuthenticationService } from 'src/app/auth/authentication.service';
 import { User } from 'src/app/classes/user';
 import { MatDialog } from '@angular/material/dialog';
@@ -62,7 +61,8 @@ export class DetailComponent implements OnInit {
   isAvailable(cote: Cote): boolean {
     let isAvailable = true;
     cote.userCotes.forEach((userCote: UserCote) => {
-      if (isNullOrUndefined(userCote.dateRetour) && !isNullOrUndefined(userCote.dateEmprunt)) {
+      if (userCote.dateRetour  === null || userCote.dateRetour === undefined
+        && userCote.dateEmprunt !== null || userCote.dateEmprunt !== undefined ) {
         isAvailable = false;
         this.dateRetour.setDate(new Date(userCote.dateEmprunt).getDate() + 15);
       }
@@ -70,17 +70,10 @@ export class DetailComponent implements OnInit {
     return isAvailable;
   }
 
-  // determine if said cote is reserved or not.
-  isReserved(cote: Cote): boolean {
-    let isReserved = false;
-    cote.userCotes.forEach((userCote: UserCote) => {
-      if (!isNullOrUndefined(userCote.dateReservation)) {
-        isReserved = true;
-      }
-    });
-    return isReserved;
-  }
-
+  // reservation event
+  // opens up a confirmation dialog
+  // checks if logged in if accepted,
+  // then sends request
   reserve(cote: Cote): void {
     if (this.isLoggedIn) {
       const dialogRef = this.dialog.open(ConfirmDialogComponent, {
@@ -101,5 +94,4 @@ export class DetailComponent implements OnInit {
       });
     }
   }
-  
 }

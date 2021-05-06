@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { UserCote } from '../../classes/userCote';
-import { User } from 'src/app/classes/user';
 
 @Component({
   selector: 'app-emprunt',

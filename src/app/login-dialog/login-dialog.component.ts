@@ -13,19 +13,27 @@ export class LoginDialogComponent implements OnInit {
   isSuccessfull: boolean;
   username: number;
   password: string;
+  rememberCredentials = false;
 
   constructor(public dialogRef: MatDialogRef<LoginDialogComponent>,
               private authService: AuthenticationService,
-              private snackBar: MatSnackBar) { }
+              public snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
 
+  // login function:
+  // checks if username and password fieled are filled,
+  // before sending the credentials to the API and closing the dialog window
+  // opens notifications (snack bars) if fields are missing (any of them)
+  // or if credentials are wrong.
+
   logIn(): void {
-    // little trick here: an empty string evaluates to false.
+    // little trick here: an empty number field evaluates to false.
     if (!this.username || this.password === '') {
       this.snackBar.open('Missing Fields', 'Error', { duration: 3000, } );
     } else {
+      // this.authService.logIn(this.username, this.password).subscribe(
       this.authService.logIn(this.username, this.password).subscribe(
         isLoggedIn => {
           if (isLoggedIn) {

@@ -13,7 +13,7 @@
         <div class="sub-menu" [@toggleBiblio]="isBiblioClicked? 'open' : 'closed'">
           <div *ngFor="let library of libraries" >
             <a routerLink="/accueil/biblio/{{library.id}}" mat-button>
-              <span>{{library.libelle}}</span>
+              <span id="libelle">{{library.libelle}}</span>
             </a>  
           </div>          
         </div>      

@@ -20,13 +20,18 @@ export class AccountComponent implements OnInit {
 
   ngOnInit() {
     this.authService.getUser().subscribe(user => this.user = user);
-    this.addressForm = this.formBuilder.group({
-        numero: this.user.contact.adress.numero,
-        rue: this.user.contact.adress.rue,
-        codePostal: this.user.contact.adress.codePostal,
-        ville: this.user.contact.adress.ville,
-        email: this.user.contact.email,
-        phone: this.user.contact.phone
-      });
+    this.parseDataToForm(this.user);
+  }
+
+  parseDataToForm(user: User): FormGroup {
+    const addressForm = this.formBuilder.group({
+      numero: this.user.contact.adress.numero,
+      rue: this.user.contact.adress.rue,
+      codePostal: this.user.contact.adress.codePostal,
+      ville: this.user.contact.adress.ville,
+      email: this.user.contact.email,
+      phone: this.user.contact.phone
+    });
+    return addressForm;
   }
 }

@@ -1,7 +1,7 @@
 <div class="w-100">
   <div class="row justify-content-end align-items-center" id="searchbar"> 
     <div class="col-2 col-sm-1 col-md-1 col-lg-1">
-      <button mat-button routerLink="/">
+      <button mat-button aria-label="Page principale" routerLink="/">
         <i class="material-icons">home</i>
         <span class="d-none d-sm-inline"> Page d'accueil</span>
       </button>
@@ -16,7 +16,7 @@
         </mat-select> 
     </div>
     <div class="col-7 col-sm-4 col-md-4 col-lg-4 flex justify-content-center" id="input">  
-      <a routerLink="/advancedSearch" id="advanced-search-button" mat-flat-button >
+      <a routerLink="/advancedSearch" id="advanced-search-button" mat-flat-button aria-label="Recherche avancée">
         <i class="material-icons">add</i>        
       </a>        
       <input class="col col-sm col-md col-lg" id="textfield" matInput type="text"  placeholder=" Recherche de document" value="" [formControl]="libelle" [matAutocomplete]="auto" />
@@ -25,7 +25,7 @@
           {{option}}
         </mat-option>
       </mat-autocomplete>          
-      <button id="search-button" mat-flat-button (click)="search()">
+      <button id="search-button" aria-label="Lancer la recherche" mat-flat-button (click)="search()">
         <i class="material-icons">search</i>
       </button>      
     </div>    

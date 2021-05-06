@@ -16,6 +16,10 @@ describe('FiltersComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(FiltersComponent);
     component = fixture.componentInstance;
+    component.auteurs = ['test auteur'];
+    component.editeurs = ['test editeur'];
+    component.tags = ['test tag'];
+    component.supports = ['test support'];
     fixture.detectChanges();
   });
 

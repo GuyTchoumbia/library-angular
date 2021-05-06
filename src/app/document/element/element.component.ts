@@ -12,8 +12,7 @@ export class ElementComponent implements OnInit {
 
   @Input() document: Document;
 
-  constructor(private searchService: SearchService,
-              private router: Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
 

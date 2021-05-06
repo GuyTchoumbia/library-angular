@@ -14,11 +14,7 @@ export class ReservationComponent implements OnInit {
   @Input() userCote: UserCote;
   @Output() cancelReserveEvent = new EventEmitter<UserCote>();
 
-  constructor(
-    private searchService: SearchService,
-    private dialog: MatDialog,
-    private router: Router
-  ) { }
+  constructor() { }
 
   ngOnInit() {
   }

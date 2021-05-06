@@ -4,9 +4,7 @@ import { FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms';
 import { Library } from '../classes/library';
 import { Support } from '../classes/support';
 import { SearchService } from '../document/search.service';
-import { isNullOrUndefined } from 'util';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { cpuUsage } from 'process';
 
 @Component({
   selector: 'app-advanced-search',
@@ -63,32 +61,13 @@ export class AdvancedSearchComponent implements OnInit {
       const snackBarRef = this.snackBar.open('Au moins un champ doit être renseigné', 'Warning', { duration: 3000 });
     }
     else {
-      // const formValues = {...this.searchParams.controls.textinputs};
-      // console.log(formValues);
-      // for (const key in formValues) {
-      //   if (formValues.hasOwnProperty(key)) {
-      //     if (!formValues[key]) {
-      //       delete formValues[key];
-      //     }
-      //     if (Array.isArray(formValues[key])) {
-      //       const resultArray = formValues[key].filter(item => item);
-      //       if (resultArray.length > 0) {
-      //         formValues[key] = resultArray;
-      //       } else {
-      //         delete formValues[key];
-      //       }
-      //     }
-      //   }
-      // }
-      // this.router.navigate(['results', 'advancedSearch', formValues]);
-      //   }
-      // })
+      // removes empty ('') fields from the results passed to the resolver
       const textInputValues = this.searchParams.controls.textinputs.value;
       const checkboxValues = this.searchParams.controls.checkboxes.value;
       Object.keys(textInputValues).forEach(key => {
         if (textInputValues[key] === '') {
           delete textInputValues[key];
-      }
+        }
       });
       Object.keys(checkboxValues).forEach(key => {
         if (Array.isArray(checkboxValues[key])) {

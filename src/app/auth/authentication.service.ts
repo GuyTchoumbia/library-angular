@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, of, iif } from 'rxjs';
 import { User } from '../classes/user';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders,  } from '@angular/common/http';
 import { tap, mergeMap, take } from 'rxjs/operators';
-import { ValueConverter } from '@angular/compiler/src/render3/view/template';
-import { isNull } from 'util';
+import { apiUrl } from '../constants';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +12,8 @@ export class AuthenticationService {
 
   private user$: Observable<User>;
   private isLoggedIn$ = new BehaviorSubject<boolean>(false);
-  url = 'http://localhost:8080/library-api/auth/signIn';
+  url = apiUrl + 'auth';
+  USERNAME_SESSION_ATTRIBUTE = '';
 
   constructor(private http: HttpClient) { }
 
@@ -37,21 +37,45 @@ export class AuthenticationService {
     const creds = new User();
     creds.id = username;
     creds.password = password;
-    return this.http.post<User>(this.url, creds).pipe(
+    return this.http.post<User>(this.url + '/signIn', creds).pipe(
       take(1),
       tap(userResponse => {
-        if (!isNull(userResponse)) {
+        if (userResponse !== null) {
           this.setUser(userResponse);
           this.setIsLoggedIn(true);
         }
       }),
       mergeMap(
         (user: User) => iif(
-          () => !isNull(user), of(true), of(false)
+          () => (user !== null), of(true), of(false)   // if user not null, return true observable, else return false obs
         )
       )
     );
   }
+
+  authenticate(username: number, password: string): Observable<boolean> {
+    const headers = new HttpHeaders({ Authorization : 'Basic ' + btoa(username + ':' + password)});
+    // tslint:disable-next-line: deprecation
+    return this.http.get(this.url + '/user', {headers}).pipe(
+      take(1),
+      tap(userResponse => {
+        if (userResponse !== null) {
+          console.log(userResponse);
+          this.setIsLoggedIn(true);
+        }
+      }),
+      mergeMap(
+        (user: User) => iif(
+          () => (user !== null), of(true), of(false)   // if user not null, return true observable, else return false obs
+        )
+      )
+    );
+  }
+
+  storeInSessionStorage(username, password) {
+  sessionStorage.setItem(this.USERNAME_SESSION_ATTRIBUTE, username);
+  }
+
 
   logOut() {
     this.user$ = null;

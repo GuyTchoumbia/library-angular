@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Document } from '../classes/document';
-import { Observable, throwError } from 'rxjs';
-import { HttpResponse, HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { Library } from '../classes/library';
 import { Support } from '../classes/support';
-import { take, catchError } from 'rxjs/operators';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserCote } from '../classes/userCote';
+import { apiUrl } from '../constants';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +15,9 @@ export class SearchService {
 
   results: Observable<Document[]>;
   detail: Observable<Document>;
-  baseUrl = 'http://localhost:8080/library-api/';
+  baseUrl = apiUrl;
 
-  constructor(private http: HttpClient,
-              private snackBar: MatSnackBar
-    ) { }
+  constructor(private http: HttpClient) { }
 
   // search single document by id
   requestDetail(id: number): Observable<Document> {
@@ -31,7 +29,7 @@ export class SearchService {
     return this.http.get<Document[]>(this.baseUrl + 'document/' + criteria + '/' + field + '/' + value);
   }
 
-  // search list of documents by title starting with
+  // search list of documents by title containing the string
   // used by autocomplete fields
   autocomplete(libelle: string): Observable<Document[]> {
     return this.http.get<Document[]>(this.baseUrl + 'document/' + 'autocomplete/any/' + libelle);
@@ -69,6 +67,7 @@ export class SearchService {
     return this.http.get<any>(this.baseUrl + 'usercote/delete/' + id);
   }
 
+  // extension request
   extend(id: number): Observable<UserCote> {
     return this.http.get<UserCote>(this.baseUrl + 'usercote/extend/' + id);
   }

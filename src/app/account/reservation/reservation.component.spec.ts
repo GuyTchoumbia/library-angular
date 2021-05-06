@@ -1,12 +1,13 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ReservationComponent } from './reservation.component';
+import { testUserCote } from 'src/app/test/testData';
 
 describe('ReservationComponent', () => {
   let component: ReservationComponent;
   let fixture: ComponentFixture<ReservationComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ReservationComponent ]
     })
@@ -16,6 +17,7 @@ describe('ReservationComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ReservationComponent);
     component = fixture.componentInstance;
+    component.userCote = testUserCote; 
     fixture.detectChanges();
   });
 

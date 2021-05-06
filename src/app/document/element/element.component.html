@@ -1,3 +1,6 @@
+  <!-- single element of the list of results, showing the title, the author(s), editor, date of publication and tag(s) -->
+  
+  <!-- displays icon according to support.id -->
   <div class="col-1 icon" [ngSwitch]="document.support.id">      
     <i class="material-icons" *ngSwitchCase="1">book</i>
     <i class="material-icons" *ngSwitchCase="2">album</i>
@@ -6,6 +9,7 @@
     <i class="material-icons" *ngSwitchDefault>help_outline</i>    
   </div> 
   <div class="col desc">
+    <!-- link to detailed display page -->
     <a routerLink="" (click)="getDetail()">
       <h4>{{document.libelle}} [{{document.support.libelle}}]</h4> 
     </a>   

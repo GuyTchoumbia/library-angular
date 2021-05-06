@@ -1,0 +1,31 @@
+<section class="title">
+  <div>
+    <h3 id="libelle">{{library.libelle}}</h3>
+  </div>
+</section>
+<section class="description">
+  <div>
+    <p id="adressAsString">
+      {{adressAsString}}
+    </p>
+  </div>
+</section>
+<section class="horaires">
+  <div>
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="jour">
+        <th mat-header-cell *matHeaderCellDef>Jour</th>
+        <td mat-cell *matCellDef="let element" id="jour"> {{element.jour}} </td>
+      </ng-container>    
+      <ng-container matColumnDef="horaire">
+        <th mat-header-cell *matHeaderCellDef>Horaires d'ouverture</th>
+        <td mat-cell *matCellDef="let element" id="horaire"> {{element.horaire}} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+    </table>
+    <div class="expection" *ngIf="library.exception" id="exception">
+      <h5>Fermeture Exceptionnelle</h5>
+    </div>
+  </div>
+</section>

@@ -8,4 +8,5 @@ export class Cote {
     library: Library;
     userCotes: UserCote[];
     document: Document;
+    reserved: boolean;
 }

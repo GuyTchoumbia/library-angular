@@ -15,14 +15,15 @@ export class ErrorInterceptor implements HttpInterceptor {
         return next.handle(req).pipe(
         catchError((error: HttpErrorResponse) => {
             if (error.error instanceof ErrorEvent) {
-                // A client-side or network error occurred. Handle it accordingly.
+                // client-side or network error
                 this.snackBar.open('An error occurred:', error.error.message);
               } else {
-                // The backend returned an unsuccessful response code.
-                // The response body may contain clues as to what went wrong,
+                // unsuccessful response code.
+                // shows the body in snackbar,
                 this.snackBar.open(
-                  `Backend returned code ${error.status}, ` +
-                  `body was: ${error.error}`);
+                  'Backend returned code '+ error.status,
+                  error.error.message
+                  );
               }
             return throwError(error);
         })

@@ -5,7 +5,6 @@ import { Location } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
 import { SearchService } from 'src/app/document/search.service';
-import { calcPossibleSecurityContexts } from '@angular/compiler/src/template_parser/binding_parser';
 
 @Component({
   selector: 'app-account-reservations',
@@ -22,21 +21,27 @@ export class AccountReservationsComponent implements OnInit {
               ) { }
 
   ngOnInit() {
+    // gets the user cotes and filters out the ones witout a reservation date
     this.authService.getUser().subscribe(user => this.userReservations = user.userCotes.filter(element => element.dateReservation != null));
   }
 
   goBack() {
+    // goes back one page
     this.location.back();
   }
 
+  // event for reservation cancel:
+  // opens up a confirmation pop up, passing the title of the document into the text of the pop up,
+  // then launches the reservation cancel request, passing the id of the userCote object to be canceled
+  // finally remores the reservation from the list
   onCancelReserve(userCote: UserCote) {
-    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, { // opens dialog confirmation
       width: '200px',
       data: userCote.cote.document.libelle
     });
     dialogRef.afterClosed().subscribe(accept => {
       if (accept) {
-        this.searchService.cancelReserve(userCote.id).subscribe(() => {
+        this.searchService.cancelReserve(userCote.id).subscribe(() => { // reservation cancel request
           // removes the reservation from the displayed list
           this.userReservations.splice(this.userReservations.indexOf(userCote), 1);
         });

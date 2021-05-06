@@ -1,4 +1,6 @@
+<!-- page displaying the detailed info of a document -->
 <div id="detail">
+  <!-- back button -->
   <div id="back">
     <button mat-button (click)="goBack()">
       <i class="material-icons">chevron_left</i>
@@ -16,6 +18,7 @@
       </div> 
       <div class="col desc">
         <h4>{{document.libelle}} [{{document.support.libelle}}]</h4>    
+        <!-- everything is a link -->
         <div>
             Auteur: <a *ngFor="let auteur of document?.auteurs" routerLink="/results/auteur/id/{{auteur.id}}">
               {{auteur.libelle}}
@@ -43,7 +46,7 @@
             </ng-template>
             <ng-template #notAvailable>
               <span> - Date de retour prévue : {{dateRetour | date:"shortDate"}}</span>
-              <button *ngIf="!isReserved(cote)" id="reserve" class="ml-auto" mat-button (click)="reserve(cote)">Réservation disponible</button>     
+              <button *ngIf="!cote.reserved" id="reserve" class="ml-auto" mat-button (click)="reserve(cote)">Réservation disponible</button>     
             </ng-template>     
           </div>
         </div> 

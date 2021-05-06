@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { Library } from '../classes/library';
-import { SearchService } from '../document/search.service';
 import { ActivatedRoute } from '@angular/router';
 
 
@@ -40,10 +39,10 @@ export class AcceuilComponent implements OnInit {
   libraries: Library[];
 
   constructor(
-    private searchService: SearchService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
+    // gets the libraries from the route
     this.route.data.subscribe((data: {libraries: Library[]}) => {
       this.libraries = data.libraries;
     });
