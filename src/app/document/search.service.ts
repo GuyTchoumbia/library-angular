@@ -59,7 +59,7 @@ export class SearchService {
 
   // reservation request
   reserve(cote: Cote): Observable<any> {
-    return this.http.post<any>(this.baseUrl + 'usercote/reserve/cote', cote, { withCredentials: true });
+    return this.http.post<any>(this.baseUrl + 'usercote/reserve/cote', cote);
   }
 
   // cancel reservation request

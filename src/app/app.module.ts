@@ -68,7 +68,7 @@ import { AuthenticationInterceptor } from './interceptors/authentication.interce
     AuthenticationService,
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true },
-    // { provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

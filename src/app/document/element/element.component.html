@@ -2,11 +2,11 @@
   
   <!-- displays icon according to support.id -->
   <div class="col-1 icon" [ngSwitch]="document.support.id">      
-    <i class="material-icons" *ngSwitchCase="1">book</i>
-    <i class="material-icons" *ngSwitchCase="2">album</i>
-    <i class="material-icons" *ngSwitchCase="3">library_music</i>
-    <i class="material-icons" *ngSwitchCase="4">movie</i>
-    <i class="material-icons" *ngSwitchDefault>help_outline</i>    
+    <i class="material-icons" arial-label="livre" *ngSwitchCase="1">book</i>
+    <i class="material-icons" arial-label="album" *ngSwitchCase="2">album</i>
+    <i class="material-icons" arial-label="musique" *ngSwitchCase="3">library_music</i>
+    <i class="material-icons" arial-label="film" *ngSwitchCase="4">movie</i>
+    <i class="material-icons" arial-label="indefini" *ngSwitchDefault>help_outline</i>    
   </div> 
   <div class="col desc">
     <!-- link to detailed display page -->

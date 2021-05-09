@@ -39,7 +39,7 @@ export class AuthenticationService {
   // and storing credentials in the session storage for future usage
   authenticate(username: number, password: string): Observable<boolean> {
     const headers = new HttpHeaders({ Authorization : 'Basic ' + btoa(username + ':' + password)});
-    return this.http.get<User>(this.url + '/user', {headers}).pipe(
+    return this.http.post<User>(this.url + '/user', {}, {headers}).pipe(
       take(1),
       tap(userResponse => {
         if (userResponse !== null) {
@@ -58,9 +58,11 @@ export class AuthenticationService {
   }
 
   logOut() {
-    this.user$ = null;
-    this.isLoggedIn$.next(false);
-    sessionStorage.clear();
+    this.http.post(this.url + '/logout', {}).subscribe(() => {
+      this.user$ = null;
+      this.isLoggedIn$.next(false);
+      sessionStorage.clear();
+    });
   }
 
 
