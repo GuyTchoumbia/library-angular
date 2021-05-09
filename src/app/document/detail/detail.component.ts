@@ -80,9 +80,9 @@ export class DetailComponent implements OnInit {
         width: '300px',
         data: this.document.libelle
       });
-      dialogRef.afterClosed().subscribe(result => {
-        if (result) {
-          this.searchService.reserve(cote.id, this.user.id).subscribe(document => {
+      dialogRef.afterClosed().subscribe(confirm => {
+        if (confirm) {
+          this.searchService.reserve(cote).subscribe(document => {
             this.document = document;
           });
         }

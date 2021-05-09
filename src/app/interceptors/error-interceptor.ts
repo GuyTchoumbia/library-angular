@@ -22,7 +22,7 @@ export class ErrorInterceptor implements HttpInterceptor {
                 // shows the body in snackbar,
                 this.snackBar.open(
                   'Backend returned code '+ error.status,
-                  error.error.message
+                  error.error ? error.error.messsage : null
                   );
               }
             return throwError(error);

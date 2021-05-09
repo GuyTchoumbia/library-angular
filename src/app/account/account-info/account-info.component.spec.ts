@@ -36,6 +36,7 @@ describe('AccountInfoComponent', () => {
   });
 
   // test parseDataToForm()
+
   it('should parse the data to the form', () => {
     const parsedData = component.parseDataToForm(testUser);
     expect(parsedData.controls.numero.value).toBe('test numero');

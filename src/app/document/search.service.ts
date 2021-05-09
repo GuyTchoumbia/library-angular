@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Document } from '../classes/document';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Library } from '../classes/library';
 import { Support } from '../classes/support';
 import { UserCote } from '../classes/userCote';
-import { apiUrl } from '../constants';
+import { Cote } from '../classes/cote';
 
 
 @Injectable({
@@ -15,7 +15,7 @@ export class SearchService {
 
   results: Observable<Document[]>;
   detail: Observable<Document>;
-  baseUrl = apiUrl;
+  baseUrl = '/api/';
 
   constructor(private http: HttpClient) { }
 
@@ -42,7 +42,7 @@ export class SearchService {
   }
 
   // search for a list of all library titles
-  // used by advanced search page 
+  // used by advanced search page
   getAllLibraries(): Observable<Library[]> {
     return this.http.get<Library[]>(this.baseUrl + 'library/all');
   }
@@ -58,13 +58,13 @@ export class SearchService {
   }
 
   // reservation request
-  reserve(coteId: number, userId: number): Observable<any> {
-    return this.http.get<any>(this.baseUrl + 'usercote/reserve/cote/' + coteId + '/user/' + userId);
+  reserve(cote: Cote): Observable<any> {
+    return this.http.post<any>(this.baseUrl + 'usercote/reserve/cote', cote, { withCredentials: true });
   }
 
   // cancel reservation request
   cancelReserve(id: number): Observable<any> {
-    return this.http.get<any>(this.baseUrl + 'usercote/delete/' + id);
+    return this.http.get<any>(this.baseUrl + 'usercote/cancelReserve/' + id);
   }
 
   // extension request
@@ -82,4 +82,5 @@ export class SearchService {
   getDetail(): Observable<Document> {
     return this.detail;
   }
+
 }

@@ -34,7 +34,7 @@ export class LoginDialogComponent implements OnInit {
       this.snackBar.open('Missing Fields', 'Error', { duration: 3000, } );
     } else {
       // this.authService.logIn(this.username, this.password).subscribe(
-      this.authService.logIn(this.username, this.password).subscribe(
+      this.authService.authenticate(this.username, this.password).subscribe(
         isLoggedIn => {
           if (isLoggedIn) {
             this.snackBar.open('Successfully Logged In', 'Valid', { duration: 3000, });

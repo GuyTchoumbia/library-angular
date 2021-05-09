@@ -1,1 +1,1 @@
-export const apiUrl = '//localhost:8080/library-api/';
+export const apiUrl = 'api';

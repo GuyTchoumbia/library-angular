@@ -12,7 +12,7 @@ export class AuthenticationService {
 
   private user$: Observable<User>;
   private isLoggedIn$ = new BehaviorSubject<boolean>(false);
-  url = apiUrl + 'auth';
+  url = '/api/auth';
   USERNAME_SESSION_ATTRIBUTE = '';
 
   constructor(private http: HttpClient) { }
@@ -33,16 +33,20 @@ export class AuthenticationService {
     this.user$ = of(user);
   }
 
-  logIn(username: number, password: string): Observable<boolean> {
-    const creds = new User();
-    creds.id = username;
-    creds.password = password;
-    return this.http.post<User>(this.url + '/signIn', creds).pipe(
+  // authenticate request,
+  // passing an Authorization header containing encrypted credentials
+  // returning the authenticated user
+  // and storing credentials in the session storage for future usage
+  authenticate(username: number, password: string): Observable<boolean> {
+    const headers = new HttpHeaders({ Authorization : 'Basic ' + btoa(username + ':' + password)});
+    return this.http.get<User>(this.url + '/user', {headers}).pipe(
       take(1),
       tap(userResponse => {
         if (userResponse !== null) {
           this.setUser(userResponse);
           this.setIsLoggedIn(true);
+          sessionStorage.setItem('username', username.toString());
+          sessionStorage.setItem('password', password);
         }
       }),
       mergeMap(
@@ -52,34 +56,12 @@ export class AuthenticationService {
       )
     );
   }
-
-  authenticate(username: number, password: string): Observable<boolean> {
-    const headers = new HttpHeaders({ Authorization : 'Basic ' + btoa(username + ':' + password)});
-    // tslint:disable-next-line: deprecation
-    return this.http.get(this.url + '/user', {headers}).pipe(
-      take(1),
-      tap(userResponse => {
-        if (userResponse !== null) {
-          console.log(userResponse);
-          this.setIsLoggedIn(true);
-        }
-      }),
-      mergeMap(
-        (user: User) => iif(
-          () => (user !== null), of(true), of(false)   // if user not null, return true observable, else return false obs
-        )
-      )
-    );
-  }
-
-  storeInSessionStorage(username, password) {
-  sessionStorage.setItem(this.USERNAME_SESSION_ATTRIBUTE, username);
-  }
-
 
   logOut() {
     this.user$ = null;
     this.isLoggedIn$.next(false);
+    sessionStorage.clear();
   }
+
 
 }

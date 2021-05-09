@@ -29,6 +29,7 @@ import { AdvancedSearchComponent } from './advanced-search/advanced-search.compo
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { XhrInterceptor } from './interceptors/xhr.interceptor';
 import { ErrorInterceptor } from './interceptors/error-interceptor';
+import { AuthenticationInterceptor } from './interceptors/authentication.interceptor';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { ErrorInterceptor } from './interceptors/error-interceptor';
   providers: [
     AuthenticationService,
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })
