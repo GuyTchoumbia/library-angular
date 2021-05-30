@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { AccountMainComponent } from './account-main.component';
 import { AuthenticationService } from 'src/app/auth/authentication.service';

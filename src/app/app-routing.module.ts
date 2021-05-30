@@ -26,12 +26,13 @@ const routes: Routes = [
 ];
 
 const config: ExtraOptions = {
-  enableTracing: true,
-  onSameUrlNavigation: 'reload',
+    enableTracing: true,
+    onSameUrlNavigation: 'reload',
+    relativeLinkResolution: 'legacy'
 };
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
