@@ -75,7 +75,7 @@ export class SearchBarComponent implements OnInit {
 
   openLoginDialog(): void {
     const dialogRef = this.dialog.open(LoginDialogComponent, {
-      width: '300px',
+      width: '300px'
     });
   }
 

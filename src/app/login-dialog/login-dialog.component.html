@@ -1,14 +1,25 @@
 <h1 mat-dialog-title>Connexion</h1>
-<div mat-dialog-content>
+<form mat-dialog-content [formGroup]="logInForm">
   <h6>Entrez vos identifiants</h6>
+  <div>
+    <mat-form-field >
+      <mat-label>Numéro d'abonné</mat-label>
+      <input matInput formControlName="username" [(ngModel)]="username">
+      <mat-error *ngIf="logInForm.get('username').invalid">{{getUsernameErrorMessage()}}</mat-error>      
+    </mat-form-field>
+  </div>
   <mat-form-field>
-    <input matInput [(ngModel)]="username" placeholder="Numéro d'abonné">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput type="password" [(ngModel)]="password" placeholder="Mot de passe">
-  </mat-form-field>
-</div>
+    <mat-label>Mot de passe</mat-label>    
+    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" [(ngModel)]="password"> <!-- type is dependant of the state of hide, toggled by the button below -->
+    <!-- button to hide password -->
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Masquer le mot de passe'" [attr.aria-pressed]="Masquer">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+    <mat-error *ngIf="logInForm.get('password').invalid">{{getPasswordErrorMessage()}}</mat-error>
+  </mat-form-field>  
+</form>
 <div class="justify-content-end" mat-dialog-actions>  
-  <button mat-button (click)="cancel()">Annuler</button>
-  <button mat-button (click)="logIn()" cdkFocusInitial>Ok</button>
+  <button mat-button type="submit" (click)="onSubmit()" [disabled]="!logInForm.valid" cdkFocusInitial>Ok</button>
+  <button mat-button (click)="cancel()">Annuler</button>  
 </div>
+

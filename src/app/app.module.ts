@@ -30,6 +30,8 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
 import { XhrInterceptor } from './interceptors/xhr.interceptor';
 import { ErrorInterceptor } from './interceptors/error-interceptor';
 import { AuthenticationInterceptor } from './interceptors/authentication.interceptor';
+import { NgcCookieConsentModule } from 'ngx-cookieconsent';
+import { cookieConfig } from './constants';
 
 
 @NgModule({
@@ -58,7 +60,8 @@ import { AuthenticationInterceptor } from './interceptors/authentication.interce
     MatExpansionModule,
     MatCheckboxModule,
     MatSnackBarModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    NgcCookieConsentModule.forRoot(cookieConfig),
   ],
   entryComponents: [
     LoginDialogComponent,

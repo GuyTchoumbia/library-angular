@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
+  errorMessage: string;
 
     constructor(private snackBar: MatSnackBar) { }
 
@@ -20,10 +21,16 @@ export class ErrorInterceptor implements HttpInterceptor {
               } else {
                 // unsuccessful response code.
                 // shows the body in snackbar,
-                this.snackBar.open(
-                  'Backend returned code '+ error.status,
-                  error.error ? error.error.messsage : null
-                  );
+                switch (error.status) {
+                  case 401: this.snackBar.open('Wrong Credentials', 'Error');
+                  break;
+                  case 403: this.snackBar.open('Forbidden', 'Error');
+                  break;
+                  default: this.snackBar.open(
+                    'Error Code '+ error.status,
+                    error.error ? error.error.messsage : null
+                    );
+                }
               }
             return throwError(error);
         })

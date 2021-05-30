@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AuthenticationService } from '../auth/authentication.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login-dialog',
@@ -10,6 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class LoginDialogComponent implements OnInit {
 
+  logInForm: FormGroup;
   isSuccessfull: boolean;
   username: number;
   password: string;
@@ -20,31 +22,53 @@ export class LoginDialogComponent implements OnInit {
               public snackBar: MatSnackBar) { }
 
   ngOnInit() {
+    this.logInForm = new FormGroup({
+      username: new FormControl(this.username, [
+        Validators.required,
+        Validators.pattern('[0-9]{6}') // regex: exactly 6 digits
+      ]),
+      password: new FormControl(this.password, [
+        Validators.required,
+        // Validators.pattern('^([a-zA-z]{3,})([0-9]{4})$') // regex: at least 3 characters at the beginning, at least 4 digits at the end
+      ])
+    });
   }
 
-  // login function:
-  // checks if username and password fieled are filled,
-  // before sending the credentials to the API and closing the dialog window
-  // opens notifications (snack bars) if fields are missing (any of them)
-  // or if credentials are wrong.
+  // submit method
+  // sends the request and displays snackbar according to result
+  onSubmit(): void {
+    this.authService.authenticate(this.username, this.password).subscribe(isLoggedIn => {
+      if (isLoggedIn) {
+        this.snackBar.open('Successfully Logged In', 'Valid', { duration: 3000, });
+        this.dialogRef.close();
+      }
+    });
+  }
 
-  logIn(): void {
-    // little trick here: an empty number field evaluates to false.
-    if (!this.username || this.password === '') {
-      this.snackBar.open('Missing Fields', 'Error', { duration: 3000, } );
-    } else {
-      // this.authService.logIn(this.username, this.password).subscribe(
-      this.authService.authenticate(this.username, this.password).subscribe(
-        isLoggedIn => {
-          if (isLoggedIn) {
-            this.snackBar.open('Successfully Logged In', 'Valid', { duration: 3000, });
-            this.dialogRef.close();
-          } else {
-            this.snackBar.open('Wrong Credentials', 'Error', { duration: 3000 });
-          }
-      });
+  // username validation error message
+  // returns string message according to the error contained by the controls
+  getUsernameErrorMessage() {
+    if (this.logInForm.hasError('required', 'username')) {
+      return 'Champ vide';
     }
+    else if (this.logInForm.hasError('pattern', 'username')) {
+      return 'Numéro invalide';
+    }
+    else return '';
   }
+
+  // password validation error message
+  // returns string message according to the error contained by the controls
+  getPasswordErrorMessage() {
+    if (this.logInForm.hasError('required', 'password')) {
+      return 'Champ vide';
+    }
+    else if (this.logInForm.hasError('pattern', 'password')) {
+      return 'Mot de passe invalide';
+    }
+    else return '';
+  }
+
 
   cancel(): void {
     this.dialogRef.close();
