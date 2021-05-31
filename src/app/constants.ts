@@ -1,5 +1,6 @@
 import { NgcCookieConsentConfig } from 'ngx-cookieconsent';
 
+// api url
 export const apiUrl = 'api';
 
 // config for cookie consent popup
