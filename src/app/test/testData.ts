@@ -44,7 +44,8 @@ export const testLibrary: Library = {
     rue: 'test street',
     ville: 'test city',
     codePostal: 11111
-  }
+  },
+  message: 'test message'
 };
 
 export const testUserCote: UserCote = {
@@ -61,7 +62,8 @@ export const testUserCote: UserCote = {
       id: 1,
       libelle: 'test library libelle',
       horaires: null,
-      adress: null
+      adress: null,
+      message: 'test exception'
     },
     reserved: true,
     document: {

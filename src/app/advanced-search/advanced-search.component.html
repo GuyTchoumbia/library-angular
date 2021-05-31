@@ -9,7 +9,7 @@
         <div class="col-1"></div>       
         <mat-form-field class="col col-sm-6 col-md-6 col-lg-4">
           <input matInput placeholder="Titre" formControlName="libelle"/>   
-          <button mat-button *ngIf="libelle" matSuffix mat-icon-button aria-label="Clear" (click)="libelle=''">
+          <button mat-button *ngIf="searchParams.get('libelle')" matSuffix mat-icon-button aria-label="Clear" (click)="searchParams.set('libelle', '')">
               <mat-icon>close</mat-icon>
             </button>     
         </mat-form-field>
@@ -18,7 +18,7 @@
         <div class="col-1"></div>       
         <mat-form-field class="col col-sm-6 col-md-6 col-lg-4">
           <input matInput placeholder="Auteur" formControlName="auteur"/>   
-          <button mat-button *ngIf="auteur" matSuffix mat-icon-button aria-label="Clear" (click)="auteur=''">
+          <button mat-button *ngIf="searchParams.get('auteur')" matSuffix mat-icon-button aria-label="Clear" (click)="auteur=''">
               <mat-icon>close</mat-icon>
             </button>     
         </mat-form-field>
@@ -27,7 +27,7 @@
         <div class="col-1"></div>       
         <mat-form-field class="col col-sm-6 col-md-6 col-lg-4">
           <input matInput placeholder="Editeur" formControlName="editeur"/>   
-          <button mat-button *ngIf="editeur" matSuffix mat-icon-button aria-label="Clear" (click)="editeur=''">
+          <button mat-button *ngIf="searchParams.get('editeur')" matSuffix mat-icon-button aria-label="Clear" (click)="editeur=''">
               <mat-icon>close</mat-icon>
             </button>     
         </mat-form-field>
@@ -36,7 +36,7 @@
         <div class="col-1"></div>       
         <mat-form-field class="col col-sm-6 col-md-6 col-lg-4">
           <input matInput placeholder="Cote" formControlName="cote"/>   
-          <button mat-button *ngIf="cote" matSuffix mat-icon-button aria-label="Clear" (click)="cote=''">
+          <button mat-button *ngIf="searchParams.get('cote')" matSuffix mat-icon-button aria-label="Clear" (click)="cote=''">
               <mat-icon>close</mat-icon>
             </button>     
         </mat-form-field>
@@ -45,7 +45,7 @@
         <div class="col-1"></div>       
         <mat-form-field class="col col-sm-6 col-md-6 col-lg-4">
           <input matInput placeholder="Isbn" formControlName="isbn"/>   
-          <button mat-button *ngIf="isbn" matSuffix mat-icon-button aria-label="Clear" (click)="isbn=''">
+          <button mat-button *ngIf="searchParams.get('isbn')" matSuffix mat-icon-button aria-label="Clear" (click)="isbn=''">
               <mat-icon>close</mat-icon>
             </button>     
         </mat-form-field>
@@ -54,7 +54,7 @@
         <div class="col-1"></div>       
         <mat-form-field class="col col-sm-6 col-md-6 col-lg-4">
           <input matInput placeholder="Tag" formControlName="tag"/>   
-          <button mat-button *ngIf="tag" matSuffix mat-icon-button aria-label="Clear" (click)="tag=''">
+          <button mat-button *ngIf="searchParams.get('tag')" matSuffix mat-icon-button aria-label="Clear" (click)="tag=''">
               <mat-icon>close</mat-icon>
             </button>     
         </mat-form-field>

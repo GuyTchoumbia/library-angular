@@ -7,6 +7,7 @@ export class Library {
     libelle: string;
     horaires: Horaires;
     adress: Adress;
+    message: string;
 
     toString(): string {
         return this.libelle;

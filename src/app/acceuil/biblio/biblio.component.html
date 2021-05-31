@@ -24,7 +24,7 @@
       <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
       <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
     </table>
-    <div class="expection" *ngIf="library.exception" id="exception">
+    <div class="message" *ngIf="library.message" id="message">
       <h5>Fermeture Exceptionnelle</h5>
     </div>
   </div>

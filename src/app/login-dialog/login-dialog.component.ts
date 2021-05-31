@@ -16,6 +16,7 @@ export class LoginDialogComponent implements OnInit {
   username: number;
   password: string;
   rememberCredentials = false;
+  hide = true;
 
   constructor(public dialogRef: MatDialogRef<LoginDialogComponent>,
               private authService: AuthenticationService,

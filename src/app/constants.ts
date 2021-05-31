@@ -2,19 +2,32 @@ import { NgcCookieConsentConfig } from 'ngx-cookieconsent';
 
 export const apiUrl = 'api';
 
+// config for cookie consent popup
 export const cookieConfig:NgcCookieConsentConfig = {
-    cookie: {
-      domain: 'localhost'
-      // or 'your.domain.com' // it is mandatory to set a domain, for cookies to work properly (see https://goo.gl/S2Hy2A)
+  "cookie": {
+    "domain": "localhost"    
+  },
+  "position": "bottom",
+  "theme": "classic",
+  "palette": {
+    "popup": {
+      "background": "#000000",
+      "text": "#ffffff",
+      "link": "#ffffff"
     },
-    palette: {
-      popup: {
-        background: '#000'
-      },
-      button: {
-        background: '#f1d600'
-      }
-    },
-    theme: 'edgeless',
-    type: 'opt-out'
-  };
+    "button": {
+      "background": "#f1d600",
+      "text": "#000000",
+      "border": "transparent"
+    }
+  },
+  "type": "info",
+  "content": {
+    "message": "This website uses cookies to ensure you get the best experience on our website.",
+    "dismiss": "Got it!",
+    "deny": "Refuse cookies",
+    "link": "Learn more",
+    "href": "https://cookiesandyou.com",
+    "policy": "Cookie Policy"
+  }
+}
