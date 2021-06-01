@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { SearchService } from '../search.service';
 import { Document } from '../../classes/document';
 import { PageEvent } from '@angular/material/paginator';
-import { ActivatedRoute, Router, ParamMap } from '@angular/router';
-import { switchMap, map, filter } from 'rxjs/operators';
-import { Observable } from 'rxjs';
-import { SlicePipe, Location } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-list',
@@ -32,8 +29,8 @@ export class ListComponent implements OnInit {
   ngOnInit() {
     this.route.data.subscribe((data: { results: Document[] }) => {
       this.results = data.results;
+      this.paginatorLength = this.results.length;
       this.paginatedResults = this.results.slice(0, this.paginatorSize);
-      this.paginatorLength = this.paginatedResults.length;
     });
   }
 
@@ -85,7 +82,6 @@ export class ListComponent implements OnInit {
     } else {
       this.results.sort((a, b) => a.id - b.id);
     }
-    console.log(this.results);
   }
 
 onPageChanged(e: PageEvent) {
