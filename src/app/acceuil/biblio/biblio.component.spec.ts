@@ -71,7 +71,7 @@ describe('BiblioComponent', () => {
     const dom: HTMLElement = fixture.nativeElement;
     expect(dom.querySelector('#libelle').textContent).toEqual('test library libelle');
     expect(dom.querySelector('#adressAsString').textContent).toEqual(' test number rue test street, 11111 test city ');
-    expect(dom.querySelector('#exception')).toBeNull();
+    expect(dom.querySelector('#message')).toEqual('test message');
   })
 
 });

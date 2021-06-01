@@ -29,9 +29,10 @@ export class BiblioComponent implements OnInit {
   ngOnInit() {
     this.route.data.subscribe((data: { library: Library }) => {
       this.library = data.library;
+      this.dataSource = this.mapHoraires(this.library);
+      this.adressAsString = this.flatAdressString(this.library);
     });
-    this.dataSource = this.mapHoraires(this.library);
-    this.adressAsString = this.flatAdressString(this.library);
+
   }
 
   // "maps" the library data into a table acceptable for mat-table.
@@ -50,11 +51,11 @@ export class BiblioComponent implements OnInit {
 
   // flattens the adress object as a String, simply.
   flatAdressString(library: Library): string {
-    this.adressAsString = this.library.adress.numero
+    const adressAsString = this.library.adress.numero
                           + ' rue ' + this.library.adress.rue
                           + ', ' + this.library.adress.codePostal
                           + ' ' + this.library.adress.ville;
-    return this.adressAsString;
+    return adressAsString;
   }
 
 }
